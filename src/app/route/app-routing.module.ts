@@ -8,9 +8,10 @@ import { MenuComponent } from '../menu/menu.component';
 const routes: Routes = [ 
   { path: 'header', component: HeaderComponent },
   { path: 'footer', component: FooterComponent },
+  { path: 'contact', component: HeaderComponent },
   { path: 'home', component: HomeComponent },
   { path: 'menus', component: MenuComponent },
-  { path: '', redirectTo: 'header', pathMatch: 'full'}
+  { path: '', redirectTo: 'home', pathMatch: 'full'}
   ,];
 
 @NgModule({

@@ -8,6 +8,9 @@ import { FooterComponent } from './header-footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './route/app-routing.module';
+import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { AppRoutingModule } from './route/app-routing.module';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    ContactComponent,
+    LoginComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

@@ -9,4 +9,11 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
 
+  constructor(private router: Router) {}
+
+
+  goToHome() {
+   this.router.navigate(['/contact']);
+  }
+
 }
