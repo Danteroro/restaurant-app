@@ -6,11 +6,11 @@ import { HomeComponent } from '../home/home.component';
 import { MenuComponent } from '../menu/menu.component';
 
 const routes: Routes = [ 
-  { path: '/header', component: HeaderComponent,},
-  { path: '/footer', component: FooterComponent,},
-  { path: '/home', component: HomeComponent,},
-  { path: '/menus', component: MenuComponent,},
-  { path: '', redirectTo: '/header', pathMatch: 'full'}
+  { path: 'header', component: HeaderComponent },
+  { path: 'footer', component: FooterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'menus', component: MenuComponent },
+  { path: '', redirectTo: 'header', pathMatch: 'full'}
   ,];
 
 @NgModule({
@@ -18,3 +18,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
