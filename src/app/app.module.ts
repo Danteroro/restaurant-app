@@ -11,6 +11,8 @@ import { AppRoutingModule } from './route/app-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { GalerieComponent } from './galerie/galerie.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { ReservationComponent } from './reservation/reservation.component';
     MenuComponent,
     ContactComponent,
     LoginComponent,
-    ReservationComponent
+    ReservationComponent,
+    GalerieComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
