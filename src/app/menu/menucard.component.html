@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<!--<h1>Menu liste</h1>
+<p *ngFor="let menu of menuList">{{ menu.name }}</p>-->
+
+
+<div class="container">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div *ngFor="let menu of menuList" class="card" style="width: 18rem;">
+          <img [src] = " menu.picture " class="card-img-top" width="50px" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"> {{ menu.name }} </h5>
+            <p class="card-text"> {{ menu.description }} </p>
+            <a (click)="goToHome()" class="btn btn-primary">Go somewhere</a>
+          </div>
+         </div> 
+      </div>
+    </div>  
+  </div>
+
+  <app-footer></app-footer>
