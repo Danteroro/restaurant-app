@@ -1,42 +1,63 @@
 
 
-<div class="container bg">
+.bg {
+
+  background: hsla(15, 82%, 51%, 0.5);
+  margin-top: 10%;
+
+  }
+
+  
+.logo {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+
+.btn-1{
+  background: rgb(89, 173, 80);
+}
+
+.btn-2 {
+  background: rgb(233, 78, 27);
+}
+
+.form-floating {
+  margin-top: 30px;
+}
+
+
+
+
+/*<div class="container bg">
     <div class="row row-cols-2 justify-content-center">
-      <div class="col text-center" >
+      <div class="col text center" >
         <main class="form-signin w-50 m-auto">
             <form>
-            <img src="assets/menu-premium-logo.png" 
-                 alt="Logo menu premium" 
-                 width="80"
-                 class="logo">
-            <h1 class="h3 mb-3 fw-normal text-white">Se connecter</h1>
-
-                <div class="row ">
+            <img src="assets/menu-premium-logo.png" alt="Logo menu premium" width="80">
+            <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
+                <div class="card">
                     <div class="form-floating">
                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput">Adresse email</label>
                     </div>
-
                     <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Mot de passe</label>
                     </div>
                 </div>
-                
             <div class="checkbox mb-3">
                 <label>
                 <input type="checkbox" value="remember-me"> Se souvenir de moi
                 </label>
             </div>
-            <div>
-            <button class="w-40 btn btn-1" type="submit">Connexion</button>
-             </div>  
-             <div>
-            <button class="w-40 btn btn-2" type="submit">S'inscrire</button>
-         </div>
-            <p class="mt-5 mb-3 text-muted"></p>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+            <p class="mt-5 mb-3 text-muted">© 2023</p>
             </form>
         </main>
       </div>
-</div>
-
+    </div>
+</div>*/

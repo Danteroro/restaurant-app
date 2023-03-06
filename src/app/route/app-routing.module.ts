@@ -5,11 +5,13 @@ import { GalerieComponent } from '../galerie/galerie.component';
 import { HomeComponent } from '../home/home.component';
 import { LoginComponent } from '../login/login.component';
 import { MenuComponent } from '../menu/menucard.component';
+import { ModalComponent } from '../modal/modal.component';
 import { ReservationComponent } from '../reservation/reservation.component';
 
 const routes: Routes = [ 
   { path: 'reservation', component: ReservationComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'modal', component: ModalComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'galerie', component: GalerieComponent },

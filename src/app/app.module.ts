@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { GalerieComponent } from './galerie/galerie.component';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,13 @@ import { FormsModule } from '@angular/forms';
     ContactComponent,
     LoginComponent,
     ReservationComponent,
-    GalerieComponent
+    GalerieComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false}),
     AppRoutingModule
   ],
   providers: [],
