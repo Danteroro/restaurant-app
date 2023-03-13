@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../modal/modal.component';
+
 
 @Component({
   selector: 'app-home',
@@ -10,72 +9,74 @@ import { ModalComponent } from '../modal/modal.component';
 
     <app-header></app-header>
 
-  <ng-template #content let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<form>
-			<div class="mb-3">
-				<label for="dateOfBirth">Date of birth</label>
-				<div class="input-group">
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-	</div>
-</ng-template>
+<div class="d-flex align-items-center justify-content-center" >
+  <h2>Le Goût qui compte</h2>
+</div>
+<div class="d-flex align-items-center justify-content-center" >
+  <p>Avec les yeux ont vous le dit</p>
+</div>                 
 
+<div class="container-fluid">
+  <div [ngClass]="'gallery'" class="row">
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+      <img
+        src="assets/AdobeStock_567551929_Preview.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
 
-<!--<pre>{{ closeResult }}</pre>-->
+      <img
+        src="assets/AdobeStock_558461136_Preview.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Wintry Mountain Landscape"
+      />
+    </div>
 
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <img
+        src="assets/AdobeStock_399075641_Preview.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Mountains in the Clouds"
+      />
 
-        <div class="carousel-item active">
-            <img src="assets/fond-cuisine3.jpg" alt="fond" width="100%" >
-              <div class="container">
-                <div class="carousel-caption">
-                  <h1>Le Goût qui compte</h1>
-                  <p>Vous êtes convié vous et vos proches afin d'en attester.</p>
-                  <p><button type="button" class="btn btn-success"><a (click)="open(content)" class="nav-link px-2 text-white">Réserver !</a></button></p>
-                </div>
-              </div>
-        </div>
+      <img
+        src="assets/AdobeStock_48399778_Preview.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
+    </div>
 
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <img
+        src="assets/AdobeStock_42689015_Preview.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Waves at Sea"
+      />
+
+      <img
+        src="assets/fond-cuisine.jpeg" alt="fond"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Yosemite National Park"
+      />
+    </div>
+  </div>
+</div>
+
+        
     
-  </main>
+</main>
 
   `,
-  styles: [
+  styles: [ `
+  .gallery, .d-flex {
+    margin-top: 15px;
+  }
+  `
+
   ]
 })
+
 export class HomeComponent {
 
-  closeResult = '';
-  dp: any;
   
-    constructor(private modalService: NgbModal) {}
-  
-    open(content: any) {
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        },
-      );
-    }
-  
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
-    }
 }
