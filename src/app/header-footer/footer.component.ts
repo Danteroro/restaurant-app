@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-footer',
   template: `
 
-<div class="container-fluid">
+
   <footer [ngClass]="'footer'"
           class=" bg-secondary d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex justify-content-center">
@@ -16,12 +16,13 @@ import { Component } from '@angular/core';
       <li class="ms-3"><a class="text-muted" href="#"><img src="assets/logo-instagram.png" alt="Logo menu premium" width="30"></a></li>
     </ul>
   </footer>
-</div>
 
+  
   
   `,
   styles: [`.footer {
     position: relative;
+    width: 100%;
     bottom: 0;
   }`
 

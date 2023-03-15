@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Plat } from '../plat/plat';
 import { PLATLIST } from '../plat/platlist';
 
 
@@ -18,7 +20,9 @@ export class HomeComponent {
   closeResult = '';
   dp: any;
   
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private router: Router) {}
   
     open(content: any) {
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -40,5 +44,11 @@ export class HomeComponent {
         return `with: ${reason}`;
       }
     }
-  
+
+    
+    goToPlat (plat: Plat) {
+      this.router.navigate(['/plat', plat.id])
+
+    }
+
 }

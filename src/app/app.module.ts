@@ -18,6 +18,9 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { PlatComponent } from './plat/plat.component';
 import { HoraireComponent } from './horaire/horaire.component';
 import { DetailplatComponent } from './detailplat/detailplat.component';
+import { PlatFormComponent } from './plat-form/plat-form.component';
+import { AddPlatComponent } from './add-plat/add-plat.component';
+import { EditPlatComponent } from './edit-plat/edit-plat.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { DetailplatComponent } from './detailplat/detailplat.component';
     ModalComponent,
     PlatComponent,
     HoraireComponent,
-    DetailplatComponent
+    DetailplatComponent,
+    PlatFormComponent,
+    AddPlatComponent,
+    EditPlatComponent
   ],
   imports: [
     BrowserModule,

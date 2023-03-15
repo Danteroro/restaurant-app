@@ -1,19 +1,29 @@
 <app-header></app-header>
 
-<div class="container-xl">
-    <div *ngIf="plat" class="card" style="width: 18rem;">
-        <img [src]="plat.picture" 
-             class="card-img-top"  
-             alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">{{ plat.name}}</h5>
-            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-            <a href="/" class="btn btn-primary">Modifier</a>
-            <a href="#" class="btn btn-primary">Supprimer</a>
-            </div>
+
+<div class="container mt-5">
+  <h1>Personnaliser vos plats !</h1>
+  <p>Modifier le titre et/ou la photo associé au plat.
+    Aussi, vous pouvez supprimer le plat.
+  </p>
+  <div *ngIf="plat" class="card">
+    <div class="row">
+        <div class="col-md-5">
+          <img [src]="plat.picture" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-4">
+          <h2 class="card-title">{{ plat.name }}</h2>
+          <h3 class="card-text text-secondary">Catégorie : {{ plat.category }}</h3>
+          <div class=" col-8 d-flex justify-content-around">
+            <a (click)="goToEditPlat(plat)" class="btn btn-dark btn-lg button">Modifier</a>
+            <a href="#" class="btn btn-danger btn-lg button ">Supprimer</a>
+          </div>
+        </div>
     </div>
-  <div><a href="/" class="btn btn-primary">Retour</a></div>
+  </div>
+  <div class="text-left buttonR"><a href="/" class="btn btn-warning btn-lg">Retour</a></div>
 </div>
+
 
 <h3 *ngIf="!plat">Pas de plat à affcher !</h3>
 
@@ -21,3 +31,21 @@
 
 
 <!--<div *ngFor="let menu of " class="card" style="width: 18rem;">-->
+
+ <!-- <div class="container-xl">
+    <div class="row col-sm-6">
+      <div *ngIf="plat" class="card" style="width: 18rem;">
+          <img [src]="plat.picture" 
+               class="card-img-top"  
+               alt="Card image cap">
+              <div class="card-body">
+              <h5 class="card-title">{{ plat.name }}</h5>
+              <h6 class="card-text">Catégorie : {{ plat.category }}</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a (click)="goToEditPlat(plat)" class="btn btn-primary">Modifier</a>
+              <a href="#" class="btn btn-primary">Supprimer</a>
+              </div>
+      </div>
+      <div><a href="/" class="btn btn-primary">Retour</a></div>
+    </div>  
+  </div>-->
