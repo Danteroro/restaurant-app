@@ -1,23 +1,28 @@
 <app-header></app-header>
 
-<!--<h1>Menu liste</h1>
-<p *ngFor="let menu of menuList">{{ menu.name }}</p>
-<a (click)="goToHome()" class="btn btn-primary">Go somewhere</a>-->
 
-<!--<div class="container-fluid" style="margin-top: 50px;">
+
+<div class="container-xl" style="margin-top: 50px;">
+  <div class="d-flex justify-content-center"><h1>Menus</h1></div> 
     <div class="row">
       <div class="d-flex justify-content-around">
         <div *ngFor="let menu of menuList" class="card" style="width: 18rem;">
-          <img [src] = " menu.picture " class="card-img-top" width="50px" alt="...">
           <div class="card-body">
-            <h5 class="card-title"> {{ menu.name }} </h5>
+            <h5 class="card-title"> {{ menu.title }} </h5>
+            <p class="card-text"> {{ menu.formule }} </p>
             <p class="card-text"> {{ menu.description }} </p>
           </div>
          </div> 
       </div>
     </div>  
-</div>-->
+</div>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
 
 
+
+
+
+
+<!--<p *ngFor="let menu of menuList">{{ menu.name }}</p>
+<a (click)="goToHome()" class="btn btn-primary">Go somewhere</a>-->

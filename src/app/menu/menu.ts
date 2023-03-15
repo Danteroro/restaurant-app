@@ -1,18 +1,18 @@
 
 export class Menu {
     id: number | undefined;
-    name: string | undefined;
-    picture: string | undefined;
+    title: string | undefined;
+    formule: string | undefined;
     description: string | undefined;
 
 constructor(
-        name: string = 'menu-xxxx',
-        picture: string = '/fond-cuisine.jpeg',
-        description: string = 'Menu composer de :'
+        title: string = 'menu-xxxx',
+        formule: string = 'Midi-Soir',
+        description: string = 'Composer de :'
         
       ) {
-        this.name = name;
-        this.picture = picture;
+        this.title = title;
+        this.formule = formule;
         this.description = description;
     }
   

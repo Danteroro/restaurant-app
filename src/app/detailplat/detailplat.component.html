@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<div class="container-xl">
+    <div *ngIf="plat" class="card" style="width: 18rem;">
+        <img [src]="plat.picture" 
+             class="card-img-top"  
+             alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">{{ plat.name}}</h5>
+            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            <a href="/" class="btn btn-primary">Modifier</a>
+            <a href="#" class="btn btn-primary">Supprimer</a>
+            </div>
+    </div>
+  <div><a href="/" class="btn btn-primary">Retour</a></div>
+</div>
+
+<h3 *ngIf="!plat">Pas de plat à affcher !</h3>
+
+<app-footer></app-footer>
+
+
+<!--<div *ngFor="let menu of " class="card" style="width: 18rem;">-->

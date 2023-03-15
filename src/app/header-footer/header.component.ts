@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../modal/modal.component';
+
 
 
 @Component({
@@ -19,7 +18,7 @@ import { ModalComponent } from '../modal/modal.component';
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a routerLink="/menus" class="nav-link active px-2 text-white">Menus</a></li>
-            <li><a routerLink="/galerie" class="nav-link px-2 text-white">Galerie</a></li>
+            <li><a routerLink="/galerie" class="nav-link px-2 text-white">Carte</a></li>
             <li><a routerLink="/contact"class="nav-link px-2 text-white">Contact</a></li>
           </ul>
 
@@ -27,33 +26,16 @@ import { ModalComponent } from '../modal/modal.component';
             <button type="button" class="btn btn-outline-light me-2">
               <a routerLink="/login" class="nav-link px-2 text-white">Se connecter</a>
             </button>
-            <button type="button" class="btn btn-success">
-                <a (click)="open(content)" class="v px-2 text-white">Réserver !</a>
-              </button>   
+            <button type="button" class="btn btn-warning me-2">
+              <a routerLink="/login" class="nav-link px-2 text-white">S'inscrire'</a>
+            </button>  
           </div>
         </div>
       </div>
   </header>
 
   
-<ng-template #content let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<form>
-			<div class="mb-3">
-				<label for="dateOfBirth">Date of birth</label>
-				<div class="input-group">
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-	</div>
-</ng-template>
+
 
 <!--<pre>{{ closeResult }}</pre>
 
@@ -117,31 +99,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class HeaderComponent {
   title = 'restaurant-app';
-  closeResult = '';
-  dp: any;
   
-    constructor(private modalService: NgbModal) {}
-  
-    open(content: any) {
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        },
-      );
-    }
-  
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
-    }
 }
 
 

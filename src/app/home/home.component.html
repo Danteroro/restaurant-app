@@ -1,0 +1,175 @@
+<app-header></app-header>
+
+
+<main>
+
+<div class="d-flex justify-content-center" ><h2>Le Goût qui compte!</h2></div>
+<div class="text-center">C'est ainsi le partage.</div> 
+
+
+<div class="container-xl">
+    <div class="row justify-content-center">
+        <div *ngFor="let plat of platList" class="col-lg-4 mb-4 mb-lg-0 example">
+            <img img [src] = " plat.picture " alt="fond"
+                 class="w-100 shadow-1-strong rounded mb-4"
+                  alt="Mountains in the Clouds"
+            />
+            <div class="card-body">
+                <a a routerLink="/plat"><h5 class="card-title text">{{ plat.name }}</h5></a>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+<div class="d-flex align-items-center justify-content-center" >
+    <button type="button" class="btn btn-lg btn-success">
+        <a (click)="open(content)" class="v px-2 text-white">Réserver !</a>
+    </button>
+</div>
+
+<div class="d-flex align-items-center justify-content-center fond" >
+    <img src="assets/fond-cuisine.jpeg" alt="fond"
+         class="shadow-1-strong rounded mb-4" width="900"
+         alt="Yosemite National Park"
+    />           
+</div> 
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title " id="modal-basic-title">Réservation</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+            <div class="container">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputname">Nom</label>
+                        <input type="name" class="form-control" id="inputName" placeholder="Votre nom">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputname">Prénom</label>
+                        <input type="surname" class="form-control" id="inputSurname" placeholder="Votre prénom">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputname">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Adresse Email">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputnumber">Nombre de couverts</label>
+                        <input type="number" class="form-control" id="inputNumber" placeholder="Ex : 2 couverts...">
+                      </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Addresse</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Mon adresse">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Date</label>
+                    <input type="date" class="form-control" id="inputTime" placeholder="...">
+                  </div>
+                <div class="form-group col-md-6">
+                    <label for="input-text">Infos notables...</label>
+                    <input type="text" class="form-control" id="inputText" placeholder="Ex : Je suis sensible lactose...">
+                  </div>
+                <div class="form-row">
+                </div>
+              </div>  
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Réserver</button>
+	</div>
+</ng-template>
+
+    
+
+
+<!--test hover
+
+<div class="container-fluid">
+    <div [ngClass]="'gallery'" class="row">
+            <div class="example">
+                <img src="assets/AdobeStock_567551929_Preview.jpeg" class="w-100 shadow-1-strong rounded mb-4" alt="" />
+                <div class="f">
+                <div class="title text">Maison</div>
+                </div>
+            </div>
+
+            <div class="example">
+                <img src="assets/AdobeStock_567551929_Preview.jpeg" alt="tile3" width="400" height="300" alt="house" />
+                <div class="f">
+                <div class="title text">Maison</div>
+                </div>
+            </div>
+            <div class="example">
+                <img src="assets/AdobeStock_567551929_Preview.jpeg" alt="tile3" width="400" height="300" alt="house" />
+                <div class="f">
+                <div class="title text">Maison</div>
+                </div>
+            </div>
+    </div>
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-xl">
+   <div class="row">
+
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <img src="assets/AdobeStock_567551929_Preview.jpeg" 
+                alt="fond"
+                class="w-100 shadow-1-strong rounded mb-4"
+            />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+        </div>
+
+        <img src="assets/AdobeStock_558461136_Preview.jpeg" alt="fond"
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="Wintry Mountain Landscape"
+        />
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+        <img
+            src="assets/AdobeStock_399075641_Preview.jpeg" alt="fond"
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="Mountains in the Clouds"
+        />
+
+        <img
+            src="assets/AdobeStock_48399778_Preview.jpeg" alt="fond"
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="Boat on Calm Water"
+        />
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+        <img
+            src="assets/AdobeStock_42689015_Preview.jpeg" alt="fond"
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="Waves at Sea"
+        />
+
+        <img
+            src="assets/fond-cuisine.jpeg" alt="fond"
+            class="w-100 shadow-1-strong rounded mb-4"
+            alt="Yosemite National Park"
+        /> 
+    </div>
+</div>-->
+
+        
+</main>
+
+<app-footer><app-footer>

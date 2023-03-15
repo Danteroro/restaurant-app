@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RestaurantService } from '../restaurant.service';
 import { MENULIST } from './menulist';
 
 
@@ -14,11 +15,15 @@ export class MenuComponent implements OnInit{
 
   menuList = MENULIST;
 
-  ngOnInit(): void {
-    console.table(this.menuList);
-  }
 
-constructor(private router: Router) {}
+constructor(
+  private router: Router,
+  private restaurantService : RestaurantService
+  ) {}
+
+  ngOnInit() {
+    this.menuList = this.restaurantService.getMenuList();
+  }
 
 
   goToHome() {

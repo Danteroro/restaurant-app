@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
   
   `,
   styles: [`.footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
   }`
 

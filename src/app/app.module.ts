@@ -11,11 +11,13 @@ import { AppRoutingModule } from './route/app-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { GalerieComponent } from './galerie/galerie.component';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { PlatComponent } from './plat/plat.component';
+import { HoraireComponent } from './horaire/horaire.component';
+import { DetailplatComponent } from './detailplat/detailplat.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,10 @@ import { InMemoryDataService } from './in-memory-data.service';
     ContactComponent,
     LoginComponent,
     ReservationComponent,
-    GalerieComponent,
-    ModalComponent
+    ModalComponent,
+    PlatComponent,
+    HoraireComponent,
+    DetailplatComponent
   ],
   imports: [
     BrowserModule,
