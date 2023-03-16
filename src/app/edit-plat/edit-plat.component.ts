@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Plat } from '../plat/plat';
 import { RestaurantService } from '../restaurant.service';
@@ -12,11 +12,12 @@ import { RestaurantService } from '../restaurant.service';
 
   <div class="container-xl">
       <div class="row">
-          <h2 class="text-center title">Modifier le plat</h2>
+          <h3 class="text-center title">Modifier le plat</h3>
           <div *ngIf="plat" class="d-flex justify-content-center">
               <img [src]="plat.picture"
                    class="w-50 shadow-1-strong rounded mb-4">
-          </div>  
+          </div>
+          <div *ngIf="!plat" class="d-flex justify-content-center" ><app-loader></app-loader></div>
           <app-plat-form *ngIf="plat" [plat]="plat"></app-plat-form>  
       </div>
   </div>
@@ -30,11 +31,10 @@ import { RestaurantService } from '../restaurant.service';
     margin-bottom: 15px;
     background-color:
   }
-  
   `
   ]
 })
-export class EditPlatComponent {
+export class EditPlatComponent implements OnInit {
 
 plat: Plat | undefined;
 
@@ -44,9 +44,10 @@ constructor(
 ) {}
 
 ngOnInit() {
-    const platId : string|null = this.route.snapshot.paramMap.get('id');
+    const platId : string | null = this.route.snapshot.paramMap.get('id');
     if(platId) {
-      this.plat = this.restaurantService.getPlatById(+platId);
+      this.restaurantService.getPlatById(+platId)
+       .subscribe(plat => this.plat = plat);
     }else {
       this.plat = undefined;
     }

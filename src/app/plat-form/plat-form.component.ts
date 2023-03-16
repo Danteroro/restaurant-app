@@ -16,22 +16,33 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class PlatFormComponent implements OnInit {
 
-@Input() plat: Plat | undefined;
- platList: Plat[] | undefined;
-  name: string[] | undefined;
+@Input() plat: Plat|any;
+
+isAddForm: boolean | undefined;
+
 
 constructor(
   private restaurantService:RestaurantService,
   private router:Router) {}
 
 ngOnInit() {
-  
+  this.plat = this.restaurantService.getPlatList();
+  this.isAddForm = this.router.url.includes('add');
 }
 
 onSubmit() {
+  if(this.isAddForm) {
+    this.restaurantService.addPlat(this.plat)
+    .subscribe((plat: Plat) => this.router.navigate(['/plat', plat.id]))
+  }else {
+    this.restaurantService.persistanceData(this.plat)
+    .subscribe(() => this.router.navigate(['/plat', this.plat.id]));
+    }
+  }
+  
+}
+
+/*onSubmit() {
   console.log('Formulaire envoyé !');
   this.router.navigate(['/plat', this.plat?.id]);
-}
-
-}
-
+}*/

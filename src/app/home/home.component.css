@@ -8,6 +8,31 @@
     margin-top: 35px;
 }
 
+.addbutton {
+
+  border-radius: 100%;
+  position: fixed;
+  bottom: 100px;
+  right: 40px;
+  height: 70px;
+  width: 70px;
+
+}
+
+.a {
+  color: #fff;
+  outline: none;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+
+.addbutton:hover {
+  background-color: rgb(26, 185, 26);
+  border-color:rgb(26, 185, 26) ;
+}
+
+
 
 .example {
     cursor: pointer;

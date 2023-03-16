@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestaurantService } from '../restaurant.service';
-import { PLATLIST } from './platlist';
+import { Plat } from './plat';
 
 @Component({
   selector: 'app-plat',
@@ -11,7 +11,7 @@ import { PLATLIST } from './platlist';
 })
 export class PlatComponent implements OnInit {
 
-  platList = PLATLIST;
+  platList: Plat[] | undefined;
 
 
   constructor(
@@ -20,14 +20,18 @@ export class PlatComponent implements OnInit {
     ) {}
   
     ngOnInit() {
-      this.platList = this.restaurantService.getPlatList();
+      this.restaurantService.getPlatList()
+      .subscribe(platList => this.platList = platList);
     }
-  
-
-
-  /*ngOnInit(): void {
-    console.table(this.platList);
-  }*/
 
 
 }
+
+ /*ngOnInit(): void {
+    console.table(this.platList);
+  }
+
+
+ngOnInit() {
+  this.platList = this.restaurantService.getPlatList();
+}*/

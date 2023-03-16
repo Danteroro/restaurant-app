@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService} from 'angular-in-memory-web-api';
-import { MENULIST } from './menu/menulist';
+import { PLATLIST } from './plat/platlist';
 
 
 @Injectable({
@@ -9,6 +9,7 @@ import { MENULIST } from './menu/menulist';
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
-    return { MENULIST };
+    const plat = PLATLIST;
+    return { plat };
   }
 }

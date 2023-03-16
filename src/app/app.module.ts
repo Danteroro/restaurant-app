@@ -21,6 +21,8 @@ import { DetailplatComponent } from './detailplat/detailplat.component';
 import { PlatFormComponent } from './plat-form/plat-form.component';
 import { AddPlatComponent } from './add-plat/add-plat.component';
 import { EditPlatComponent } from './edit-plat/edit-plat.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +40,13 @@ import { EditPlatComponent } from './edit-plat/edit-plat.component';
     DetailplatComponent,
     PlatFormComponent,
     AddPlatComponent,
-    EditPlatComponent
+    EditPlatComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false}),
     AppRoutingModule
   ],

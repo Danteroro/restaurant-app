@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddPlatComponent } from '../add-plat/add-plat.component';
 import { ContactComponent } from '../contact/contact.component';
 import { DetailplatComponent } from '../detailplat/detailplat.component';
 import { EditPlatComponent } from '../edit-plat/edit-plat.component';
@@ -14,6 +15,7 @@ import { ReservationComponent } from '../reservation/reservation.component';
 const routes: Routes = [ 
   { path: 'reservation', component: ReservationComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'plat/add', component: AddPlatComponent },
   { path: 'plat/:id', component: DetailplatComponent },
   { path: 'edit/plat/:id', component: EditPlatComponent },
   { path: 'platform', component: PlatFormComponent },

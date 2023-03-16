@@ -5,6 +5,7 @@
               (ngSubmit)="onSubmit()"  
                #platForm = "ngForm"
                class="  align-item-center justify-content-center">
+
             <div class="form-group">
                 <label for="picture">Image</label>
                 <input type="file" class="form-control" id="picture"
@@ -56,6 +57,7 @@
                 </button>
             </div>    
         </form>
+        <h3 *ngIf="!plat"><app-loader></app-loader></h3>
     </div>    
 </div>
   
