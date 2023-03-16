@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
             <button type="button" class="btn btn-outline-light me-2">
               <a routerLink="/login" class="nav-link px-2 text-white">Se connecter</a>
             </button>
-            <button type="button" class="btn btn-warning me-2">
+            <button type="button" class="btn btn-2 me-2">
               <a routerLink="/login" class="nav-link px-2 text-white">S'inscrire'</a>
             </button>  
           </div>
@@ -94,6 +94,17 @@ import { Component } from '@angular/core';
   .logo {
     margin-left: 10px;
   }
+
+.btn:hover {
+  background: rgb(89, 173, 80);
+  border: rgb(89, 173, 80);
+}
+ 
+.btn-2 {
+  background: rgb(233, 78, 27);
+}
+
+
   `
   ]
 })

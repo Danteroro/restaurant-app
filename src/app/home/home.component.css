@@ -9,7 +9,7 @@
 }
 
 .addbutton {
-
+  background-color: rgb(233, 78, 27);
   border-radius: 100%;
   position: fixed;
   bottom: 100px;
@@ -17,6 +17,10 @@
   height: 70px;
   width: 70px;
 
+}
+
+.resa {
+  background-color: rgb(89, 173, 80);
 }
 
 .a {
@@ -28,8 +32,8 @@
 
 
 .addbutton:hover {
-  background-color: rgb(26, 185, 26);
-  border-color:rgb(26, 185, 26) ;
+  background-color: rgb(89, 173, 80);
+  border-color:rgb(89, 173, 80);
 }
 
 
