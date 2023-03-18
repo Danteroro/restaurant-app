@@ -1,10 +1,11 @@
 
 
 <div class="d-flex align-items-center justify-content-center">
-    <img src="assets/menu-premium-logo.png" 
+    <a href="/"><img src="assets/Quai Antique.png" 
          alt="Logo menu premium" 
-         width="80"
+         width="160"
          class="logo">
+    </a>     
 </div>
 
 <div class="container-xl">
@@ -13,25 +14,35 @@
         <main class="form-signin w-50 m-auto">
             <form #loginForm="ngForm">
             
-                <div class="row bg">
+                <div class="row bg-dark rounded">
                     <h3 class="text-white">{{message}}</h3>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingName" [(ngModel)]="name" name="name" required placeholder="Password">
+                        <input type="text" 
+                               class="form-control" 
+                               id="floatingName" 
+                               [(ngModel)]="name" 
+                               name="name" 
+                               required placeholder="Password">
                         <label for="floatingInput">Nom</label>
                        </div> 
 
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" [(ngModel)]="password" name="password" required placeholder="Password">
+                        <input type="password" 
+                               class="form-control" 
+                               id="floatingPassword" 
+                               [(ngModel)]="password" 
+                               name="password" 
+                               required placeholder="Password">
                         <label for="floatingPassword">Mot de passe</label>
                         <div class="checkbox mb-3">
-                            <label>
+                            <label class="text-white">
                             <input type="checkbox" value="remember-me" class="label"> Se souvenir de moi
                             </label>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-around">
                         <button class=" btn btn-1 text-white" type="submit"><a (click)="login()" *ngIf="!auth.isLoggedIn">Connexion</a></button>
-                        <button class="btn btn-2 text-white" type="submit">S'inscrire</button>   
+                       <a routerLink="/inscription"><button class="btn btn-2 text-white" type="submit">S'inscrire</button></a>
                     </div>
                 </div>
 

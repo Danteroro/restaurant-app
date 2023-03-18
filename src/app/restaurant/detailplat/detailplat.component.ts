@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Plat } from '../plat/plat';
-import { PLATLIST } from '../plat/platlist';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -19,24 +18,41 @@ import { RestaurantService } from '../restaurant.service';
   margin-top: 50px;
   
 }  
+
+.container {
+
+  padding: 20px;
+}
+
+.ret {
+  background-color: rgb(89, 173, 80);
+}
+
   `
   ]
 })
 export class DetailplatComponent implements OnInit{
 
-plat: Plat|undefined;
+plat: Plat | undefined;
 platList: Plat[] | undefined;
+currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
+
 
 constructor(
   private route: ActivatedRoute,
   private router: Router,
   private restaurantService: RestaurantService) {}
 
+
 ngOnInit() {
+  
+  const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";
   const platId : string|null = this.route.snapshot.paramMap.get('id');
   if(platId) {
     this.restaurantService.getPlatById(+platId)
-    .subscribe(plat => this.plat = plat)
+    .subscribe(plat => this.plat = plat);
+    this.currentUser = JSON.parse(token);
+    
   }
 }
 
@@ -54,6 +70,9 @@ goToHome() {
 goToEditPlat(plat: Plat) {
   this.router.navigate(['edit/plat',plat.id])
 }
+
+
+
 
 }
 

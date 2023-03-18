@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, tap } from 'rxjs';
-import { User } from './add-plat/users/user';
+import { USERS } from './users/users';
+import { RestaurantService } from './restaurant/restaurant.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private restaurantService: RestaurantService) { }
 
   isLoggedIn: boolean = false;
   redirectUrl: string | undefined;
-  user : User | undefined;
-  users: User[] | undefined;
+  users = USERS;
+
+   login(email: string, password: string): Observable<boolean> {
   
-
-  login(name: string, password: string): Observable<boolean> {
-    const isLoggedIn = (name == 'roro' && password == 'roro' );
-
+    const isLoggedIn = this.users.find((user) => user.email == email && user.password == password) == undefined?false:true;
+    const currentUser = this.users.find((user) => user.email == email && user.password == password);
+    localStorage.setItem('token', JSON.stringify(currentUser));
     return of(isLoggedIn).pipe(
       delay(1000),
       tap(isLoggedIn => this.isLoggedIn = isLoggedIn)
@@ -29,3 +30,4 @@ export class AuthService {
   }
 
 }
+

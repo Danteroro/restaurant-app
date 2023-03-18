@@ -1,13 +1,17 @@
 
-.row  {
-  margin-top: 10px;
-}
+/*.row  {
+  margin-top: 0px;
+}*/
 
 
 .d-flex {
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
+.container-xl {
+margin-top: 40px;
+
+}
 .addbutton {
   background-color: rgb(233, 78, 27);
   border-radius: 100%;
@@ -21,6 +25,7 @@
 
 .resa {
   background-color: rgb(89, 173, 80);
+  text-decoration: none;
 }
 
 .a {

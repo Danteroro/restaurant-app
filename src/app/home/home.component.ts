@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Plat } from '../plat/plat';
-import { PLATLIST } from '../plat/platlist';
+import { Plat } from '../restaurant/plat/plat';
+import { PLATLIST } from '../restaurant/plat/platlist';
 
 
 
@@ -16,7 +16,7 @@ export class HomeComponent {
 
 
   platList  = PLATLIST;
-
+  currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
   dp: any;
   
@@ -24,7 +24,13 @@ export class HomeComponent {
     private modalService: NgbModal,
     private router: Router) {}
   
-    open(content: any) {
+
+ /*ngOnInit() {
+  const session :string  = localStorage.getItem('session')?JSON.stringify(localStorage.getItem('session')):"";
+ }   */
+    
+ 
+ open(content: any) {
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;

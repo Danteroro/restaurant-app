@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { User } from '../users/user';
+import { Dessert } from './carte/dessert';
 import { MENULIST } from './menu/menulist';
 import { Plat } from './plat/plat';
 
@@ -11,11 +13,29 @@ export class RestaurantService {
 
   constructor(private http:HttpClient) {}
 
-menuList = MENULIST
 
   getMenuList () {
     return MENULIST;
   }
+
+  getDessertById (dessertId: number) : Observable<Dessert | undefined> {
+    return this.http.get<Dessert>(`api/dessert/${dessertId}`).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+      );
+  }
+
+
+
+ getUserList (): Observable<User[]> {
+  return this.http.get<User[]>('api/user').pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, []))
+    );
+}
+
+
+
 
   getPlatList (): Observable<Plat[]> {
     return this.http.get<Plat[]>('api/plat').pipe(
@@ -80,13 +100,6 @@ deletePlatById(platId: number): Observable<null> {
 
 
 
-getPlatByCategorie() : string[] {
-  return [
-    'Entrée',
-    'Plat',
-    'Déssert',
-  ]
-}
 
 }
 
@@ -98,6 +111,14 @@ getPlatByCategorie() : string[] {
     return PLATLIST;
   }
   
+  
+getPlatByCategorie() : string[] {
+  return [
+    'Entrée',
+    'Plat',
+    'Déssert',
+  ]
+}
 
   getPlatById (platId: number) : Plat | undefined {
     return PLATLIST.find(plat => plat.id == platId);
@@ -110,4 +131,32 @@ getPlatByCategorie() : string[] {
     'Plat',
     'Déssert',
   ]
-}*/
+}
+
+
+ /* getEntreeList (): Observable<CategoryEntree[]> {
+    return this.http.get<CategoryEntree[]>('api/CategoryEntree').pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, []))
+      );
+  }
+
+
+
+  getPlatDetailList (): Observable<CategoryPlat[]> {
+    return this.http.get<CategoryPlat[]>('api/CategoryPlat').pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, []))
+      );
+  }
+
+
+ getDessertList (): Observable<Dessert[]> {
+    return this.http.get<Dessert[]>('api/CategoryDessert').pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, []))
+      );
+  }*/
+
+
+

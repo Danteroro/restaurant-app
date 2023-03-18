@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+
+
+<div class="container-xl" style="margin-top: 50px;">
+  <div class="d-flex justify-content-center"><h1>Menus</h1></div> 
+    <div class="row">
+      <div class="d-flex justify-content-around">
+        <div *ngFor="let menu of menuList" class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> {{ menu.title }} </h5>
+            <p class="card-text"> {{ menu.formule }} </p>
+            <p class="card-text"> {{ menu.description }} </p>
+          </div>
+         </div> 
+      </div>
+    </div>  
+</div>
+
+<section>
+  <div class="container-xl ">
+      <div class="row">
+  <div class="col-md-12 d-flex justify-content-center">
+  <div class="card" style="width: 30rem;">
+      <div class="card-body">
+      <h4 class="card-title">Nos horaires</h4>
+      <h5 class="card-subtitle mb-2 text-muted">Lundi au dimanche (sauf jours fériés)</h5>
+      <h6 class="card-titile">Midis :</h6>
+          <p class="card-text"> 12h à 15h</p>
+          <h6 class="card-titile">Soirs :</h6>
+          <p class="card-text"> 19h à 22h30</p>
+          <h6 class="card-titile">Week-end :</h6>
+          <p class="card-text"> 12h à 23h</p>
+          <p class="card-text"></p>
+          <h4 class="card-title">Pour tout informations supplémentaires</h4>
+          <h6 class="card-title">01 64 00 00 00</h6>    
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<app-footer></app-footer>
+
+
+
+
+
+
+<!--<p *ngFor="let menu of menuList">{{ menu.name }}</p>
+<a (click)="goToHome()" class="btn btn-primary">Go somewhere</a>-->

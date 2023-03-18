@@ -4,7 +4,7 @@
 <main>
 
 <div class="d-flex justify-content-center" ><h2>Le Goût qui compte!</h2></div>
-<div class="text-center">C'est ainsi le partage.</div> 
+<div class="text-center">C'est comme ça chez le Quai Antique.</div> 
 
 
 <div class="container-xl">
@@ -24,16 +24,45 @@
 
 <div class="d-flex align-items-center justify-content-center" >
     <button type="button" class=" btn btn-lg resa">
-        <a (click)="open(content)" class="text-white">Réserver !</a>
+        <a (click)="open(content)" class="text-white resa">Réserver !</a>
     </button>
 </div>
 
-<div class="d-flex align-items-center justify-content-center fond" >
+
+<section>
+<div class="container-xl">
+    <div class="row justify-content-around">
+<div class="col-md-6" >
     <img src="assets/fond-cuisine.jpeg" alt="fond"
-         class="shadow-1-strong rounded mb-4" width="900"
+         class="shadow-1-strong rounded" width="600"
          alt="Yosemite National Park"
     />           
-</div> 
+</div>
+        <div class="col-md-6">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+            <h4 class="card-title">Nos horaires</h4>
+            <h5 class="card-subtitle mb-2 text-muted">Lundi au dimanche (sauf jours fériés)</h5>
+            <h6 class="card-titile">Midis :</h6>
+                <p class="card-text"> 12h à 15h</p>
+                <h6 class="card-titile">Soirs :</h6>
+                <p class="card-text"> 19h à 22h30</p>
+                <h6 class="card-titile">Week-end :</h6>
+                <p class="card-text"> 12h à 23h</p>
+                <p class="card-text"></p>
+                <h4 class="card-title">Pour tout informations supplémentaires</h4>
+                <h6 class="card-title">01 64 00 00 00</h6>    
+            </div>
+        </div>
+        </div>
+    
+</div>
+</div>  
+</section>
+   
+    
+
+
 
 <button type="button" class="btn btn-danger addbutton">
     <a routerLink="/plat/add" class="a">+</a>
