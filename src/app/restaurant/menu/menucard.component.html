@@ -2,44 +2,42 @@
 
 
 
-<div class="container-xl" style="margin-top: 50px;">
-  <div class="d-flex justify-content-center"><h1>Menus</h1></div> 
-    <div class="row">
-      <div class="d-flex justify-content-around">
-        <div *ngFor="let menu of menuList" class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"> {{ menu.title }} </h5>
-            <p class="card-text"> {{ menu.formule }} </p>
-            <p class="card-text"> {{ menu.description }} </p>
-          </div>
-         </div> 
-      </div>
-    </div>  
+<div class="container-xl" style="margin-top: 30px;">
+    <div class="d-flex justify-content-center m-4"><h1>Nos Menus</h1></div> 
+      <div class="row">
+        <div class="d-flex justify-content-around">
+          <div *ngFor="let menu of menuList" 
+                class="card" 
+                style="width: 25rem;  height: 550px; background-image: url('assets/fond menu 2.jpg');">
+            <div class="card-body text-center">
+              <h3 class="card-title text-white mt-2">{{ menu.title }}</h3>
+              <h4 class="card-text text-white mt-4">{{ menu.entree }}</h4>
+              <p class="card-text text-white">{{ menu.descriptionentree }}</p>
+              <h4 class="card-text text-white">{{ menu.plat }}</h4>
+              <p class="card-text text-white">{{ menu.descriptionplat }}</p>
+              <h4 class="card-text text-white">{{ menu.dessert }}</h4>
+              <p class="card-text text-white">{{ menu.descriptiondessert }}</p>
+              <h3 class="card-text text-white">{{ menu.price }}</h3>
+            </div>
+          </div> 
+        </div>
+      </div>   
 </div>
 
-<section>
-  <div class="container-xl ">
-      <div class="row">
-  <div class="col-md-12 d-flex justify-content-center">
-  <div class="card" style="width: 30rem;">
-      <div class="card-body">
-      <h4 class="card-title">Nos horaires</h4>
-      <h5 class="card-subtitle mb-2 text-muted">Lundi au dimanche (sauf jours fériés)</h5>
-      <h6 class="card-titile">Midis :</h6>
-          <p class="card-text"> 12h à 15h</p>
-          <h6 class="card-titile">Soirs :</h6>
-          <p class="card-text"> 19h à 22h30</p>
-          <h6 class="card-titile">Week-end :</h6>
-          <p class="card-text"> 12h à 23h</p>
-          <p class="card-text"></p>
-          <h4 class="card-title">Pour tout informations supplémentaires</h4>
-          <h6 class="card-title">01 64 00 00 00</h6>    
-      </div>
+
+  <div class="text-center bg-img mt-5"
+      style="background-image: url('assets/fond-inscription.jpg'); height: 220px; width: 100%;">
+        <div class="mask h-100" style="background-color: rgba(0, 0, 0, 0.6) ;">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3">Cuisine & Passion</h1>
+              <h4 class="mb-3">Depuis 1987</h4>
+            </div>
+          </div>
+        </div>
   </div>
-  </div>
-</div>
-</div>
-</section>
+
+<app-horaire></app-horaire>
 
 
 <app-footer></app-footer>

@@ -1,9 +1,4 @@
 
-/*.row  {
-  margin-top: 0px;
-}*/
-
-
 .d-flex {
     margin-top: 25px;
 }
@@ -28,10 +23,21 @@ margin-top: 40px;
   text-decoration: none;
 }
 
+
+.modif {
+  background-color: rgb(233, 78, 27);
+  text-decoration: none;
+}
+
+
 .a {
   color: #fff;
   outline: none;
   font-size: 30px;
+  text-decoration: none;
+}
+
+.ab {
   text-decoration: none;
 }
 
@@ -42,15 +48,13 @@ margin-top: 40px;
 }
 
 
-
 .example {
     cursor: pointer;
-    width: 400px;
     position: relative;
     overflow: hidden;
-    text-align: center;
-    margin-top: 20px;
+    text-align: center;  
   }
+  
   .example .card-body {
     background-color: #666666;
     position: absolute;
@@ -63,14 +67,14 @@ margin-top: 40px;
     -ms-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     opacity: 0;
-    width: 360px;
+    width: 320px;
     height: 100px;
-    padding: 130px 20px;
+    padding: 105px 20px;
     border-radius: 2%;
   }
-  .example:hover .card-body {
-    opacity: 0.8;
-  }
+  
+
+
   .example .text {
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
@@ -80,16 +84,24 @@ margin-top: 40px;
     transform: translateY(30px);
     -webkit-transform: translateY(30px);
   }
+  
   .example .card-title {
-    font-size: 2.5em;
     text-transform: uppercase;
     opacity: 0;
     transition-delay: 0.2s;
     transition-duration: 0.3s;
   }
+  
+  .example:hover .card-body {
+    opacity: 0.8;
+  }
+
   .example:hover .card-title,
   .example:focus .card-title {
     opacity: 1;
     transform: translateY(0px);
     -webkit-transform: translateY(0px);
   }
+
+
+  

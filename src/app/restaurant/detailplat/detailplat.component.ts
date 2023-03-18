@@ -12,11 +12,11 @@ import { RestaurantService } from '../restaurant.service';
     margin-top: 30px; 
     bottom: 0;
   }
-  
+
   
 .button {
-  margin-top: 50px;
-  
+  margin-top: 100px;
+
 }  
 
 .container {

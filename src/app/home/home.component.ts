@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { HORAIRES } from '../horaire/horaires';
 import { Plat } from '../restaurant/plat/plat';
 import { PLATLIST } from '../restaurant/plat/platlist';
 
@@ -14,7 +15,7 @@ import { PLATLIST } from '../restaurant/plat/platlist';
 
 export class HomeComponent {
 
-
+  horaires = HORAIRES;
   platList  = PLATLIST;
   currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';

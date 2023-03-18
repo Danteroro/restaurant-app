@@ -23,6 +23,7 @@ import { CarteComponent } from './carte/carte.component';
 import { EntreeDetailComponent } from './entree-detail/entree-detail.component';
 import { PlatDetailComponent } from './plat-detail/plat-detail.component';
 import { DessertDetailComponent } from './dessert-detail/dessert-detail.component';
+import { HoraireEditComponent } from '../horaire/horaire-edit/horaire-edit.component';
 
 
 const restauRoutes: Routes = [
@@ -37,6 +38,7 @@ const restauRoutes: Routes = [
   { path: 'plat/add', component: AddPlatComponent, canActivate: [AuthGuard] },
   { path: 'plat/:id', component: DetailplatComponent },
   { path: 'edit/plat/:id', component: EditPlatComponent, canActivate: [AuthGuard]},
+  { path: 'horaire/edit', component: HoraireEditComponent, canActivate: [AuthGuard]},
   { path: 'horaire', component: HoraireComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'home', component: HomeComponent },
@@ -66,7 +68,8 @@ const restauRoutes: Routes = [
     CarteComponent,
     EntreeDetailComponent,
     PlatDetailComponent,
-    DessertDetailComponent
+    DessertDetailComponent,
+    HoraireEditComponent
   ],
   imports: [
     CommonModule,

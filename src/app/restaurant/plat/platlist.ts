@@ -29,8 +29,8 @@ export const PLATLIST = [
 
     {
         id: 4,
-        picture: "assets/AdobeStock_42689015_Preview.jpeg",
-        name: "Gateau",
+        picture: "assets/entree 5.jpeg",
+        name: "Salade fine",
         category: "Plat"
         
         
@@ -53,6 +53,24 @@ export const PLATLIST = [
         
         
     }, 
-     
+
+    {
+        id: 7,
+        picture: "assets/plat 6.jpeg",
+        name: "Crevette ronde",
+        category: "Plat"
+        
+        
+    },
+
+    {
+        id: 8,
+        picture: "assets/dessert 4.jpeg",
+        name: "Tarte fruit",
+        category: "Plat"
+        
+        
+    },
+
   
 ];

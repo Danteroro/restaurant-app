@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HORAIRES } from './horaires';
 
 @Component({
   selector: 'app-horaire',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class HoraireComponent {
+
+horaires = HORAIRES;
 
 }
