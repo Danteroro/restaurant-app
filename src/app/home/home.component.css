@@ -15,6 +15,10 @@ margin-top: 40px;
   right: 40px;
   height: 70px;
   width: 70px;
+  color: #fff;
+  outline: none;
+  font-size: 30px;
+  text-decoration: none;
 
 }
 
@@ -30,18 +34,6 @@ margin-top: 40px;
 }
 
 
-.a {
-  color: #fff;
-  outline: none;
-  font-size: 30px;
-  text-decoration: none;
-}
-
-.ab {
-  text-decoration: none;
-}
-
-
 .addbutton:hover {
   background-color: rgb(89, 173, 80);
   border-color:rgb(89, 173, 80);
@@ -53,9 +45,9 @@ margin-top: 40px;
     position: relative;
     overflow: hidden;
     text-align: center;  
-  }
+}
   
-  .example .card-body {
+.example .card-body {
     background-color: #666666;
     position: absolute;
     top: 0;
@@ -71,11 +63,11 @@ margin-top: 40px;
     height: 100px;
     padding: 105px 20px;
     border-radius: 2%;
-  }
+}
   
 
 
-  .example .text {
+.example .text {
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
     -o-transition: all 300ms ease-out;
@@ -83,25 +75,25 @@ margin-top: 40px;
     transition: all 300ms ease-out;
     transform: translateY(30px);
     -webkit-transform: translateY(30px);
-  }
+}
   
-  .example .card-title {
-    text-transform: uppercase;
-    opacity: 0;
-    transition-delay: 0.2s;
-    transition-duration: 0.3s;
-  }
-  
-  .example:hover .card-body {
-    opacity: 0.8;
-  }
+.example .card-title {
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
 
-  .example:hover .card-title,
-  .example:focus .card-title {
-    opacity: 1;
-    transform: translateY(0px);
-    -webkit-transform: translateY(0px);
-  }
+.example:hover .card-body {
+  opacity: 0.8;
+}
+
+.example:hover .card-title,
+.example:focus .card-title {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
 
 
   

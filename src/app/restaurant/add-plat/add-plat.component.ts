@@ -10,7 +10,7 @@ import { Plat } from '../plat/plat';
 export class AddPlatComponent implements OnInit {
 
 
-plat: Plat | undefined ;
+  plat: Plat | undefined ;
   picture: string | undefined;
   name: string | undefined;
   category: "..." | undefined;

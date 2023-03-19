@@ -6,6 +6,7 @@ import { RestaurantService } from './restaurant/restaurant.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   constructor(private restaurantService: RestaurantService) { }

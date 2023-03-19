@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-loader',
   template: `
    
-   <div class="spinner-border" role="status">
+  <div class="spinner-border" role="status">
     <span class="sr-only"></span>
-    </div>
+  </div>
 
   `,
   styles: [

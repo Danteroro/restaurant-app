@@ -19,7 +19,6 @@ export class HomeComponent {
   platList  = PLATLIST;
   currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
-  dp: any;
   
   constructor(
     private modalService: NgbModal,
@@ -42,7 +41,7 @@ export class HomeComponent {
       );
     }
   
-    private getDismissReason(reason: any): string {
+  private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
       } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -50,12 +49,12 @@ export class HomeComponent {
       } else {
         return `with: ${reason}`;
       }
-    }
+  }
 
     
-    goToPlat (plat: Plat) {
+  goToPlat (plat: Plat) {
       this.router.navigate(['/plat', plat.id])
 
-    }
+  }
 
 }

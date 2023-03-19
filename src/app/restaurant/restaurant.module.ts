@@ -9,8 +9,6 @@ import { HeaderComponent } from '../header-footer/header.component';
 import { FooterComponent } from '../header-footer/footer.component';
 import { HomeComponent } from '../home/home.component';
 import { ContactComponent } from '../contact/contact.component';
-import { ReservationComponent } from '../reservation/reservation.component';
-import { ModalComponent } from '../reservation/modal.component'
 import { MenuComponent } from './menu/menucard.component';
 import { PlatComponent } from './plat/plat.component';
 import { HoraireComponent } from '../horaire/horaire.component';
@@ -28,7 +26,6 @@ import { HoraireEditComponent } from '../horaire/horaire-edit/horaire-edit.compo
 
 const restauRoutes: Routes = [
 
-  { path: 'reservation', component: ReservationComponent},
   { path: 'inscription', component: InscrptionComponent},
   { path: 'carte', component: CarteComponent},
   { path: 'entrees', component: EntreeDetailComponent },
@@ -53,8 +50,6 @@ const restauRoutes: Routes = [
     HomeComponent,
     MenuComponent,
     ContactComponent,
-    ReservationComponent,
-    ModalComponent,
     PlatComponent,
     HoraireComponent,
     DetailplatComponent,

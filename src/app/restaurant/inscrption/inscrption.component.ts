@@ -17,16 +17,13 @@ import { Router } from '@angular/router';
   }
   
   `
-  ]
+   ]
 })
+
 export class InscrptionComponent {
 
 
-constructor(
-  private router: Router
-) {
-
-}
+constructor( private router: Router ) {}
 
 
   onSubmitInscription() {

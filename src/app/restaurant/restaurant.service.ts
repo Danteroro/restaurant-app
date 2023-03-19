@@ -27,12 +27,12 @@ export class RestaurantService {
 
 
 
- getUserList (): Observable<User[]> {
-  return this.http.get<User[]>('api/user').pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, []))
+  getUserList (): Observable<User[]> {
+    return this.http.get<User[]>('api/user').pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, []))
     );
-}
+  }
 
 
 
@@ -54,13 +54,13 @@ export class RestaurantService {
   }
 
 
-persistanceData(plat: Plat): Observable<null> {
-  const httpOptions = {
+  persistanceData(plat: Plat): Observable<null> {
+    const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
   return this.http.put('api/plat', plat, httpOptions)
-  .pipe(
+    .pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
     );
@@ -68,11 +68,11 @@ persistanceData(plat: Plat): Observable<null> {
 }
 
 
-addPlat(plat: Plat): Observable<Plat> {
-  const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  };
-  return this.http.post<Plat>('api/plat', plat, httpOptions).pipe(
+  addPlat(plat: Plat): Observable<Plat> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+    };
+    return this.http.post<Plat>('api/plat', plat, httpOptions).pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
     );
@@ -80,12 +80,12 @@ addPlat(plat: Plat): Observable<Plat> {
 
 
 
-deletePlatById(platId: number): Observable<null> {
-  return this.http.delete(`api/plat/${platId}`).pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, null))
+  deletePlatById(platId: number): Observable<null> {
+    return this.http.delete(`api/plat/${platId}`).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, null))
     );
-}
+  }
 
 
   private log(response: any) {
@@ -103,35 +103,10 @@ deletePlatById(platId: number): Observable<null> {
 
 }
 
-/* getMenuList () {
-    return MENULIST;
-  }
-
-  getPlatList () {
-    return PLATLIST;
-  }
-  
-  
-getPlatByCategorie() : string[] {
-  return [
-    'Entrée',
-    'Plat',
-    'Déssert',
-  ]
-}
-
+/* 
   getPlatById (platId: number) : Plat | undefined {
     return PLATLIST.find(plat => plat.id == platId);
   }
-
-
-getPlatByCategorie() : string[] {
-  return [
-    'Entrée',
-    'Plat',
-    'Déssert',
-  ]
-}
 
 
  /* getEntreeList (): Observable<CategoryEntree[]> {
@@ -142,7 +117,6 @@ getPlatByCategorie() : string[] {
   }
 
 
-
   getPlatDetailList (): Observable<CategoryPlat[]> {
     return this.http.get<CategoryPlat[]>('api/CategoryPlat').pipe(
       tap((response)=> this.log(response)),
@@ -150,13 +124,12 @@ getPlatByCategorie() : string[] {
       );
   }
 
-
  getDessertList (): Observable<Dessert[]> {
     return this.http.get<Dessert[]>('api/CategoryDessert').pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, []))
       );
-  }*/
+}*/
 
 
 

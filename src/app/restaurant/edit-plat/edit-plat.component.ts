@@ -7,20 +7,22 @@ import { RestaurantService } from '../restaurant.service';
   selector: 'app-edit-plat',
   template: `
   
-  <app-header></app-header>
+<app-header></app-header>
 
 
-  <div class="container-xl">
-      <div class="row">
-          <h3 class="text-center title">Modifier le plat</h3>
-          <div *ngIf="plat" class="d-flex justify-content-center">
+<div class="container-xl">
+  <div class="row">
+      <h3 class="text-center title">Modifier le plat</h3>
+        <div *ngIf="plat" class="d-flex justify-content-center">
               <img [src]="plat.picture"
                    class="w-50 shadow-1-strong rounded mb-4">
-          </div>
-          <div *ngIf="!plat" class="d-flex justify-content-center" ><app-loader></app-loader></div>
+        </div>
+        <div *ngIf="!plat" class="d-flex justify-content-center" >
+          <app-loader></app-loader>
+        </div>
           <app-plat-form *ngIf="plat" [plat]="plat"></app-plat-form>  
-      </div>
   </div>
+ </div>
  
   
   

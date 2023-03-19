@@ -25,19 +25,19 @@ constructor(
   private restaurantService:RestaurantService,
   private router:Router) {}
 
-ngOnInit() {
-  this.plat = this.restaurantService.getPlatList();
-  this.isAddForm = this.router.url.includes('add');
-}
+  ngOnInit() {
+    this.plat = this.restaurantService.getPlatList();
+    this.isAddForm = this.router.url.includes('add');
+  }
 
-onSubmit() {
-  if(this.isAddForm) {
-    this.restaurantService.addPlat(this.plat)
-    .subscribe((plat: Plat) => this.router.navigate(['/plat', plat.id]))
-  }else {
-    this.restaurantService.persistanceData(this.plat)
-    .subscribe(() => this.router.navigate(['/plat', this.plat.id]));
-    }
+  onSubmit() {
+    if(this.isAddForm) {
+      this.restaurantService.addPlat(this.plat)
+      .subscribe((plat: Plat) => this.router.navigate(['/plat', plat.id]))
+    }else {
+      this.restaurantService.persistanceData(this.plat)
+      .subscribe(() => this.router.navigate(['/plat', this.plat.id]));
+      }
   }
   
 }

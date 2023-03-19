@@ -14,7 +14,7 @@
                     [(ngModel)]="plat.picture" name="picture"
                     #picture="ngModel"
                     >
-                </div>
+            </div>
                 <div [hidden]="picture.valid || picture.pristine"
                         class="card-panel red accent-1">
                         L'image du plat est requis. 
@@ -28,9 +28,9 @@
                             [(ngModel)]="plat.name" name="name"
                         #name="ngModel"
                     >
-                    <div [hidden]="name.valid || name.pristine"
-                        class="card-panel red accent-1">
-                        Le nom du plat est requis (1-25).
+                <div [hidden]="name.valid || name.pristine"
+                    class="card-panel red accent-1">
+                    Le nom du plat est requis (1-25).
                 </div>
             </div>
 
@@ -45,10 +45,9 @@
                 <div [hidden]="category.valid || category.pristine"
                     class="card-panel red accent-1">
                     Le nom du plat est requis (1-25).
+                 </div>
             </div>
-        </div>
        
-
             <div class="text-center button">
                 <button type="submit"
                         class="btn btn-success"
@@ -57,7 +56,7 @@
                 </button>
             </div>    
         </form>
-        <h3 *ngIf="!plat"><app-loader></app-loader></h3>
+            <h3 *ngIf="!plat"><app-loader></app-loader></h3>
     </div>    
 </div>
   

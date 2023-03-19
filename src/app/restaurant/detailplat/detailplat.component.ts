@@ -8,10 +8,10 @@ import { RestaurantService } from '../restaurant.service';
   templateUrl: './detailplat.component.html',
   styles: [`
 
-     .buttonR {
+.buttonR {
     margin-top: 30px; 
     bottom: 0;
-  }
+}
 
   
 .button {
@@ -31,6 +31,7 @@ import { RestaurantService } from '../restaurant.service';
   `
   ]
 })
+
 export class DetailplatComponent implements OnInit{
 
 plat: Plat | undefined;
@@ -44,35 +45,32 @@ constructor(
   private restaurantService: RestaurantService) {}
 
 
-ngOnInit() {
+  ngOnInit() {
   
-  const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";
-  const platId : string|null = this.route.snapshot.paramMap.get('id');
-  if(platId) {
-    this.restaurantService.getPlatById(+platId)
-    .subscribe(plat => this.plat = plat);
-    this.currentUser = JSON.parse(token);
-    
+    const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";
+    const platId : string|null = this.route.snapshot.paramMap.get('id');
+    if(platId) {
+      this.restaurantService.getPlatById(+platId)
+      .subscribe(plat => this.plat = plat);
+      this.currentUser = JSON.parse(token);
+      
+    }
   }
-}
 
-deletePlat(plat: Plat) {
-  this.restaurantService.deletePlatById(plat.id!)
-  .subscribe(()=> this.goToHome());
-}
-
-
-goToHome() {
-  this.router.navigate(['home/'])
-}
+  deletePlat(plat: Plat) {
+    this.restaurantService.deletePlatById(plat.id!)
+    .subscribe(()=> this.goToHome());
+  }
 
 
-goToEditPlat(plat: Plat) {
-  this.router.navigate(['edit/plat',plat.id])
-}
+  goToHome() {
+    this.router.navigate(['home/'])
+  }
 
 
-
+  goToEditPlat(plat: Plat) {
+    this.router.navigate(['edit/plat',plat.id])
+  }
 
 }
 

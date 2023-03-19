@@ -9,19 +9,4 @@ export interface Dessert {
 }
 
 
-/*  constructor(
-    
-    picture: string = 'assets/AdobeStock_399075641_Preview.jpeg',
-    title: string = 'Titre',
-    description: string = 'test',
-    price: string = '5€ exemple'
-    
-  ) {
-    
-    this.picture = picture;
-    this.title = title;
-    this.description = description;
-    this.price = price
-  }
 
-}*/
