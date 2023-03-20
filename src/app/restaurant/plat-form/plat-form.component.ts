@@ -18,6 +18,7 @@ export class PlatFormComponent implements OnInit {
 
 @Input() plat: Plat|any;
 
+
 isAddForm: boolean | undefined;
 
 
@@ -29,6 +30,18 @@ constructor(
     this.plat = this.restaurantService.getPlatList();
     this.isAddForm = this.router.url.includes('add');
   }
+
+  showPreview(event) {
+    let imgFile = event.target.files[0];
+    console.log(imgFile)
+    let reader = new FileReader();
+    reader.onload = () => {
+      this.plat.picture = reader.result as string;
+      console.log(this.plat.picture)
+    }
+    reader.readAsDataURL(imgFile);
+  }
+
 
   onSubmit() {
     if(this.isAddForm) {

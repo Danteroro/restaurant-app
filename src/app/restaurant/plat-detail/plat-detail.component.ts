@@ -19,6 +19,7 @@ import { PLATSLIST } from '../carte/platslist';
   }
 
   .retbutton {
+    color: white;
     background-color: rgb(89, 173, 80);
     border-color: rgb(89, 173, 80);
     border-radius: 100%;

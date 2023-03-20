@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/users/user';
 import { Plat } from '../plat/plat';
 import { RestaurantService } from '../restaurant.service';
 
@@ -31,12 +32,12 @@ import { RestaurantService } from '../restaurant.service';
   `
   ]
 })
-
+   
 export class DetailplatComponent implements OnInit{
 
 plat: Plat | undefined;
 platList: Plat[] | undefined;
-currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
+currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
 
 
 constructor(
@@ -46,14 +47,13 @@ constructor(
 
 
   ngOnInit() {
-  
-    const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";
+     this.currentUser = JSON.parse(localStorage.getItem('token'));
     const platId : string|null = this.route.snapshot.paramMap.get('id');
     if(platId) {
       this.restaurantService.getPlatById(+platId)
       .subscribe(plat => this.plat = plat);
-      this.currentUser = JSON.parse(token);
-      
+      console.log((this.currentUser));
+
     }
   }
 
@@ -94,5 +94,18 @@ ngOnInit() {
       .subscribe(plat => this.plat = plat);
   }
 }
+
+
+const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";
+      console.log(token);
+    const platId : string|null = this.route.snapshot.paramMap.get('id');
+    if(platId) {
+      this.restaurantService.getPlatById(+platId)
+      .subscribe(plat => this.plat = plat);
+      this.currentUser = JSON.parse(token);
+      console.log((this.currentUser));
+      console.log(JSON.parse(this.currentUser['role']));
+    }
+  }
 
 */

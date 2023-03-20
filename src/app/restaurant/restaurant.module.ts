@@ -10,7 +10,6 @@ import { FooterComponent } from '../header-footer/footer.component';
 import { HomeComponent } from '../home/home.component';
 import { ContactComponent } from '../contact/contact.component';
 import { MenuComponent } from './menu/menucard.component';
-import { PlatComponent } from './plat/plat.component';
 import { HoraireComponent } from '../horaire/horaire.component';
 import { DetailplatComponent } from './detailplat/detailplat.component';
 import { PlatFormComponent } from './plat-form/plat-form.component';
@@ -32,10 +31,10 @@ const restauRoutes: Routes = [
   { path: 'plats', component: PlatDetailComponent },
   { path: 'desserts', component: DessertDetailComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'plat/add', component: AddPlatComponent, canActivate: [AuthGuard] },
+  { path: 'plat/add', component: AddPlatComponent },
   { path: 'plat/:id', component: DetailplatComponent },
-  { path: 'edit/plat/:id', component: EditPlatComponent, canActivate: [AuthGuard]},
-  { path: 'horaire/edit', component: HoraireEditComponent, canActivate: [AuthGuard]},
+  { path: 'edit/plat/:id', component: EditPlatComponent},
+  { path: 'horaire/edit', component: HoraireEditComponent},
   { path: 'horaire', component: HoraireComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'home', component: HomeComponent },
@@ -50,7 +49,6 @@ const restauRoutes: Routes = [
     HomeComponent,
     MenuComponent,
     ContactComponent,
-    PlatComponent,
     HoraireComponent,
     DetailplatComponent,
     PlatFormComponent,

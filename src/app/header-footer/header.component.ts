@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { User } from '../users/user';
 
 
 @Component({
@@ -13,7 +16,7 @@ import { Component } from '@angular/core';
                  src="assets/Quai Antique.png" 
                  alt="Logo menu premium" 
                  width="150">
-        </a>
+        </a>                                                             
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> 
             <li [routerLinkActive]="'active'" [routerLinkActiveOptions]=" {exact: true} ">
@@ -31,9 +34,12 @@ import { Component } from '@angular/core';
           </ul>
 
         <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-4">
-              <a routerLink="/login" class="nav-link px-2 text-white">Se connecter</a>
-            </button> 
+            <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light me-4">
+              <a routerLink="/login"class="nav-link px-2 text-white">Se connecter</a>
+            </button>
+            <button *ngIf="isLoggedIn" type="button" class="btn deco me-4">
+            <a (click)="logout()" class="nav-link px-2 text-white">Se déconnecter</a>
+            </button>
         </div>
     </div>
   </div>
@@ -58,6 +64,15 @@ import { Component } from '@angular/core';
 }
 
 
+.btn-3 {
+  background: rgb(89, 173, 80);
+}
+
+
+.deco {
+  background: rgb(233, 78, 27);
+}
+
 .nav-link {
   font-size: 20px;
 }
@@ -69,16 +84,44 @@ import { Component } from '@angular/core';
  
 }
 
-
   `
   ]
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   title = 'restaurant-app';
+  currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
+  isLoggedIn: boolean ;
+  auth: AuthService | any;
 
 
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) {}
+
+
+  ngOnInit() {
   
+    if(this.currentUser && this.isLoggedIn){
+      console.log(this.currentUser)
+      this.isLoggedIn = true;
+      console.log(this.isLoggedIn)
+      
+    }else {
+      this.isLoggedIn = true;
+      console.log(this.isLoggedIn)
+    }
+    
+  }
+
+  logout() {
+    this.isLoggedIn = false;{
+      this.router.navigate(['/home']); 
+    }
+  }
+ 
 }
 
 

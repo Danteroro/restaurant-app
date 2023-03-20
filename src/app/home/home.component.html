@@ -30,6 +30,18 @@
 </div>
 
 
+<div class="text-center bg-img mt-5"
+      style="background-image: url('assets/fond-inscription.jpg'); height: 220px; width: 100%;">
+        <div class="mask h-100" style="background-color: rgba(0, 0, 0, 0.6) ;">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3">Cuisine & Passion</h1>
+              <h4 class="mb-3">Depuis 1987</h4>
+            </div>
+          </div>
+        </div>
+</div>
+
 <section>
     <div class="container-xl">
         <div class="row justify-content-around">
@@ -56,7 +68,7 @@
                         </div>
 
                             <div class="container mb-4" >
-                                <a routerLink="/horaire/edit">
+                                <a *ngIf="this.currentUser.role === 'admin'" routerLink="/horaire/edit">
                                         <button type="button" class=" btn text-white modif">Modifier</button>
                                 </a>
                             </div>
@@ -71,7 +83,7 @@
     
 
 
-<a routerLink="/plat/add">
+<a *ngIf="this.currentUser.role === 'admin'"  routerLink="/plat/add">
     <button type="button" class="btn btn-danger addbutton">+</button>
 </a>
 

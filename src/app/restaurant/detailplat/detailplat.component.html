@@ -13,8 +13,8 @@
                   <h4 class="card-text">{{ plat.name }}</h4>
                     <h5 class="card-text text-secondary">Catégorie : {{ plat.category }}</h5>
                      <div class=" col-8 d-flex justify-content-between">
-                       <a  (click)="goToEditPlat(plat)" class="btn btn-dark btn-lg button">Modifier</a>
-                         <a  (click)="deletePlat(plat)" class="btn btn-danger btn-lg button">Supprimer</a>
+                       <a *ngIf="this.currentUser.role === 'admin'" (click)="goToEditPlat(plat)" class="btn btn-dark btn-lg button">Modifier</a>
+                         <a *ngIf="this.currentUser.role === 'admin'" (click)="deletePlat(plat)" class="btn btn-danger btn-lg button">Supprimer</a>
                       </div>
               </div>
         </div>

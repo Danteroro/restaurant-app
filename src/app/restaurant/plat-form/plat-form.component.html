@@ -8,7 +8,8 @@
 
             <div class="form-group">
                 <label for="picture">Image</label>
-                <input type="file" class="form-control" id="picture"
+                <input [type]="'file'" class="form-control" id="picture"
+                    (change)="showPreview($event)"
                     required
                     name="picture"
                     [(ngModel)]="plat.picture" name="picture"

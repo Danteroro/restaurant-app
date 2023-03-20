@@ -17,6 +17,7 @@ import { ENTREELIST } from '../carte/entreelist';
   }
 
   .retbutton {
+  color: white;
   background-color: rgb(89, 173, 80);
   border-color: rgb(89, 173, 80);
   border-radius: 100%;

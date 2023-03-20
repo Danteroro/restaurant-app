@@ -4,6 +4,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HORAIRES } from '../horaire/horaires';
 import { Plat } from '../restaurant/plat/plat';
 import { PLATLIST } from '../restaurant/plat/platlist';
+import { User } from '../users/user';
 
 
 
@@ -17,17 +18,18 @@ export class HomeComponent {
 
   horaires = HORAIRES;
   platList  = PLATLIST;
-  currentUser: any = {id: undefined, name: '', surname: '', email:'',password: '', role: ''};
+  currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
+
   
   constructor(
     private modalService: NgbModal,
     private router: Router) {}
   
 
- /*ngOnInit() {
-  const session :string  = localStorage.getItem('session')?JSON.stringify(localStorage.getItem('session')):"";
- }   */
+ ngOnInit() {
+     this.currentUser = JSON.parse(localStorage.getItem('token'));
+ }  
     
  
  open(content: any) {

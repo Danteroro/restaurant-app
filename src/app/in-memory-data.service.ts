@@ -9,7 +9,6 @@ import { HORAIRES } from './horaire/horaires';
 import { MENULIST } from './restaurant/menu/menulist';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
