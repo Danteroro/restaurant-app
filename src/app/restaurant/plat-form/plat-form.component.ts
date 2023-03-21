@@ -16,9 +16,9 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class PlatFormComponent implements OnInit {
 
-@Input() platGalery: PlatGalery;
+@Input() platGalery: PlatGalery | any;
 isAddForm: boolean | undefined;
-category: string[];
+category: string[] | undefined;
 
 
 
@@ -33,7 +33,7 @@ constructor(
   }
 
 
-  showPreview(event) {
+  showPreview(event: any) {
     let imgFile = event.target.files[0];
     console.log(imgFile)
     let reader = new FileReader();

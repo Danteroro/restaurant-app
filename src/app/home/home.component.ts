@@ -28,7 +28,7 @@ export class HomeComponent {
   
 
  ngOnInit() {
-     this.currentUser = JSON.parse(localStorage.getItem('token'));
+     this.currentUser = JSON.parse(localStorage.getItem('token')!);
  }  
     
  

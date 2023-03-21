@@ -46,8 +46,9 @@ constructor(
   private restaurantService: RestaurantService) {}
 
 
+
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('token'));
+    this.currentUser = JSON.parse(localStorage.getItem('token')!);
     const platGaleryId : string|null = this.route.snapshot.paramMap.get('id');
     console.log(platGaleryId);
     if(platGaleryId) {
