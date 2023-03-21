@@ -13,7 +13,7 @@ import { User } from '../users/user';
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img [ngClass]="'logo'" 
-                 src="assets/Quai Antique.png" 
+                 src="assets/Quai-Antique.png" 
                  alt="Logo menu premium" 
                  width="150">
         </a>                                                             

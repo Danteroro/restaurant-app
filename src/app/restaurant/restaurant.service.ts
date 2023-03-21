@@ -4,7 +4,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { User } from '../users/user';
 import { Dessert } from './carte/dessert';
 import { MENULIST } from './menu/menulist';
-import { Plat } from './plat/plat';
+import { PlatGalery } from './plat/platGalery';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +18,17 @@ export class RestaurantService {
     return MENULIST;
   }
 
-  getDessertById (dessertId: number) : Observable<Dessert | undefined> {
+/* getDessertById (dessertId: number) : Observable<Dessert | undefined> {
     return this.http.get<Dessert>(`api/dessert/${dessertId}`).pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, undefined))
       );
-  }
+  }*/
 
 
 
   getUserList (): Observable<User[]> {
-    return this.http.get<User[]>('api/user').pipe(
+    return this.http.get<User[]>('api/users').pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, []))
     );
@@ -37,8 +37,8 @@ export class RestaurantService {
 
 
 
-  getPlatList (): Observable<Plat[]> {
-    return this.http.get<Plat[]>('api/plat').pipe(
+  getPlatGaleryList (): Observable<PlatGalery[]> {
+    return this.http.get<PlatGalery[]>('api/platgalery').pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, []))
       );
@@ -46,20 +46,20 @@ export class RestaurantService {
 
 
 
-  getPlatById (platId: number) : Observable<Plat | undefined> {
-    return this.http.get<Plat>(`api/plat/${platId}`).pipe(
+  getPlatGaleryById (platGaleryId: number) : Observable<PlatGalery | undefined> {
+    return this.http.get<PlatGalery>(`api/platgalery/${platGaleryId}`).pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, undefined))
       );
   }
 
 
-  persistanceData(plat: Plat): Observable<null> {
+  persistanceData(platGalery: PlatGalery): Observable<null> {
     const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
-  return this.http.put('api/plat', plat, httpOptions)
+  return this.http.put('api/platgalery', platGalery, httpOptions)
     .pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
@@ -68,11 +68,18 @@ export class RestaurantService {
 }
 
 
-  addPlat(plat: Plat): Observable<Plat> {
+getPlatCategoryList(): string[] {
+  return ['Entree',
+          'Plat',
+          'Dessert'  
+  ];
+}
+
+  addPlatGalery(platGalery: PlatGalery): Observable<PlatGalery> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
-    return this.http.post<Plat>('api/plat', plat, httpOptions).pipe(
+    return this.http.post<PlatGalery>('api/platgalery', platGalery, httpOptions).pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
     );
@@ -80,8 +87,8 @@ export class RestaurantService {
 
 
 
-  deletePlatById(platId: number): Observable<null> {
-    return this.http.delete(`api/plat/${platId}`).pipe(
+  deletePlatGaleryById(platGaleryId: number): Observable<null> {
+    return this.http.delete(`api/platgalery/${platGaleryId}`).pipe(
       tap((response)=> this.log(response)),
       catchError((error) => this.handleError(error, null))
     );

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Plat } from '../plat/plat';
+import { PlatGalery } from '../plat/platGalery';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -16,28 +16,30 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class PlatFormComponent implements OnInit {
 
-@Input() plat: Plat|any;
-
-
+@Input() platGalery: PlatGalery;
 isAddForm: boolean | undefined;
+category: string[];
+
+
 
 
 constructor(
   private restaurantService:RestaurantService,
   private router:Router) {}
 
-  ngOnInit() {
-    this.plat = this.restaurantService.getPlatList();
+  ngOnInit(): void {
     this.isAddForm = this.router.url.includes('add');
+    this.category = this.restaurantService.getPlatCategoryList();
   }
+
 
   showPreview(event) {
     let imgFile = event.target.files[0];
     console.log(imgFile)
     let reader = new FileReader();
     reader.onload = () => {
-      this.plat.picture = reader.result as string;
-      console.log(this.plat.picture)
+      this.platGalery.picture = reader.result as string;
+      console.log(this.platGalery.picture)
     }
     reader.readAsDataURL(imgFile);
   }
@@ -45,11 +47,11 @@ constructor(
 
   onSubmit() {
     if(this.isAddForm) {
-      this.restaurantService.addPlat(this.plat)
-      .subscribe((plat: Plat) => this.router.navigate(['/plat', plat.id]))
+      this.restaurantService.addPlatGalery(this.platGalery)
+      .subscribe((platGalery: PlatGalery) => this.router.navigate(['/platgalery', platGalery.id]))
     }else {
-      this.restaurantService.persistanceData(this.plat)
-      .subscribe(() => this.router.navigate(['/plat', this.plat.id]));
+      this.restaurantService.persistanceData(this.platGalery)
+      .subscribe(() => this.router.navigate(['/platgalery', this.platGalery.id]));
       }
   }
   
@@ -58,4 +60,6 @@ constructor(
 /*onSubmit() {
   console.log('Formulaire envoyé !');
   this.router.navigate(['/plat', this.plat?.id]);
-}*/
+}
+
+this.platGalery = this.restaurantService.getPlatGaleryList();*/

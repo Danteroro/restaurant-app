@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HORAIRES } from '../horaire/horaires';
-import { Plat } from '../restaurant/plat/plat';
-import { PLATLIST } from '../restaurant/plat/platlist';
+import { PlatGalery } from '../restaurant/plat/platGalery';
+import { PLATGALERYLIST } from '../restaurant/plat/platGaleryList';
 import { User } from '../users/user';
 
 
@@ -17,7 +17,7 @@ import { User } from '../users/user';
 export class HomeComponent {
 
   horaires = HORAIRES;
-  platList  = PLATLIST;
+  platGaleryList  = PLATGALERYLIST;
   currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
 
@@ -54,8 +54,8 @@ export class HomeComponent {
   }
 
     
-  goToPlat (plat: Plat) {
-      this.router.navigate(['/plat', plat.id])
+  goToPlat (platGalery: PlatGalery) {
+      this.router.navigate(['/platgalery', platGalery.id])
 
   }
 

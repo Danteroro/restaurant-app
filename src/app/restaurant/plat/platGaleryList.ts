@@ -1,10 +1,11 @@
+import { PlatGalery } from "./platGalery";
 
-export const PLATLIST = [
+export const PLATGALERYLIST: PlatGalery[] = [
     {
         id: 1,
         picture: "assets/AdobeStock_399075641_Preview.jpeg",
         name: "Fromage Feuille",
-        category: "Plat"
+        category: ["Plat"]
         
     },
 
@@ -12,7 +13,7 @@ export const PLATLIST = [
         id: 2,
         picture: "assets/AdobeStock_562443182_Preview.jpeg",
         name: "Crevette Pâtes",
-        category: "Plat"
+        category: ["Plat"]
         
         
         
@@ -22,16 +23,16 @@ export const PLATLIST = [
         id: 3,
         picture: "assets/AdobeStock_48399778_Preview.jpeg",
         name: "Pomme de terre Carottes",
-        category: "Plat"
+        category: ["Plat"]
         
         
     },
 
     {
         id: 4,
-        picture: "assets/entree 5.jpeg",
+        picture: "assets/entree5.jpeg",
         name: "Salade fine",
-        category: "Plat"
+        category: ["Plat"]
         
         
     },
@@ -40,7 +41,7 @@ export const PLATLIST = [
         id: 5,
         picture: "assets/AdobeStock_567551929_Preview.jpeg",
         name: "Sauce tomate",
-        category: "Plat"
+        category: ["Plat"]
         
         
     },
@@ -49,25 +50,25 @@ export const PLATLIST = [
         id: 6,
         picture: "assets/AdobeStock_558461136_Preview.jpeg",
         name: "Nouille",
-        category: "Plat"
+        category: ["Plat"]
         
         
     }, 
 
     {
         id: 7,
-        picture: "assets/plat 6.jpeg",
+        picture: "assets/plat6.jpeg",
         name: "Crevette ronde",
-        category: "Plat"
+        category: ["Plat"]
         
         
     },
 
     {
         id: 8,
-        picture: "assets/dessert 4.jpeg",
+        picture: "assets/dessert4.jpeg",
         name: "Tarte fruit",
-        category: "Plat"
+        category: ["Dessert"]
         
         
     },

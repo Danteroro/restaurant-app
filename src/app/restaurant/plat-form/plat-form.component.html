@@ -1,9 +1,9 @@
 
 <div class="d-flex align-items-center justify-content-center">
     <div class="row col-4">
-        <form *ngIf = "plat" 
+        <form *ngIf = "platGalery" 
               (ngSubmit)="onSubmit()"  
-               #platForm = "ngForm"
+               #platGaleryForm = "ngForm"
                class="  align-item-center justify-content-center">
 
             <div class="form-group">
@@ -12,7 +12,7 @@
                     (change)="showPreview($event)"
                     required
                     name="picture"
-                    [(ngModel)]="plat.picture" name="picture"
+                    [(ngModel)]="platGalery.picture" name="picture"
                     #picture="ngModel"
                     >
             </div>
@@ -25,43 +25,26 @@
                     <label for="name">Nom</label>
                     <input type="text" class="form-control" id="name"
                             required
-                            pattern="^[a-zA-Z0-9àéèç]{1,25}$"
-                            [(ngModel)]="plat.name" name="name"
+                            pattern="^[a-zA-Z0-9|\sàéèç]{1,30}$"
+                            [(ngModel)]="platGalery.name" name="name"
                         #name="ngModel"
                     >
                 <div [hidden]="name.valid || name.pristine"
-                    class="card-panel red accent-1">
-                    Le nom du plat est requis (1-25).
+                    class="warning">
+                    Le nom du plat est requis (1-30).
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="category">Category</label>
-                <input type="text" class="form-control" id="category"
-                        required
-                        pattern="^[a-zA-Z0-9àéèç]{1,25}$"
-                        [(ngModel)]="plat.category" name="category"
-                    #category="ngModel"
-                >
-                <div [hidden]="category.valid || category.pristine"
-                    class="card-panel red accent-1">
-                    Le nom du plat est requis (1-25).
-                 </div>
-            </div>
-       
             <div class="text-center button">
                 <button type="submit"
                         class="btn btn-success"
-                        [disabled]="!platForm.form.valid"
+                        [disabled]="!platGaleryForm.form.valid"
                         >Valider
                 </button>
             </div>    
         </form>
-            <h3 *ngIf="!plat"><app-loader></app-loader></h3>
+            <h3 *ngIf="!platGalery"><app-loader></app-loader></h3>
     </div>    
 </div>
   
-  
-<!--<h3 *ngIf="!plat" class="center"></h3>
-[(ngModel)]="plat.name" name="name"-->
 

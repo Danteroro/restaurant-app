@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/users/user';
-import { Plat } from '../plat/plat';
+import { PlatGalery } from '../plat/platGalery';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -35,8 +35,8 @@ import { RestaurantService } from '../restaurant.service';
    
 export class DetailplatComponent implements OnInit{
 
-plat: Plat | undefined;
-platList: Plat[] | undefined;
+platGalery: PlatGalery | undefined;
+platGaleryList: PlatGalery[] | undefined;
 currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
 
 
@@ -47,18 +47,19 @@ constructor(
 
 
   ngOnInit() {
-     this.currentUser = JSON.parse(localStorage.getItem('token'));
-    const platId : string|null = this.route.snapshot.paramMap.get('id');
-    if(platId) {
-      this.restaurantService.getPlatById(+platId)
-      .subscribe(plat => this.plat = plat);
+    this.currentUser = JSON.parse(localStorage.getItem('token'));
+    const platGaleryId : string|null = this.route.snapshot.paramMap.get('id');
+    console.log(platGaleryId);
+    if(platGaleryId) {
+      this.restaurantService.getPlatGaleryById(+platGaleryId)
+      .subscribe(platGalery => this.platGalery = platGalery);
       console.log((this.currentUser));
 
     }
   }
 
-  deletePlat(plat: Plat) {
-    this.restaurantService.deletePlatById(plat.id!)
+  deletePlat(platGalery: PlatGalery) {
+    this.restaurantService.deletePlatGaleryById(platGalery.id!)
     .subscribe(()=> this.goToHome());
   }
 
@@ -68,8 +69,8 @@ constructor(
   }
 
 
-  goToEditPlat(plat: Plat) {
-    this.router.navigate(['edit/plat',plat.id])
+  goToEditPlat(platGalery: PlatGalery) {
+    this.router.navigate(['/edit/platgalery',platGalery.id])
   }
 
 }
