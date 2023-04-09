@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlatGalery } from '../plat/platGalery';
+import { PlatGallery } from '../plat/platGallery';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -13,14 +13,14 @@ import { RestaurantService } from '../restaurant.service';
 <div class="container-xl">
   <div class="row">
       <h3 class="text-center title">Modifier le plat</h3>
-        <div *ngIf="platGalery" class="d-flex justify-content-center">
-              <img [src]="platGalery.picture"
+        <div *ngIf="platGallery" class="d-flex justify-content-center">
+              <img [src]="platGallery.picture"
                    class="w-50 shadow-1-strong rounded mb-4">
         </div>
-        <div *ngIf="!platGalery" class="d-flex justify-content-center" >
+        <div *ngIf="!platGallery" class="d-flex justify-content-center" >
           <app-loader></app-loader>
         </div>
-          <app-plat-form *ngIf="platGalery" [platGalery]="platGalery"></app-plat-form>  
+          <app-plat-form *ngIf="platGallery" [platGallery]="platGallery"></app-plat-form>  
   </div>
  </div>
  
@@ -39,8 +39,8 @@ import { RestaurantService } from '../restaurant.service';
   ]
 })
 export class EditPlatGaleryComponent implements OnInit {
-
-  platGalery: PlatGalery | undefined;
+  id: any;
+  platGallery: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,11 +50,33 @@ export class EditPlatGaleryComponent implements OnInit {
   ngOnInit() {
       const platId : string | null = this.route.snapshot.paramMap.get('id');
       if(platId) {
-        this.restaurantService.getPlatGaleryById(+platId)
-         .subscribe(plat => this.platGalery = plat);
+        this.restaurantService.getPlatGalleryById(+platId)
+         .subscribe(plat => this.platGallery = plat);
       }else {
-        this.platGalery = undefined;
+        this.platGallery = undefined;
       }
     }
 
+
+   /* ngOnInit() {
+      this.id=this.route.snapshot.params['id'];
+      this.getOne();
+    }
+
+    getOne(){
+      this.restaurantService.getOne(this.id).subscribe(
+        data => {
+          console.log(data);
+        }
+      )
+    }
+    */
+
 }
+
+
+/*ngOnInit() {
+ 
+  this.restaurantService.getPlatGallery().subscribe(
+  platGalleryList => this.platGalleryList = platGalleryList )
+}  */

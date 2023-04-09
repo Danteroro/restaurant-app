@@ -1,6 +1,6 @@
 export interface Menu {
 
-    id: number;
+    menu_id: number;
     title: string ;
     entree: string;
     descriptionentree: string;

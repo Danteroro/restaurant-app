@@ -13,7 +13,7 @@ import { MENULIST } from './menulist';
 })
 export class MenuComponent implements OnInit{
 
-  menuList = MENULIST;
+  menuList: any;
 
 
 constructor(
@@ -22,7 +22,9 @@ constructor(
   ) {}
 
   ngOnInit() {
-    this.menuList = this.restaurantService.getMenuList();
+    this.restaurantService.getMenu().subscribe(
+      menuList => this.menuList = menuList
+    );
   }
 
 

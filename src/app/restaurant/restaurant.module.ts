@@ -23,20 +23,20 @@ import { EditPlatGaleryComponent } from './edit-plat-galery/edit-plat-galery.com
 
 
 const restauRoutes: Routes = [
-
+  
+  { path: 'home', component: HomeComponent },
   { path: 'inscription', component: InscrptionComponent},
   { path: 'carte', component: CarteComponent},
   { path: 'entrees', component: EntreeDetailComponent },
   { path: 'plats', component: PlatDetailComponent },
   { path: 'desserts', component: DessertDetailComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'platgalery/add', component: AddPlatComponent },
-  { path: 'platgalery/:id', component: DetailplatComponent },
-  { path: 'edit/platgalery/:id', component: EditPlatGaleryComponent }, 
+  { path: 'platgallery/add', component: AddPlatComponent },
+  { path: 'platgallery/:id', component: DetailplatComponent },
+  { path: 'edit/platgallery/:id', component: EditPlatGaleryComponent }, 
   { path: 'horaire/edit', component: HoraireEditComponent},
   { path: 'horaire', component: HoraireComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'home', component: HomeComponent },
   { path: 'menus', component: MenuComponent}
 
 ];

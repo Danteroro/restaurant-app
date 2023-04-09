@@ -1,7 +1,7 @@
 
-export interface Plats {
+export interface Plat {
 
-    id: number | undefined;
+    plat_id: number | undefined;
     picture: string;
     title: string ;
     description: string;

@@ -2,15 +2,15 @@
 
 <div class="container-xl pad">
   <div class="row justify-content-between col-xl-12 col-lg-8 col-sm-6">
-    <div *ngFor="let plats of platslist" class="card-columns" style="height: 26rem ;  width: 18rem;">
-      <img class="card-img-top rounded" [src]="plats.picture" alt="Card image cap">
+    <div *ngFor="let plat of platList" class="card-columns" style="height: 26rem ;  width: 18rem;">
+      <img class="card-img-top rounded" [src]="plat.picture" alt="Card image cap">
         <div class="card-body">
           <div class="card-title title">
-              <h4>{{plats.title}}</h4>
+              <h4>{{plat.title}}</h4>
           </div>
-            <p class="card-text">{{plats.description}}</p>
+            <p class="card-text">{{plat.description}}</p>
           <div class="card-title">  
-            <h5>{{plats.price}}</h5>
+            <h5>{{plat.price}}</h5>
           </div>
         </div>
     </div> 

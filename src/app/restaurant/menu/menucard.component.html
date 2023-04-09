@@ -12,11 +12,11 @@
             <div class="card-body text-center">
               <h3 class="card-title text-white mt-2">{{ menu.title }}</h3>
               <h4 class="card-text text-white mt-4">{{ menu.entree }}</h4>
-              <p class="card-text text-white">{{ menu.descriptionentree }}</p>
+              <p class="card-text text-white">{{ menu.description_entree }}</p>
               <h4 class="card-text text-white">{{ menu.plat }}</h4>
-              <p class="card-text text-white">{{ menu.descriptionplat }}</p>
+              <p class="card-text text-white">{{ menu.description_plat }}</p>
               <h4 class="card-text text-white">{{ menu.dessert }}</h4>
-              <p class="card-text text-white">{{ menu.descriptiondessert }}</p>
+              <p class="card-text text-white">{{ menu.description_dessert }}</p>
               <h3 class="card-text text-white">{{ menu.price }}</h3>
             </div>
           </div> 
@@ -37,7 +37,19 @@
         </div>
   </div>
 
-<app-horaire></app-horaire>
+  <div class="class container-xl">
+    <div class="row justify-content-around">
+        <div class="col-md-6">
+            <app-horaire></app-horaire>
+        </div>
+        <div class="col-md-6" >
+            <img src="assets//fond-cuisine.jpeg" alt="fond"
+                class="shadow-1-strong rounded mt-5" width="600"
+                alt="Yosemite National Park"
+             />           
+        </div>
+    </div>
+</div>
 
 
 <app-footer></app-footer>

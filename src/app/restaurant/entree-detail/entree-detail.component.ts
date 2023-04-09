@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ENTREELIST } from '../carte/entreelist';
+import { Component, OnInit } from '@angular/core';
+//import { ENTREELIST } from '../carte/entreelist';
+import { RestaurantService } from '../restaurant.service';
 
 @Component({
   selector: 'app-entree-detail',
@@ -38,11 +39,18 @@ import { ENTREELIST } from '../carte/entreelist';
   `
   ]
 })
-export class EntreeDetailComponent {
+export class EntreeDetailComponent implements OnInit {
 
-entreelist = ENTREELIST;
+  entreeList: any;
+
+constructor(private restaurantService:RestaurantService){}
 
 
+ngOnInit() {
+  this.restaurantService.getEntree().subscribe(
+  entreeList => this.entreeList = entreeList)
+} 
+ 
 
 
 }

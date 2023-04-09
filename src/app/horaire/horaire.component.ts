@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { HORAIRES } from './horaires';
+import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from '../restaurant/restaurant.service';
+
 
 @Component({
   selector: 'app-horaire',
@@ -7,8 +8,19 @@ import { HORAIRES } from './horaires';
   styles: [
   ]
 })
-export class HoraireComponent {
+export class HoraireComponent implements OnInit  {
 
-horaires = HORAIRES;
+horaires : any;
+
+constructor(private restaurantService: RestaurantService){}
+
+
+
+ngOnInit() {
+  
+  this.restaurantService.getHoraire().subscribe(
+    horaires => this.horaires = horaires)
+  
+}
 
 }

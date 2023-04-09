@@ -1,7 +1,7 @@
 
 export interface Entree {
 
-    id: number | undefined;
+    entree_id: number | undefined;
     picture: string;
     title: string ;
     description: string;

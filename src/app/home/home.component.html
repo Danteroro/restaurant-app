@@ -10,17 +10,19 @@
 
 <div class="container-xl">
     <div class="row justify-content-center">
-        <div *ngFor="let platGalery of platGaleryList" class="col-lg-3 mb-4 mb-lg-0 example">
-                <img [src] = " platGalery.picture " alt="fond"
-                    class="w-100 shadow-1-strong rounded mb-4"
-                    alt="Mountains in the Clouds"
+        <div *ngFor="let platGallery of platGalleryList" class="col-lg-3 mb-4 mb-lg-0 example">
+                <img class="w-100 shadow-1-strong rounded mb-4" 
+                    [src] = "platGallery.picture"
+                    alt="fond"
                 />
             <div class="card-body">
-                <a (click)="goToPlat(platGalery)"><h5 class="card-title text">{{ platGalery.name }}</h5></a>
+                <a (click)="goToPlat(platGallery)"><h5 class="card-title text">{{ platGallery.name }}</h5></a>
+                <div><h6 class="card-title text">{{ platGallery.category }}</h6></div>
             </div>
         </div>
     </div>    
 </div>
+
 
 
 <div class="d-flex align-items-center justify-content-center" >
@@ -46,7 +48,7 @@
     <div class="container-xl">
         <div class="row justify-content-around">
             <div class="col-md-6" >
-                <img src="assets/fond-cuisine.jpeg" alt="fond"
+                <img src="assets/fond_cuisine5.jpeg" alt="fond"
                     class="shadow-1-strong rounded" width="600"
                     alt="Yosemite National Park"
                  />           
@@ -57,18 +59,18 @@
                                 <h4 class="card-title"> {{ horaire.title}} </h4>
                                 <h5 class="card-subtitle mb-2 text-muted">{{ horaire.subtitle}}</h5>
                                 <h6 class="card-titile">{{ horaire.day }}</h6>
-                                <p class="card-text">{{ horaire.hoursday }}</p>
+                                <p class="card-text">{{ horaire.hours_day }}</p>
                                 <h6 class="card-titile">{{ horaire.night }}</h6>
-                                <p class="card-text">{{ horaire.hoursnight}}</p>
+                                <p class="card-text">{{ horaire.hours_night}}</p>
                                 <h6 class="card-titile">{{ horaire.weekend }}</h6>
-                                <p class="card-text">{{ horaire.hoursweek }}</p>
+                                <p class="card-text">{{ horaire.hours_week }}</p>
                                 <p class="card-text"></p>
                                 <h4 class="card-title">{{ horaire.infos}}</h4>
                                 <h6 class="card-title">{{ horaire.telephone}}</h6>  
                         </div>
 
                             <div class="container mb-4" >
-                                <a *ngIf="this.currentUser.role === 'admin'" routerLink="/horaire/edit">
+                                <a routerLink="/horaire/edit">
                                         <button type="button" class=" btn text-white modif">Modifier</button>
                                 </a>
                             </div>
@@ -83,7 +85,7 @@
     
 
 
-<a *ngIf="this.currentUser.role === 'admin'"  routerLink="/platgalery/add">
+<a routerLink="/platgalery/add">
     <button type="button" class="btn btn-danger addbutton">+</button>
 </a>
 
@@ -138,3 +140,5 @@
 
 
 <app-footer><app-footer>
+
+    <!--*ngIf="this.currentUser.role === 'admin'" -->

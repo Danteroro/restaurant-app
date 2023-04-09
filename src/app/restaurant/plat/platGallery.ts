@@ -1,9 +1,27 @@
-import { PlatGalery } from "./platGalery";
+export class PlatGallery {
+    platGallery_id: number | undefined;
+    picture: string ;
+    name: string ;
+    category: string[];
 
-export const PLATGALERYLIST: PlatGalery[] = [
+    constructor(
+      name: string = 'mon plat',
+      picture: string = '/assets/AdobeStock_399075641_Preview.jpeg',
+      category: string[] = ['...']
+      
+    ) {
+      this.name = name;
+      this.picture = picture;
+      this.category = category;
+  }
+  
+}
+
+/*
+export const PLATGALLERYLIST = [
     {
         id: 1,
-        picture: "assets/AdobeStock_399075641_Preview.jpeg",
+        picture: "assets/plat-galery-1.jpeg",
         name: "Fromage Feuille",
         category: ["Plat"]
         
@@ -11,7 +29,7 @@ export const PLATGALERYLIST: PlatGalery[] = [
 
     {
         id: 2,
-        picture: "assets/AdobeStock_562443182_Preview.jpeg",
+        picture: "assets/plat-galery-2.jpeg",
         name: "Crevette Pâtes",
         category: ["Plat"]
         
@@ -21,7 +39,7 @@ export const PLATGALERYLIST: PlatGalery[] = [
     
     {
         id: 3,
-        picture: "assets/AdobeStock_48399778_Preview.jpeg",
+        picture: "assets/plat-galery-4.jpeg",
         name: "Pomme de terre Carottes",
         category: ["Plat"]
         
@@ -39,7 +57,7 @@ export const PLATGALERYLIST: PlatGalery[] = [
 
     {
         id: 5,
-        picture: "assets/AdobeStock_567551929_Preview.jpeg",
+        picture: "assets/plat-galery-6.jpeg",
         name: "Sauce tomate",
         category: ["Plat"]
         
@@ -48,7 +66,7 @@ export const PLATGALERYLIST: PlatGalery[] = [
 
     {
         id: 6,
-        picture: "assets/AdobeStock_558461136_Preview.jpeg",
+        picture: "assets/plat-galery-8.jpeg",
         name: "Nouille",
         category: ["Plat"]
         
@@ -74,4 +92,4 @@ export const PLATGALERYLIST: PlatGalery[] = [
     },
 
   
-];
+];*/

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HORAIRES } from '../horaires';
+import { RestaurantService } from 'src/app/restaurant/restaurant.service';
+
 
 @Component({
   selector: 'app-horaire-edit',
@@ -8,7 +9,15 @@ import { HORAIRES } from '../horaires';
   ]
 })
 export class HoraireEditComponent {
-  horaires = HORAIRES;
 
+  horaires : any;
+
+  constructor(private restaurantService: RestaurantService){}
+  
+  ngOnInit() {
+    this.restaurantService.getHoraire().subscribe(
+      horaires => this.horaires = horaires
+    );
+  }
 
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlatGalery } from '../plat/platGalery';
+import { PlatGallery } from '../plat/platGallery';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class PlatFormComponent implements OnInit {
 
-@Input() platGalery: PlatGalery | any;
+@Input() platGallery: PlatGallery | any;
 isAddForm: boolean | undefined;
 category: string[] | undefined;
 
@@ -38,8 +38,8 @@ constructor(
     console.log(imgFile)
     let reader = new FileReader();
     reader.onload = () => {
-      this.platGalery.picture = reader.result as string;
-      console.log(this.platGalery.picture)
+      this.platGallery.picture = reader.result as string;
+      console.log(this.platGallery.picture)
     }
     reader.readAsDataURL(imgFile);
   }
@@ -47,11 +47,11 @@ constructor(
 
   onSubmit() {
     if(this.isAddForm) {
-      this.restaurantService.addPlatGalery(this.platGalery)
-      .subscribe((platGalery: PlatGalery) => this.router.navigate(['/platgalery', platGalery.id]))
+      this.restaurantService.addPlatGalery(this.platGallery)
+      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/platgalery', platGallery.platGallery_id]))
     }else {
-      this.restaurantService.persistanceData(this.platGalery)
-      .subscribe(() => this.router.navigate(['/platgalery', this.platGalery.id]));
+      this.restaurantService.persistanceData(this.platGallery)
+      .subscribe(() => this.router.navigate(['/platgalery', this.platGallery.id]));
       }
   }
   

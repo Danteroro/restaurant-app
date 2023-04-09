@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { HORAIRES } from '../horaire/horaires';
-import { PlatGalery } from '../restaurant/plat/platGalery';
-import { PLATGALERYLIST } from '../restaurant/plat/platGaleryList';
+import { PlatGallery } from '../restaurant/plat/platGallery';
 import { User } from '../users/user';
-
+import { RestaurantService } from '../restaurant/restaurant.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,23 +12,50 @@ import { User } from '../users/user';
   styleUrls: ['home.component.css']
 })
 
+
+
 export class HomeComponent {
 
-  horaires = HORAIRES;
-  platGaleryList  = PLATGALERYLIST;
-  currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
+  platGalleryList: any;
+  platGallery: PlatGallery | undefined;
+  horaires: any;
+  userList: any;
+  //currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
 
   
+  
   constructor(
     private modalService: NgbModal,
-    private router: Router) {}
+    private router: Router,
+    private restaurantService: RestaurantService) {}
   
 
  ngOnInit() {
-     this.currentUser = JSON.parse(localStorage.getItem('token')!);
+     //this.currentUser = JSON.parse(localStorage.getItem('token')!);
+     this.restaurantService.getPlatGallery().subscribe(
+     platGalleryList => this.platGalleryList = platGalleryList );
+     this.restaurantService.getHoraire().subscribe(
+      horaires => this.horaires = horaires);
+    this.restaurantService.getUserList().subscribe(
+      userList => this.userList = userList
+    );
  }  
-    
+
+ 
+   goToPlat (platGallery: PlatGallery) {
+      this.router.navigate(['/platgallery/', platGallery.platGallery_id])
+
+  }
+
+
+
+
+
+
+
+
+
  
  open(content: any) {
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -54,9 +79,5 @@ export class HomeComponent {
   }
 
     
-  goToPlat (platGalery: PlatGalery) {
-      this.router.navigate(['/platgalery', platGalery.id])
-
-  }
 
 }

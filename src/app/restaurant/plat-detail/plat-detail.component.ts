@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PLATSLIST } from '../carte/platslist';
+import { RestaurantService } from '../restaurant.service';
 
 
 @Component({
@@ -41,8 +42,17 @@ import { PLATSLIST } from '../carte/platslist';
 ]
 })
 
-export class PlatDetailComponent {
-platslist = PLATSLIST;
+export class PlatDetailComponent implements OnInit {
 
+platList: any;
+
+constructor(private restaurantService: RestaurantService){}
+
+ngOnInit() {
+  this.restaurantService.getPlat().subscribe(
+    platList => this.platList = platList
+  );
+
+}
 
 }

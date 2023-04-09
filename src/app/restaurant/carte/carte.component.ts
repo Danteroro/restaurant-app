@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from '../restaurant.service';
 
 
 @Component({
@@ -7,10 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['carte.component.css']
 })
 
-export class CarteComponent {
+export class CarteComponent implements OnInit {
 
+ horaires : any;
+
+constructor(private restaurantService: RestaurantService){}
   
 
+ngOnInit() {
+    
+    this.restaurantService.getHoraire().subscribe(
+      horaires => this.horaires = horaires
+    );
+
+  }
 
 }
  /*

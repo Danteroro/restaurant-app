@@ -90,7 +90,7 @@ import { User } from '../users/user';
 
 export class HeaderComponent implements OnInit {
   title = 'restaurant-app';
-  currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
+  currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
   isLoggedIn: boolean | undefined ;
   auth: AuthService | any;
 

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { InMemoryDbService} from 'angular-in-memory-web-api';
 import { USERS } from './users/users';
-import { PLATGALERYLIST } from './restaurant/plat/platGaleryList';
+import { PLATGALERYLIST } from './restaurant/plat/platGalleryList';
 import { DESSERTLIST } from './restaurant/carte/dessertlist';
 import { ENTREELIST } from './restaurant/carte/entreelist';
 import { PLATSLIST } from './restaurant/carte/platslist';
@@ -28,3 +28,4 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
 }
+*/

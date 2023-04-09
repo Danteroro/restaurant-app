@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/users/user';
-import { PlatGalery } from '../plat/platGalery';
+import { PlatGallery } from '../plat/platGallery';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -35,9 +35,9 @@ import { RestaurantService } from '../restaurant.service';
    
 export class DetailplatComponent implements OnInit{
 
-platGalery: PlatGalery | undefined;
-platGaleryList: PlatGalery[] | undefined;
-currentUser: User = {id: null, name: '', surname: '', email:'',password: '', role: ''};
+platGallery: PlatGallery | undefined;
+platGaleryList: any;
+currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
 
 
 constructor(
@@ -46,21 +46,20 @@ constructor(
   private restaurantService: RestaurantService) {}
 
 
-
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('token')!);
-    const platGaleryId : string|null = this.route.snapshot.paramMap.get('id');
-    console.log(platGaleryId);
-    if(platGaleryId) {
-      this.restaurantService.getPlatGaleryById(+platGaleryId)
-      .subscribe(platGalery => this.platGalery = platGalery);
+    const platGalleryId : string|null = this.route.snapshot.paramMap.get('id');
+    console.log(platGalleryId);
+    if(platGalleryId) {
+      this.restaurantService.getPlatGalleryById(+platGalleryId)
+      .subscribe(platGallery => this.platGallery = platGallery);
       console.log((this.currentUser));
 
     }
   }
 
-  deletePlat(platGalery: PlatGalery) {
-    this.restaurantService.deletePlatGaleryById(platGalery.id!)
+  deletePlat(platGallery: PlatGallery) {
+    this.restaurantService.deletePlatGaleryById(platGallery.platGallery_id!)
     .subscribe(()=> this.goToHome());
   }
 
@@ -70,14 +69,13 @@ constructor(
   }
 
 
-  goToEditPlat(platGalery: PlatGalery) {
-    this.router.navigate(['/edit/platgalery',platGalery.id])
+  goToEditPlat(platGallery: PlatGallery) {
+    this.router.navigate(['/edit/platgalery',platGallery.platGallery_id])
   }
 
 }
 
 /*
-
 
 ngOnInit() {
   this.platList = PLATLIST;
@@ -96,6 +94,19 @@ ngOnInit() {
       .subscribe(plat => this.plat = plat);
   }
 }
+
+
+ ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('token')!);
+    const platGalleryId : string|null = this.route.snapshot.paramMap.get('platGallery_id');
+    console.log(platGalleryId);
+    if(platGalleryId) {
+      this.restaurantService.getPlatGalleryById(+platGalleryId)
+      .subscribe(platGallery => this.platGallery = platGallery);
+      console.log((this.currentUser));
+
+    }
+  }
 
 
 const token :string  = localStorage.getItem('token')?JSON.stringify(localStorage.getItem('token')):"";

@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { PlatGalery } from '../plat/platGalery';
+import { PlatGallery } from '../plat/platGallery';
 
 @Component({
   selector: 'app-add-plat',
@@ -10,7 +10,7 @@ import { PlatGalery } from '../plat/platGalery';
 
 
 <h2 class="text-center" style="margin-top: 20px;">Ajouter un plat</h2>
-    <app-plat-form [platGalery]="platGalery"></app-plat-form>
+    <app-plat-form [platGallery]="platGallery"></app-plat-form>
 
 
 
@@ -24,13 +24,13 @@ import { PlatGalery } from '../plat/platGalery';
 export class AddPlatComponent implements OnInit {
 
 
-  platGalery: PlatGalery | undefined ;
+  platGallery: PlatGallery | undefined ;
   picture: string | undefined;
   name: string | undefined;
   category: "..." | undefined;
 
   ngOnInit() {
-    this.platGalery = new PlatGalery();
+    this.platGallery = new PlatGallery();
   }
 
 }

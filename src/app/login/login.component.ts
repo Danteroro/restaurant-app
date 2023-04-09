@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { RestaurantService } from '../restaurant/restaurant.service';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +16,20 @@ export class LoginComponent {
   name: string | any;
   password: string | any;
   auth: AuthService | any;
-
+  userList: any;
 
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private restaurantService: RestaurantService
     ) {}
 
 
 ngOnInit() {
+  this.restaurantService.getUserList().subscribe(
+    userList => this.userList = userList
+  );console.log(this.userList);
   this.auth = this.authService;
 }
 
