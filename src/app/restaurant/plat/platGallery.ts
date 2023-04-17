@@ -2,17 +2,17 @@ export class PlatGallery {
     platGallery_id: number | undefined;
     picture: string ;
     name: string ;
-    category: string[];
+    category_id: number | undefined;
 
     constructor(
       name: string = 'mon plat',
       picture: string = '/assets/AdobeStock_399075641_Preview.jpeg',
-      category: string[] = ['...']
+      category_id: number = 1
       
     ) {
       this.name = name;
       this.picture = picture;
-      this.category = category;
+      this.category_id = category_id;
   }
   
 }

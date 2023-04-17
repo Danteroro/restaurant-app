@@ -34,10 +34,10 @@ import { User } from '../users/user';
           </ul>
 
         <div class="text-end">
-            <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light me-4">
+            <button *ngIf="!this.auth.isLoggedIn" type="button" class="btn btn-outline-light me-4">
               <a routerLink="/login"class="nav-link px-2 text-white">Se connecter</a>
             </button>
-            <button *ngIf="isLoggedIn" type="button" class="btn deco me-4">
+            <button *ngIf="this.auth.isLoggedIn" type="button" class="btn deco me-4">
             <a (click)="logout()" class="nav-link px-2 text-white">Se déconnecter</a>
             </button>
         </div>
@@ -90,7 +90,7 @@ import { User } from '../users/user';
 
 export class HeaderComponent implements OnInit {
   title = 'restaurant-app';
-  currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
+  currentUser: User = {user_id: undefined, name: '', surname: '', email:'',password: '', role: ''};
   isLoggedIn: boolean | undefined ;
   auth: AuthService | any;
 
@@ -103,21 +103,21 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-  
-    if(this.currentUser && this.isLoggedIn){
-      console.log(this.currentUser)
+    this.auth = this.authService;
+    if(this.auth.isLoggedIn){
+   
       this.isLoggedIn = true;
       console.log(this.isLoggedIn)
       
     }else {
-      this.isLoggedIn = true;
+      this.isLoggedIn = false;
       console.log(this.isLoggedIn)
     }
     
   }
 
   logout() {
-    this.isLoggedIn = false;{
+    this.auth.isLoggedIn = false;{
       this.router.navigate(['/home']); 
     }
   }

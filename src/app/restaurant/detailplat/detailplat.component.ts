@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/users/user';
 import { PlatGallery } from '../plat/platGallery';
 import { RestaurantService } from '../restaurant.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-detailplat',
@@ -37,23 +38,24 @@ export class DetailplatComponent implements OnInit{
 
 platGallery: PlatGallery | undefined;
 platGaleryList: any;
-currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
-
+isLoggedIn: any;
+auth: AuthService | any;
 
 constructor(
   private route: ActivatedRoute,
   private router: Router,
-  private restaurantService: RestaurantService) {}
+  private restaurantService: RestaurantService,
+  private authService: AuthService) {}
 
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('token')!);
+    this.auth = this.authService;
+     this.isLoggedIn = JSON.parse(localStorage.getItem('token')!);
     const platGalleryId : string|null = this.route.snapshot.paramMap.get('id');
     console.log(platGalleryId);
     if(platGalleryId) {
       this.restaurantService.getPlatGalleryById(+platGalleryId)
       .subscribe(platGallery => this.platGallery = platGallery);
-      console.log((this.currentUser));
 
     }
   }
@@ -70,7 +72,7 @@ constructor(
 
 
   goToEditPlat(platGallery: PlatGallery) {
-    this.router.navigate(['/edit/platgalery',platGallery.platGallery_id])
+    this.router.navigate(['/edit/platgallery',platGallery.platGallery_id])
   }
 
 }

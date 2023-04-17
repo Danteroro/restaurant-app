@@ -9,17 +9,15 @@ import { RestaurantService } from '../restaurant.service';
   styles: [` .button {
     margin-top: 20px;
   }
-
-
   `
   ]
 })
+
 export class PlatFormComponent implements OnInit {
 
 @Input() platGallery: PlatGallery | any;
 isAddForm: boolean | undefined;
 category: string[] | undefined;
-
 
 
 
@@ -44,14 +42,14 @@ constructor(
     reader.readAsDataURL(imgFile);
   }
 
-
+  
   onSubmit() {
     if(this.isAddForm) {
-      this.restaurantService.addPlatGalery(this.platGallery)
-      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/platgalery', platGallery.platGallery_id]))
+      this.restaurantService.addPlatGallery(this.platGallery)
+      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/platgallery/', platGallery.platGallery_id]));
     }else {
       this.restaurantService.persistanceData(this.platGallery)
-      .subscribe(() => this.router.navigate(['/platgalery', this.platGallery.id]));
+      .subscribe(() => this.router.navigate(['/platgallery/', this.platGallery.platGallery_id]));
       }
   }
   
@@ -62,4 +60,35 @@ constructor(
   this.router.navigate(['/plat', this.plat?.id]);
 }
 
-this.platGalery = this.restaurantService.getPlatGaleryList();*/
+this.platGalery = this.restaurantService.getPlatGaleryList();
+this.http.post<PlatGallery>('http://localhost/restaurant-app/api/home/', platGallery, httpOptions
+(next => {
+      console.log("successful");
+    },
+    error => {
+      console.log("failed submitting");
+    });
+  }
+
+   if(this.isAddForm) {
+      console.log(this.platGallery);
+      this.restaurantService.addPlatGallery(this.platGallery)
+      .subscribe(platGallery => this.platGallery = platGallery);
+      console.log(this.platGallery);
+
+onSubmit() {
+    if(this.isAddForm) {
+      this.restaurantService.addPlatGallery(this.platGallery)
+      .subscribe(platGallery => this.platGallery = platGallery);
+      this.router.navigate(['/platgallery', this.platGallery.platGallery_id])
+    }else {
+      this.restaurantService.persistanceData(this.platGallery)
+      .subscribe(() => this.router.navigate(['/platgallery', this.platGallery.id]));
+      }
+
+
+
+
+
+      
+  }*/

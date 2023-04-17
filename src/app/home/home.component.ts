@@ -4,6 +4,7 @@ import { PlatGallery } from '../restaurant/plat/platGallery';
 import { User } from '../users/user';
 import { RestaurantService } from '../restaurant/restaurant.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -20,26 +21,34 @@ export class HomeComponent {
   platGallery: PlatGallery | undefined;
   horaires: any;
   userList: any;
-  //currentUser: User = {user_id: null, name: '', surname: '', email:'',password: '', role: ''};
+  //currentUser: User = {user_id: undefined, name: '', surname: '', email:'',password: '', role: ''};
   closeResult = '';
-
+  email: string | any;
+  password: string | any;
+  role: string | any;
+  user: User | undefined;
+  auth: AuthService | any;
+  isLoggedIn: any;
+  
   
   
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    private restaurantService: RestaurantService) {}
-  
+    private restaurantService: RestaurantService,
+    private authService: AuthService) {} 
+
+
+
+
 
  ngOnInit() {
-     //this.currentUser = JSON.parse(localStorage.getItem('token')!);
+     this.auth = this.authService;
+     this.isLoggedIn = JSON.parse(localStorage.getItem('token')!);
      this.restaurantService.getPlatGallery().subscribe(
      platGalleryList => this.platGalleryList = platGalleryList );
      this.restaurantService.getHoraire().subscribe(
       horaires => this.horaires = horaires);
-    this.restaurantService.getUserList().subscribe(
-      userList => this.userList = userList
-    );
  }  
 
  
@@ -47,14 +56,6 @@ export class HomeComponent {
       this.router.navigate(['/platgallery/', platGallery.platGallery_id])
 
   }
-
-
-
-
-
-
-
-
 
  
  open(content: any) {
@@ -81,3 +82,21 @@ export class HomeComponent {
     
 
 }
+
+/*
+isCurrentUserLog(){
+  this.restaurantService.getUser()
+  .subscribe(userList=>{
+    const isLoggedIn = this.userList.find((user:any)=>{
+      user.email === this.email && user.password === this.password && user.role === this.role
+    });
+    localStorage.setItem('token', JSON.stringify(isLoggedIn));
+    if(isLoggedIn) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+}
+
+currentUser = this.isCurrentUserLog;*/

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { RestaurantService } from '../restaurant/restaurant.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,28 +10,42 @@ import { RestaurantService } from '../restaurant/restaurant.service';
 })
 
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
  
   message: string = 'Se connecter';
-  name: string | any;
+  email: string | any;
   password: string | any;
   auth: AuthService | any;
   userList: any;
+  user: any;
+  isLoggedIn: boolean = false;
+
 
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private restaurantService: RestaurantService
+    private router: Router
     ) {}
 
 
 ngOnInit() {
-  this.restaurantService.getUserList().subscribe(
-    userList => this.userList = userList
-  );console.log(this.userList);
   this.auth = this.authService;
 }
+
+login() {
+  this.message = 'Connexion en cours...';
+  this.auth.login(this.email, this.password)
+  .subscribe((isLoggedIn: boolean) => {
+    this.setMessage();
+    if(isLoggedIn) {
+      this.router.navigate(['/home']);
+    } else {
+      this.password = '';
+      this.router.navigate(['/login']);
+    }
+  })
+}
+
 
 setMessage(): void {
   if(this.auth.isLoggedIn) {
@@ -42,10 +56,22 @@ setMessage(): void {
 }
 
 
-login() {
+logout() {
+  this.auth.logout();
+  this.message = 'Vous êtes déconnecté !'
+  }
+
+}
+
+
+/*login() {
   this.message = 'Connexion en cours...';
-  this.auth.login(this.name, this.password)
-  .subscribe((isLoggedIn: boolean) => {
+  this.restaurantService.getUser().pipe( delay(1000))
+  .subscribe(userList=>{
+      const isLoggedIn = this.userList.find((user:any)=>{
+      return user.email === this.email && user.password === this.password
+    });
+    localStorage.setItem('token', JSON.stringify(isLoggedIn));
     this.setMessage();
     if(isLoggedIn) {
       this.router.navigate(['/home']);
@@ -54,14 +80,4 @@ login() {
       this.router.navigate(['/login']);
     }
   })
-
-}
-
-
-logout() {
-  this.auth.logout();
-  this.message = 'Vous êtes déconnecté !'
-}
-
-
-}
+}*/

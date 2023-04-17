@@ -107,9 +107,9 @@ function getUsersList() {
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    for($i=0; $i< count($user); $i++){
-        $user[$i]['picture'] = URL."images/".$user[$i]['picture'];
-    }
+    //for($i=0; $i< count($user); $i++){
+    //    $user[$i];
+   // }
     $stmt->closeCursor();
     sendJSON($user);
     

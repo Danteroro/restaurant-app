@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { User } from '../users/user';
 import { Dessert } from './carte/dessert';
 import { MENULIST } from './menu/menulist';
@@ -9,13 +9,15 @@ import { Entree } from './carte/entree';
 import { Plat } from './carte/plat';
 import { Horaire } from '../horaire/horaire';
 import { Menu } from './menu/menu';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient,
+    private router: Router) {}
 
   apiUrl: string = 'http://localhost/restaurant-app/api/home';
   apiUrlDetail: string = 'http://localhost/restaurant-app/api/platgallery';
@@ -25,6 +27,9 @@ export class RestaurantService {
   apiUrlMenu: string = 'http://localhost/restaurant-app/api/menu';
   apiUrlHoraire: string = 'http://localhost/restaurant-app/api/horaire';
   apiUrlUser: string = 'http://localhost/restaurant-app/api/user';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  currentUser = {};
+  PlatGallery: any;
   id: any;
 
 
@@ -41,6 +46,69 @@ getPlatGalleryById (platGalleryId: number) : Observable<PlatGallery> {
     catchError((error) => this.handleError(error, 'id absente'))
   );
 }
+
+addPlatGallery(platGallery: PlatGallery): Observable<PlatGallery> {
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
+  return this.http.post<PlatGallery>('http://localhost/restaurant-app/api/home/', platGallery, httpOptions).pipe(
+  tap((response)=> this.log(response)),
+  catchError((error) => this.handleError(error, null))
+  );
+}
+
+persistanceData(platGallery: PlatGallery): Observable<null> {
+  const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
+return this.http.put('http://localhost/restaurant-app/api/home/', platGallery, httpOptions)
+  .pipe(
+  tap((response)=> this.log(response)),
+  catchError((error) => this.handleError(error, null))
+  );
+
+}
+
+
+deletePlatGaleryById(platGaleryId: number): Observable<null> {
+  return this.http.delete(`http://localhost/restaurant-app/api/home/${platGaleryId}`).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, null))
+  );
+}
+
+
+
+  getUser(): Observable<User> {
+    return this.http.get<User[]>(this.apiUrlUser).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, 'pas de users'))
+    );
+  }
+
+  getUserProfile(id: any): Observable<any> {
+    return this.http.get(`http://localhost/restaurant-app/api/user/${id}`, 
+    { headers: this.headers }).pipe(
+      map((res) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  signInUser(user: User) {
+    return this.http
+      .post<any>(`http://localhost/restaurant-app/api/user/$`, user)
+      .subscribe((res: any) => {
+        localStorage.setItem('access_token', res.token);
+        this.getUserProfile(res._id).subscribe((res) => {
+          this.currentUser = res;
+          this.router.navigate(['home/' + res._id]);
+        });
+      });
+  }
+
+
 
 getEntree(){
   return this.http.get<Entree[]>(this.apiUrlEntree).pipe(
@@ -83,28 +151,6 @@ getHoraire(){
   }
 
 
-  getUserList (): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrlUser).pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, 'pas de users'))
-    );
-  }
-
-
-
-
-  persistanceData(platGalery: PlatGallery): Observable<null> {
-    const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  };
-
-  return this.http.put('api/platgalery', platGalery, httpOptions)
-    .pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, null))
-    );
-
-}
 
 
 getPlatCategoryList(): string[] {
@@ -114,24 +160,10 @@ getPlatCategoryList(): string[] {
   ];
 }
 
-  addPlatGalery(platGalery: PlatGallery): Observable<PlatGallery> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-    };
-    return this.http.post<PlatGallery>('api/platgalery', platGalery, httpOptions).pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, null))
-    );
-}
+  
 
 
-  deletePlatGaleryById(platGaleryId: number): Observable<null> {
-    return this.http.delete(`api/platgalery/${platGaleryId}`).pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, null))
-    );
-  }
-
+ 
 
   private log(response: any) {
     console.table(response);
@@ -193,3 +225,17 @@ getPlatCategoryList(): string[] {
   }*/
 
 
+ 
+/*signInUser(user: User) {
+  return this.http.post<User[]>(`${this.apiUrlUser}`, user).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, 'pas de users'))
+    );
+}*/
+
+  /*signUser(userId: number): Observable<User> {
+    return this.http.get<User>(`http://localhost/restaurant-app/api/user/${userId}`).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, 'pas de users'))
+    );
+  }*/

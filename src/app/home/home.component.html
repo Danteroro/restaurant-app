@@ -70,7 +70,7 @@
                         </div>
 
                             <div class="container mb-4" >
-                                <a routerLink="/horaire/edit">
+                                <a *ngIf="this.auth.isLoggedIn.role === 'admin'" routerLink="/horaire/edit">
                                         <button type="button" class=" btn text-white modif">Modifier</button>
                                 </a>
                             </div>
@@ -85,7 +85,7 @@
     
 
 
-<a routerLink="/platgalery/add">
+<a *ngIf="this.auth.isLoggedIn.role === 'admin'" routerLink="/platgallery/add">
     <button type="button" class="btn btn-danger addbutton">+</button>
 </a>
 
@@ -141,4 +141,5 @@
 
 <app-footer><app-footer>
 
-    <!--*ngIf="this.currentUser.role === 'admin'" -->
+    <!--*ngIf="this.currentUser.role === 'admin'" 
+    *ngIf="this.auth.isLoggedIn.role === 'admin'" -->

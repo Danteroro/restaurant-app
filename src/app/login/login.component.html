@@ -1,10 +1,9 @@
 
 <div class="d-flex align-items-center justify-content-center">
-    <a href="/"><img src="assets/Quai-Antique.png" 
+    <img src="assets/Quai-Antique.png" 
          alt="Logo menu premium" 
          width="160"
-         class="logo">
-    </a>     
+         class="logo"> 
 </div>
 
 <div class="container-xl">
@@ -18,10 +17,11 @@
                                 <input type="text" 
                                     class="form-control" 
                                     id="floatingName" 
-                                    [(ngModel)]="name" 
-                                    name="name" 
+                                    [(ngModel)]="email" 
+                                    name="email" 
+                                    value="email"
                                     required placeholder="Password">
-                                <label for="floatingInput">Nom</label>
+                                <label for="email">Email</label>
                             </div> 
 
                             <div class="form-floating">
@@ -29,9 +29,10 @@
                                     class="form-control" 
                                     id="floatingPassword" 
                                     [(ngModel)]="password" 
-                                    name="password" 
+                                    name="password"
+                                    value="password" 
                                     required placeholder="Password">
-                                <label for="floatingPassword">Mot de passe</label>
+                                <label for="password">Mot de passe</label>
                                 <div class="checkbox mb-3">
                                     <label class="text-white">
                                         <input type="checkbox" value="remember-me" class="label"> Se souvenir de moi
@@ -41,7 +42,7 @@
 
                             <div class="d-flex align-items-center justify-content-around">
                                 <button class=" btn btn-1 text-white" type="submit">
-                                    <a (click)="login()" *ngIf="!auth.isLoggedIn">Connexion</a>
+                                    <a (click)="login()" *ngIf="!this.auth.isLoggedIn">Connexion</a>
                                 </button>
                                 <a routerLink="/inscription">
                                     <button class="btn btn-2 text-white" type="submit">S'inscrire</button>

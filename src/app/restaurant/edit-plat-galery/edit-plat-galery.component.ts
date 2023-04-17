@@ -48,10 +48,11 @@ export class EditPlatGaleryComponent implements OnInit {
   ) {}
   
   ngOnInit() {
-      const platId : string | null = this.route.snapshot.paramMap.get('id');
-      if(platId) {
-        this.restaurantService.getPlatGalleryById(+platId)
-         .subscribe(plat => this.platGallery = plat);
+      const platGalleryId : string | null = this.route.snapshot.paramMap.get('id');
+      if(platGalleryId) {
+        this.restaurantService.getPlatGalleryById(+platGalleryId)
+         .subscribe(platGallery => this.platGallery = platGallery);
+         console.log(platGalleryId);
       }else {
         this.platGallery = undefined;
       }

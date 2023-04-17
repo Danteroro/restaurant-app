@@ -2,8 +2,8 @@
 
 
 <div class="container mt-5">
-  <h3>Personnaliser votre galerie !</h3>
-    <p>Modifier/supprimer le titre et/ou la photo associé au plat.</p>
+  <h3 *ngIf="this.auth.isLoggedIn.role === 'admin'">Personnaliser votre galerie !</h3>
+    <p *ngIf="this.auth.isLoggedIn.role === 'admin'">Modifier/supprimer le titre et/ou la photo associé au plat.</p>
       <div *ngIf="platGallery" class="card" style="max-width: 1000px;">
         <div class="row">
           <div class="col-md-8">
@@ -11,9 +11,10 @@
           </div>
               <div class="col-md-4">
                   <h2 class="card-text">{{ platGallery.name }}</h2>
+                  <h3 class="card-text">{{ platGallery.category_id }}</h3>
                      <div class=" d-flex justify-content-around">
-                       <a *ngIf="this.currentUser.role === 'admin'" (click)="goToEditPlat(platGallery)" class="btn btn-dark btn-lg button">Modifier</a>
-                         <a *ngIf="this.currentUser.role === 'admin'" (click)="deletePlat(platGallery)" class="btn btn-danger btn-lg button">Supprimer</a>
+                       <a *ngIf="this.auth.isLoggedIn.role === 'admin'"  (click)="goToEditPlat(platGallery)" class="btn btn-dark btn-lg button">Modifier</a>
+                         <a *ngIf="this.auth.isLoggedIn.role === 'admin'"  (click)="deletePlat(platGallery)" class="btn btn-danger btn-lg button">Supprimer</a>
                       </div>
               </div>
         </div>
