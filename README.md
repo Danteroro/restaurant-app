@@ -1,4 +1,4 @@
-# Restaurant-app Quai Antique
+# restaurant-app Quai Antique
 
 Dans le cadre d'un ECF j'ai développé une application avec le framework Angular.
 [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.

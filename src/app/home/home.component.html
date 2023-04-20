@@ -11,9 +11,10 @@
 <div class="container-xl">
     <div class="row justify-content-center">
         <div *ngFor="let platGallery of platGalleryList" class="col-lg-3 mb-4 mb-lg-0 example">
-                <img class="w-100 shadow-1-strong rounded mb-4" 
+                <img class=" shadow-1-strong rounded mb-4" 
                     [src] = "platGallery.picture"
                     alt="fond"
+                    style="height: 205px; width: 306px;"
                 />
             <div class="card-body">
                 <a (click)="goToPlat(platGallery)"><h5 class="card-title text">{{ platGallery.name }}</h5></a>
@@ -70,7 +71,7 @@
                         </div>
 
                             <div class="container mb-4" >
-                                <a *ngIf="this.auth.isLoggedIn.role === 'admin'" routerLink="/horaire/edit">
+                                <a *ngIf="userRole && userRole.role === 'admin'" routerLink="/horaire/edit">
                                         <button type="button" class=" btn text-white modif">Modifier</button>
                                 </a>
                             </div>
@@ -81,11 +82,11 @@
         </div>
      </div>  
 </section>
-   
-    
+ 
 
 
-<a *ngIf="this.auth.isLoggedIn.role === 'admin'" routerLink="/platgallery/add">
+
+<a *ngIf="userRole && userRole.role === 'admin'" routerLink="/platgallery/add">
     <button type="button" class="btn btn-danger addbutton">+</button>
 </a>
 

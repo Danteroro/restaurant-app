@@ -38,8 +38,8 @@ export class DetailplatComponent implements OnInit{
 
 platGallery: PlatGallery | undefined;
 platGaleryList: any;
-isLoggedIn: any;
 auth: AuthService | any;
+userRole = JSON.parse(localStorage.getItem('token')!)
 
 constructor(
   private route: ActivatedRoute,
@@ -50,7 +50,7 @@ constructor(
 
   ngOnInit() {
     this.auth = this.authService;
-     this.isLoggedIn = JSON.parse(localStorage.getItem('token')!);
+    this.userRole;
     const platGalleryId : string|null = this.route.snapshot.paramMap.get('id');
     console.log(platGalleryId);
     if(platGalleryId) {
@@ -61,8 +61,9 @@ constructor(
   }
 
   deletePlat(platGallery: PlatGallery) {
-    this.restaurantService.deletePlatGaleryById(platGallery.platGallery_id!)
+    this.restaurantService.deletePlatGalleryById(platGallery.platGallery_id!)
     .subscribe(()=> this.goToHome());
+    console.log(platGallery.platGallery_id)
   }
 
 

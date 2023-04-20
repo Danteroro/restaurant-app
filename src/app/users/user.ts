@@ -2,7 +2,6 @@ export class User {
 
   user_id: number | undefined;
   name: string ;
-  surname: string;
   email: string;
   password: string;
   role: string;
@@ -10,14 +9,12 @@ export class User {
 
   constructor(
     name: string = 'Mat',
-    surname: string = 'COL',
     email: string = '',
     password: string = '',
     role: string = ''
     
   ) {
     this.name = name;
-    this.surname = name;
     this.email = email;
     this.password = password;
     this.role = role;

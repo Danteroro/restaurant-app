@@ -9,6 +9,12 @@ import { RestaurantService } from '../restaurant.service';
   styles: [` .button {
     margin-top: 20px;
   }
+  .bg-image {
+    margin-top: 150px;
+    margin-bottom: 0px;
+  
+  }
+
   `
   ]
 })
@@ -42,23 +48,78 @@ constructor(
     reader.readAsDataURL(imgFile);
   }
 
-  
+
   onSubmit() {
     if(this.isAddForm) {
-      this.restaurantService.addPlatGallery(this.platGallery)
-      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/platgallery/', platGallery.platGallery_id]));
+      this.restaurantService.createPlat(this.platGallery)
+      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/home']))
+      console.log(this.platGallery);
     }else {
-      this.restaurantService.persistanceData(this.platGallery)
-      .subscribe(() => this.router.navigate(['/platgallery/', this.platGallery.platGallery_id]));
+      this.restaurantService.updatePlatGalleryById(this.platGallery)
+      .subscribe(() => this.router.navigate(['/platgallery', this.platGallery.platGallery_id]))
+      console.log(this.platGallery);;
       }
   }
-  
+
+
+
+/*
+
+  onSubmit() {
+    if(this.isAddForm) {
+      this.restaurantService.createPlat(this.platGallery)
+      .subscribe(platGallery => this.router.navigate(['home']));
+      console.log(this.platGallery);
+    }
+  }
+  */
+
+
+
+
 }
+
+
+
+
+/*
+
+  onSubmit() {
+    if(this.isAddForm) {
+      this.restaurantService.createPlat(this.platGallery)
+      .subscribe(platGallery => this.router.navigate(['home']));
+      console.log(this.platGallery);
+    }
+  }
+  */
+
+
+
+  
+
 
 /*onSubmit() {
   console.log('Formulaire envoyé !');
   this.router.navigate(['/plat', this.plat?.id]);
 }
+
+
+
+ onSubmit() {
+    if(this.isAddForm) {
+      this.restaurantService.addPlatGallery(this.platGallery)
+      .subscribe((platGallery: PlatGallery) => this.router.navigate(['/platgallery/add']))
+      console.log(this.platGallery);
+    }else {
+      this.restaurantService.persistanceData(this.platGallery)
+      .subscribe(() => this.router.navigate(['/platgallery', this.platGallery.platGallery_id]))
+      console.log(this.platGallery);;
+      }
+  }
+
+
+
+
 
 this.platGalery = this.restaurantService.getPlatGaleryList();
 this.http.post<PlatGallery>('http://localhost/restaurant-app/api/home/', platGallery, httpOptions

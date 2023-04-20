@@ -42,7 +42,8 @@
 
                             <div class="d-flex align-items-center justify-content-around">
                                 <button class=" btn btn-1 text-white" type="submit">
-                                    <a (click)="login()" *ngIf="!this.auth.isLoggedIn">Connexion</a>
+                                    <a (click)="login()">Connexion</a>
+                                    <!--<a (click)="login()" *ngIf="!this.auth.isLoggedIn">Connexion</a>-->
                                 </button>
                                 <a routerLink="/inscription">
                                     <button class="btn btn-2 text-white" type="submit">S'inscrire</button>

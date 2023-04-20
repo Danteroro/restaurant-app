@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { User } from '../users/user';
 
 
 @Component({
@@ -34,10 +33,10 @@ import { User } from '../users/user';
           </ul>
 
         <div class="text-end">
-            <button *ngIf="!this.auth.isLoggedIn" type="button" class="btn btn-outline-light me-4">
+            <button *ngIf="!userRole" type="button" class="btn btn-outline-light me-4">
               <a routerLink="/login"class="nav-link px-2 text-white">Se connecter</a>
             </button>
-            <button *ngIf="this.auth.isLoggedIn" type="button" class="btn deco me-4">
+            <button *ngIf="userRole" type="button" class="btn deco me-4">
             <a (click)="logout()" class="nav-link px-2 text-white">Se déconnecter</a>
             </button>
         </div>
@@ -89,11 +88,9 @@ import { User } from '../users/user';
 })
 
 export class HeaderComponent implements OnInit {
-  title = 'restaurant-app';
-  currentUser: User = {user_id: undefined, name: '', surname: '', email:'',password: '', role: ''};
-  isLoggedIn: boolean | undefined ;
+  
   auth: AuthService | any;
-
+  userRole = JSON.parse(localStorage.getItem('token')!)
 
 
   constructor(
@@ -104,25 +101,26 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.auth = this.authService;
-    if(this.auth.isLoggedIn){
+    this.userRole;
+    if(this.userRole){
    
-      this.isLoggedIn = true;
-      console.log(this.isLoggedIn)
+      this.userRole = true;
+      console.log(this.userRole)
       
     }else {
-      this.isLoggedIn = false;
-      console.log(this.isLoggedIn)
+      this.userRole = false;
+      console.log(this.userRole)
     }
     
   }
 
+
+
   logout() {
-    this.auth.isLoggedIn = false;{
-      this.router.navigate(['/home']); 
+     this.auth.logout();
+     this.userRole = false;{
+     this.router.navigate(['/home']); 
     }
   }
  
 }
-
-
-/*TEST 23*/

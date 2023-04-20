@@ -1,0 +1,99 @@
+
+
+
+<div class="vh-100 bg-image" style="background-image: url('assets/fond-inscription.jpg'); height: 100%">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <a href="/home"><img src="assets/Quai-Antique.png" 
+                             alt="Logo menu premium" 
+                             width="160"
+                             class="logo">
+                        </a> 
+                    </div>
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Créer un compte</h2>
+                            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="User Name">
+                 
+                                </div>
+                 
+                                <div class="form-group form-outline mb-4">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email Address">
+                 
+                                </div>
+                                <div class="form-group form-outline mb-4">
+                                    <label for="Password">Password</label>
+                                    <input type="password" name="Password" formControlName="password"  autocomplete="off" class="form-control input-sm" placeholder="Password">
+                 
+                                </div>
+                                <div class="form-group form-outline mb-4">
+                                    <label for="name">Role</label>
+                                    <input type="text" name="Role" formControlName="role" autocomplete="off" class="form-control input-sm" placeholder="admin ou client">
+                 
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" 
+                                        class=" ab btn text-white btn-block btn-lg gradient-custom-4" 
+                                        [disabled]="!angForm.valid">Enregistrer
+                                    </button>
+                                </div> 
+                            </form>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+
+<h2 class="text-center">Registration</h2>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="User Name">
+ 
+                </div>
+ 
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email Address">
+ 
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="Password" formControlName="password"  autocomplete="off" class="form-control input-sm" placeholder="Password">
+ 
+                </div>
+                <div class="form-group">
+                    <label for="name">Role</label>
+                    <input type="text" name="Role" formControlName="role" autocomplete="off" class="form-control input-sm" placeholder="Role">
+ 
+                </div>
+               
+               
+                <button type="submit" class="btn btn-primary" [disabled]="!angForm.valid">Registration</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+ 
+</div>
+-->

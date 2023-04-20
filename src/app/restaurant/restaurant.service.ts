@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { User } from '../users/user';
 import { Dessert } from './carte/dessert';
@@ -9,15 +9,12 @@ import { Entree } from './carte/entree';
 import { Plat } from './carte/plat';
 import { Horaire } from '../horaire/horaire';
 import { Menu } from './menu/menu';
-import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
-
-  constructor(private http:HttpClient,
-    private router: Router) {}
 
   apiUrl: string = 'http://localhost/restaurant-app/api/home';
   apiUrlDetail: string = 'http://localhost/restaurant-app/api/platgallery';
@@ -27,56 +24,108 @@ export class RestaurantService {
   apiUrlMenu: string = 'http://localhost/restaurant-app/api/menu';
   apiUrlHoraire: string = 'http://localhost/restaurant-app/api/horaire';
   apiUrlUser: string = 'http://localhost/restaurant-app/api/user';
+  apiUrlCreateUser: string = 'http://localhost/restaurant-app/api/create-user.php';
+  apiUrlRegistrationUser: string = 'http://localhost/restaurant-app/api/home/registration.php';
+  apiUrlCreatePlat: string = 'http://localhost/restaurant-app/api/create.php';
+  apiUrlUpdatePlat: string = 'http://localhost/restaurant-app/api/update.php';
+  apiUrlDeletePlat: string = 'http://localhost/restaurant-app/api/delete.php';
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   PlatGallery: any;
   id: any;
+  redirectUrl: string | undefined;
+  baseUrl:string = "http://localhost/restaurant-app/api";
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+  
+
+  constructor(private http: HttpClient, private httpClient : HttpClient) {}
 
 
-getPlatGallery(){
-  return this.http.get<PlatGallery[]>(this.apiUrl).pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, 'erreur'))
-    );
-}  
-
-getPlatGalleryById (platGalleryId: number) : Observable<PlatGallery> {
-  return this.http.get<PlatGallery>(`http://localhost/restaurant-app/api/home/${platGalleryId}`).pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, 'id absente'))
-  );
-}
-
-addPlatGallery(platGallery: PlatGallery): Observable<PlatGallery> {
-  const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  };
-  return this.http.post<PlatGallery>('http://localhost/restaurant-app/api/home/', platGallery, httpOptions).pipe(
-  tap((response)=> this.log(response)),
-  catchError((error) => this.handleError(error, null))
-  );
-}
-
-persistanceData(platGallery: PlatGallery): Observable<null> {
-  const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-};
-return this.http.put('http://localhost/restaurant-app/api/home/', platGallery, httpOptions)
-  .pipe(
-  tap((response)=> this.log(response)),
-  catchError((error) => this.handleError(error, null))
-  );
-
-}
-
-
-deletePlatGaleryById(platGaleryId: number): Observable<null> {
-  return this.http.delete(`http://localhost/restaurant-app/api/home/${platGaleryId}`).pipe(
+  createPlat(platGallery: PlatGallery) {
+    return this.http.post('http://localhost/restaurant-app/api/create.php', platGallery, { responseType: 'text' }).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, 'ne fonctionne pas'))
+      );
+  }
+  
+  addPlatGallery(platGallery: PlatGallery): Observable<PlatGallery> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+    };
+    return this.http.post<PlatGallery>('http://localhost/restaurant-app/api/create', platGallery, httpOptions).pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
-  );
-}
+    );
+  }
 
+/*
+  updatePlatGalleryById (platGallery: PlatGallery) : Observable<PlatGallery> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<PlatGallery>('http://localhost/restaurant-app/api/update.php', platGallery, httpOptions).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  }
+*/
+
+  updatePlatGalleryById (platGallery: PlatGallery) {
+    //const httpOptions = {
+    //  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+   // };
+    return this.http.post('http://localhost/restaurant-app/api/update/', platGallery ,{ responseType: 'text' }).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, 'erreur'))
+    );
+  }
+  
+  
+  
+  /*
+  deletePlatGalleryById(platGallery_id: number): Observable<null> {
+    return this.http.delete(`http://localhost/restaurant-app/api/delete.php/${platGallery_id} `).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  }*/
+
+
+
+  deletePlatGalleryById(platGallery_id: number): Observable<null> {
+    return this.http.delete(`http://localhost/restaurant-app/api/delete/${platGallery_id} `).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  }
+
+
+  
+  /*
+  
+  persistanceData(platGallery: PlatGallery): Observable<null> {
+    const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
+  return this.http.put('http://localhost/restaurant-app/api/home/', platGallery, httpOptions)
+    .pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, null))
+    );
+  
+  }
+*/
+
+
+
+  createUser(user: User) {
+    return this.http.post('http://localhost/restaurant-app/api/create-user.php', user).pipe(
+      tap((response)=> this.log(response)),
+      catchError((error) => this.handleError(error, null))
+      );
+  }
+  
 
 
   getUser(): Observable<User> {
@@ -85,6 +134,8 @@ deletePlatGaleryById(platGaleryId: number): Observable<null> {
       catchError((error) => this.handleError(error, 'pas de users'))
     );
   }
+
+
 
   getUserProfile(id: any): Observable<any> {
     return this.http.get(`http://localhost/restaurant-app/api/user/${id}`, 
@@ -96,17 +147,23 @@ deletePlatGaleryById(platGaleryId: number): Observable<null> {
     );
   }
 
-  signInUser(user: User) {
-    return this.http
-      .post<any>(`http://localhost/restaurant-app/api/user/$`, user)
-      .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['home/' + res._id]);
-        });
-      });
-  }
+
+
+
+  getPlatGallery(){
+    return this.http.get<PlatGallery[]>(this.apiUrl).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, 'erreur'))
+    );
+  }  
+
+
+getPlatGalleryById (platGalleryId: number) : Observable<PlatGallery> {
+  return this.http.get<PlatGallery>(`http://localhost/restaurant-app/api/home/${platGalleryId}`).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, 'id absente'))
+  );
+}
 
 
 
@@ -151,8 +208,6 @@ getHoraire(){
   }
 
 
-
-
 getPlatCategoryList(): string[] {
   return ['Entree',
           'Plat',
@@ -161,9 +216,6 @@ getPlatCategoryList(): string[] {
 }
 
   
-
-
- 
 
   private log(response: any) {
     console.table(response);
@@ -175,67 +227,89 @@ getPlatCategoryList(): string[] {
     return of(errorValue);
   }
 
+/*
+  public userlogin(username: any, password: any) {
+    return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
+        .pipe(map((Usermodule: { name: string; }[]) => {
+            this.setToken(Usermodule[0].name);
+            this.getLoggedInName.emit(true);
+            return Usermodule;
+        }));
+}*/
+
+/*
+public userregistration(name: any,email: any,password: any, role: any) {
+  return this.httpClient.post<any>('http://localhost/restaurant-app/api/registration.php/', { name, email, password, role })
+      .pipe(map(User => {
+          return User;
+      }));
+}
+*/
+
+  userregistration(name: any,email: any,password: any, role: any) {
+  return this.httpClient.post('http://localhost/restaurant-app/api/registration.php/', { name, email, password, role }, { responseType: 'text' })
+      .pipe(map(User => {
+          return User;
+      }));
+}
+
+addUser(name: any,email: any,password: any, role: any){
+  const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+  return this.http.post('http://localhost/restaurant-app/api/registration.php', { name, email, password, role }, { headers, responseType: 'text'}).pipe(
+  tap((response)=> this.log(response)),
+  catchError((error) => this.handleError(error, null))
+  );
+}
+
+
+//token
+setToken(token: string) {
+  localStorage.setItem('token', token);
+}
+ 
+getToken() {
+  return localStorage.getItem('token');
+}
+ 
+deleteToken() {
+  localStorage.removeItem('token');
+}
+ 
+isLoggedIn() {
+  const usertoken = this.getToken();
+  if (usertoken != null) {
+    return true
+  }
+  return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }
-
-/* 
-  getPlatById (platId: number) : Plat | undefined {
-    return PLATLIST.find(plat => plat.id == platId);
-  }
-
-
- /* getEntreeList (): Observable<CategoryEntree[]> {
-    return this.http.get<CategoryEntree[]>('api/CategoryEntree').pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, []))
-      );
-  }
-
-
-  getPlatDetailList (): Observable<CategoryPlat[]> {
-    return this.http.get<CategoryPlat[]>('api/CategoryPlat').pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, []))
-      );
-  }
-
- getDessertList (): Observable<Dessert[]> {
-    return this.http.get<Dessert[]>('api/CategoryDessert').pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, []))
-      );
-}*/
-
-
-
-/* getDessertById (dessertId: number) : Observable<Dessert | undefined> {
-    return this.http.get<Dessert>(`api/dessert/${dessertId}`).pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, undefined))
-      );
-  }*/
-
-  /* getPlatGaleryList (): Observable<PlatGallery[]> {
-    return this.http.get<PlatGallery[]>('api/platgalery').pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, []))
-      );
-  }*/
-
-
- 
-/*signInUser(user: User) {
-  return this.http.post<User[]>(`${this.apiUrlUser}`, user).pipe(
-    tap((response)=> this.log(response)),
-    catchError((error) => this.handleError(error, 'pas de users'))
-    );
-}*/
-
-  /*signUser(userId: number): Observable<User> {
-    return this.http.get<User>(`http://localhost/restaurant-app/api/user/${userId}`).pipe(
-      tap((response)=> this.log(response)),
-      catchError((error) => this.handleError(error, 'pas de users'))
-    );
-  }*/

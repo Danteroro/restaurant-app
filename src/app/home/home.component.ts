@@ -29,6 +29,7 @@ export class HomeComponent {
   user: User | undefined;
   auth: AuthService | any;
   isLoggedIn: any;
+  userRole = JSON.parse(localStorage.getItem('token')!)
   
   
   
@@ -44,7 +45,7 @@ export class HomeComponent {
 
  ngOnInit() {
      this.auth = this.authService;
-     this.isLoggedIn = JSON.parse(localStorage.getItem('token')!);
+     this.userRole;
      this.restaurantService.getPlatGallery().subscribe(
      platGalleryList => this.platGalleryList = platGalleryList );
      this.restaurantService.getHoraire().subscribe(

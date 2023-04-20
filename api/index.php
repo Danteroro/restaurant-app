@@ -1,6 +1,7 @@
 <?php
 
-require_once("api.php");
+include("api.php");
+
 
 try{
     if(!empty($_GET['demande'])){
@@ -23,6 +24,34 @@ try{
             case "plat" :
                 if(empty($url[1])){
                     getPlatList();
+                } else {
+                    getPlatGaleryById($url[1]);
+                }
+            break;
+            case "create/user" :
+                if(empty($url[1])){
+                    createUser();
+                } else {
+                    getPlatGaleryById($url[1]);
+                }
+            break;
+            case "create" :
+                if(empty($url[1])){
+                    createPlat();
+                } else {
+                    getPlatGaleryById($url[1]);
+                }
+            break;
+            case "update" :
+                if(empty($url[1])){
+                    updatePlat();
+                } else {
+                    getPlatGaleryById($url[1]);
+                }
+            break;
+            case "delete" :
+                if(empty($url[1])){
+                    delPlat();
                 } else {
                     getPlatGaleryById($url[1]);
                 }

@@ -5,9 +5,9 @@ export class PlatGallery {
     category_id: number | undefined;
 
     constructor(
-      name: string = 'mon plat',
-      picture: string = '/assets/AdobeStock_399075641_Preview.jpeg',
-      category_id: number = 1
+      name: string = '',
+      picture: string = '',
+      category_id: number = 0,
       
     ) {
       this.name = name;

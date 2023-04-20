@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { RestaurantService } from './restaurant.service';
 import { LoaderComponent } from './loader/loader.component';
 import { HeaderComponent } from '../header-footer/header.component';
@@ -20,12 +19,14 @@ import { PlatDetailComponent } from './plat-detail/plat-detail.component';
 import { DessertDetailComponent } from './dessert-detail/dessert-detail.component';
 import { HoraireEditComponent } from '../horaire/horaire-edit/horaire-edit.component';
 import { EditPlatGaleryComponent } from './edit-plat-galery/edit-plat-galery.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 
 const restauRoutes: Routes = [
   
   { path: 'home', component: HomeComponent },
-  { path: 'inscription', component: InscrptionComponent},
+  { path: 'inscription', component: RegistrationComponent },
   { path: 'carte', component: CarteComponent},
   { path: 'entrees', component: EntreeDetailComponent },
   { path: 'plats', component: PlatDetailComponent },
@@ -38,6 +39,7 @@ const restauRoutes: Routes = [
   { path: 'horaire', component: HoraireComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'menus', component: MenuComponent}
+   //{ path: 'inscription', component: InscrptionComponent},
 
 ];
 
@@ -61,13 +63,15 @@ const restauRoutes: Routes = [
     EditPlatGaleryComponent,
     PlatDetailComponent,
     DessertDetailComponent,
+    RegistrationComponent,
     HoraireEditComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(restauRoutes),
   ],
-  providers: [RestaurantService]
+  providers: [RestaurantService],
 })
 export class RestaurantModule { }

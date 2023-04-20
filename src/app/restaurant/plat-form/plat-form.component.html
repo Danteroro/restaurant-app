@@ -35,8 +35,10 @@
                 </div>
             </div>
 
+
             <div class="text-center button">
                 <button type="submit"
+                        name="add_plat_btn"
                         class="btn btn-success"
                         [disabled]="!platGaleryForm.form.valid"
                         >Valider
@@ -46,5 +48,33 @@
             <h3 *ngIf="!platGallery"><app-loader></app-loader></h3>
     </div>    
 </div>
-  
 
+
+<div class="bg-image" 
+     style="background-image: url('assets/fond-contact-2.jpg');
+            height: 700px">
+  <div class="mask h-100" 
+       style="background-color: rgba(0, 0, 0, 0.6) ;">
+  </div>
+</div>
+
+<!--(change)="showPreview($event)"
+
+
+            <div class="form-group">
+                <label for="category_id">Categorie</label>
+                <input type="text" class="form-control" id="category_id"
+                        required
+                        pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                        [(ngModel)]="platGallery.category_id" name="category_id"
+                    #name="ngModel"
+                >
+            <div [hidden]="name.valid || name.pristine"
+                class="warning">
+                Le nom du plat est requis (1-30).
+            </div>
+        </div>
+
+
+
+-->

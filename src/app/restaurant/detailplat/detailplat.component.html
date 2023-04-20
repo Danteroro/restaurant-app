@@ -13,8 +13,8 @@
                   <h2 class="card-text">{{ platGallery.name }}</h2>
                   <h3 class="card-text">{{ platGallery.category_id }}</h3>
                      <div class=" d-flex justify-content-around">
-                       <a *ngIf="this.auth.isLoggedIn.role === 'admin'"  (click)="goToEditPlat(platGallery)" class="btn btn-dark btn-lg button">Modifier</a>
-                         <a *ngIf="this.auth.isLoggedIn.role === 'admin'"  (click)="deletePlat(platGallery)" class="btn btn-danger btn-lg button">Supprimer</a>
+                       <a *ngIf="userRole && userRole.role === 'admin'"  (click)="goToEditPlat(platGallery)" class="btn btn-dark btn-lg button">Modifier</a>
+                         <a *ngIf="userRole && userRole.role === 'admin'" (click)="deletePlat(platGallery)" class="btn btn-danger btn-lg button">Supprimer</a>
                       </div>
               </div>
         </div>
