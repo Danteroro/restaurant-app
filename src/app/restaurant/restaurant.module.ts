@@ -12,7 +12,6 @@ import { HoraireComponent } from '../horaire/horaire.component';
 import { DetailplatComponent } from './detailplat/detailplat.component';
 import { PlatFormComponent } from './plat-form/plat-form.component';
 import { AddPlatComponent } from './add-plat/add-plat.component';
-import { InscrptionComponent } from './inscrption/inscrption.component';
 import { CarteComponent } from './carte/carte.component';
 import { EntreeDetailComponent } from './entree-detail/entree-detail.component';
 import { PlatDetailComponent } from './plat-detail/plat-detail.component';
@@ -20,7 +19,8 @@ import { DessertDetailComponent } from './dessert-detail/dessert-detail.componen
 import { HoraireEditComponent } from '../horaire/horaire-edit/horaire-edit.component';
 import { EditPlatGaleryComponent } from './edit-plat-galery/edit-plat-galery.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReservationComponent } from './reservation/reservation.component'; 
 
 
 const restauRoutes: Routes = [
@@ -39,7 +39,6 @@ const restauRoutes: Routes = [
   { path: 'horaire', component: HoraireComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'menus', component: MenuComponent}
-   //{ path: 'inscription', component: InscrptionComponent},
 
 ];
 
@@ -57,14 +56,14 @@ const restauRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    InscrptionComponent,
     CarteComponent,
     EntreeDetailComponent,
     EditPlatGaleryComponent,
     PlatDetailComponent,
     DessertDetailComponent,
     RegistrationComponent,
-    HoraireEditComponent
+    HoraireEditComponent,
+    ReservationComponent
   ],
   imports: [
     CommonModule,

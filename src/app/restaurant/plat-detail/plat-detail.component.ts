@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PLATSLIST } from '../carte/platslist';
 import { RestaurantService } from '../restaurant.service';
 
 
@@ -7,7 +6,7 @@ import { RestaurantService } from '../restaurant.service';
   selector: 'app-plat-detail',
   templateUrl: './plat-detail.component.html',
   styles:  [`
-  
+      
   .pad {
     padding: 50px;
   }
@@ -37,7 +36,6 @@ import { RestaurantService } from '../restaurant.service';
   background-color: rgb(233, 78, 27);
   border-color:rgb(233, 78, 27);
   }
-
   `
 ]
 })

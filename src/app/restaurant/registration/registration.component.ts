@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestaurantService } from '../restaurant.service';
 
@@ -41,8 +40,29 @@ export class RegistrationComponent implements OnInit {
     });
    }
  
+   
   ngOnInit() {
   }
+
+
+  postdata(angForm1: NgForm) {
+    if(this.angForm) {
+      this.restaurantService.addUser(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
+      .subscribe(() => this.router.navigate(['/login']));
+    }
+  }
+
+
+  get name() { return this.angForm.get('name'); }
+  get email() { return this.angForm.get('email'); }
+  get password() { return this.angForm.get('password'); }
+  get role() { return this.angForm.get('role'); }
+  
+}
+ 
+
+
+
 /*
   postdata(angForm1: NgForm) {
     this.restaurantService.userregistration(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
@@ -62,20 +82,3 @@ export class RegistrationComponent implements OnInit {
       console.log('data');
     }
   }*/
-
-
-  postdata(angForm1: NgForm) {
-    if(this.angForm) {
-      this.restaurantService.addUser(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
-      .subscribe(() => this.router.navigate(['/login']));
-    }
-  }
-
-
-  get name() { return this.angForm.get('name'); }
-  get email() { return this.angForm.get('email'); }
-  get password() { return this.angForm.get('password'); }
-  get role() { return this.angForm.get('role'); }
-  
-}
- 

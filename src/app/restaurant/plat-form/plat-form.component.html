@@ -1,4 +1,85 @@
 
+
+<div class="d-flex align-items-center justify-content-center">
+    <div class="row col-4">
+        <form *ngIf = "platGallery" #p="ngForm"
+               (submit)="onSubmit()"  
+               name="theForm"
+               class="  align-item-center justify-content-center">
+
+            <div class="form-group">
+                <label for="picture">Image</label>
+                <input [type]="'file'" class="form-control" id="picture"
+                    (change)="showPreview($event)"
+                    required
+                    name="picture"
+                    [(ngModel)]="platGallery.picture" name="picture"
+                    #picture="ngModel"
+                    >
+            </div>
+                <div [hidden]="picture.valid || picture.pristine"
+                        class="card-panel red accent-1">
+                        L'image du plat est requis. 
+                </div>
+
+            <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="name"
+                            required
+                            pattern="^[a-zA-Z0-9|\sàéèç]{1,30}$"
+                            [(ngModel)]="platGallery.name" name="name"
+                        #name="ngModel"
+                    >
+                <div [hidden]="name.valid || name.pristine"
+                    class="warning">
+                    Le nom du plat est requis (1-30).
+                </div>
+            </div>
+
+            <div class="text-center button">
+                <button type="submit"
+                        class="btn btn-success"
+                        [disabled]="p.invalid"
+                        >Valider
+                </button>
+            </div>    
+        </form>
+            <h3 *ngIf="!platGallery"><app-loader></app-loader></h3>
+    </div>    
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--(change)="showPreview($event)"
+
+
+
+
+<div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+<div class="alert alert-success" *ngIf="success">{{ success }}</div>
+
+
+
+
 <div class="d-flex align-items-center justify-content-center">
     <div class="row col-4">
         <form *ngIf = "platGallery" 
@@ -35,10 +116,23 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="category_id">Categorie</label>
+                <input type="text" class="form-control" id="category_id"
+                        required
+                        pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                        [(ngModel)]="platGallery.category_id" name="category_id"
+                    #name="ngModel"
+                >
+                <div [hidden]="name.valid || name.pristine"
+                    class="warning">
+                    Le nom du plat est requis (1-30).
+                </div>
+            </div>
 
             <div class="text-center button">
                 <button type="submit"
-                        name="add_plat_btn"
+                        name="submit"
                         class="btn btn-success"
                         [disabled]="!platGaleryForm.form.valid"
                         >Valider
@@ -58,7 +152,7 @@
   </div>
 </div>
 
-<!--(change)="showPreview($event)"
+(change)="showPreview($event)"
 
 
             <div class="form-group">
@@ -69,12 +163,139 @@
                         [(ngModel)]="platGallery.category_id" name="category_id"
                     #name="ngModel"
                 >
-            <div [hidden]="name.valid || name.pristine"
-                class="warning">
-                Le nom du plat est requis (1-30).
+                <div [hidden]="name.valid || name.pristine"
+                    class="warning">
+                    Le nom du plat est requis (1-30).
+                </div>
             </div>
-        </div>
+
+
+
+
+
+
+                       <div class="form-group">
+                <label for="category_id">Categorie</label>
+                <input type="text" class="form-control" id="category_id"
+                        required
+                        pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                        [(ngModel)]="platGallery.category_id" name="category_id"
+                    #name="ngModel"
+                >
+                <div [hidden]="name.valid || name.pristine"
+                    class="warning">
+                    Le nom du plat est requis (1-30).
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="d-flex align-items-center justify-content-center">
+    <div class="row col-4">
+        <form *ngIf = "platGallery" 
+         [formGroup]="addForm" (ngSubmit)="addPlat(addForm)" 
+               #platGalleryForm = "ngForm"
+               class="  align-item-center justify-content-center">
+
+            <div class="form-group">
+                <label for="picture">Image</label>
+                <input [type]="'file'" class="form-control" id="picture"
+                    (change)="showPreview($event)"
+                    required
+                    name="picture"
+                    pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                  
+                    >
+            </div>
+                
+
+            <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="name"
+                            required
+                            pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                         
+                    >
+               
+            </div>
+
+            <div class="form-group">
+                <label for="category_id">Categorie</label>
+                <input type="text" class="form-control" id="category_id"
+                        required
+                        pattern="^[a-zA-Z0-9|\sàâéèç]{1,30}$"
+                     
+                >
+                
+            </div>
+
+            <div class="text-center button">
+                <button type="submit"
+                        name="submit"
+                        class="btn btn-success"
+                        
+                        >Valider
+                </button>
+            </div>    
+        </form>
+            <h3 *ngIf="!platGallery"><app-loader></app-loader></h3>
+    </div>    
+</div>
+
+
+<div class="bg-image" 
+     style="background-image: url('assets/fond-contact-2.jpg');
+            height: 700px">
+  <div class="mask h-100" 
+       style="background-color: rgba(0, 0, 0, 0.6) ;">
+  </div>
+</div>
+
 
 
 
 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

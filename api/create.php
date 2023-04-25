@@ -1,132 +1,38 @@
 <?php
-include('db.config.php');
-
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-
-define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https":"http").
-"://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
-
-/*
-// insert a single publisher
-$pdo = getConnectBdd();
-
-//$sql = 'INSERT INTO publishers(name) VALUES(:name)';
-//$req = "INSERT INTO platGallery SET picture=:picture, name=:name, category_id=:category_id";
-$req = "INSERT INTO platGallery 
-        (name, picture, category_id) 
-        VALUES (picture=:picture, name=:name, category_id=:category_id";
-
-$statement = $pdo->prepare($req);
-
-$statement->execute([
-  ':picture' => $picture,
-	':name' => $name,
-  ':category_id' => $category_id
-]);
-
-$platGallery_id = $pdo->lastInsertId();
-
-echo 'PlatGallery id' . $platGallery_id . ' was inserted';
-
-*/
+include('mysqli.php');
 
 
 
-// CODE ALTER--
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+	
 
-if($_POST){
-
-  // include database connection
-  include('db.config.alter.php');
-  
-  try{
-  
-  // insert query  
-  $pdo = getConnectBdd();
-
-  //$req = "INSERT INTO platGallery 
- // (name, picture, category_id) 
-  //VALUES (picture=:picture, name=:name, category_id=:category_id";
-  $req = "INSERT INTO platGallery SET picture=:picture, name=:name, category_id=:category_id";
-
-  // prepare query for execution
-  $stmt = $pdo->prepare($req);
-
-  // posted values
-  $name = $_POST['name'];
-  $description = $_POST['description'];
-  $price = $_POST['price'];
-
-  // bind the parameters
-  $stmt->bindParam(':picture', $picture);
-  $stmt->bindParam(':name', $name);
-  $stmt->bindParam(':category_id', $category_id);
-
-  // Execute the query
-  if($stmt->execute()){
-  echo json_encode(array('result'=>'success'));
-  }else{
-  echo json_encode(array('result'=>'fail'));
-  }
-  }
-  // show error
-  catch(PDOException $exception){
-  die('ERROR: ' . $exception->getMessage());
-  }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
+if(isset($postdata) && !empty($postdata))
+{
+	
+  // Sanitize.
+  $picture = mysqli_real_escape_string($mysqli, trim($request->picture));
+  $name = mysqli_real_escape_string($mysqli, trim($request->name));
 
     
 
-  /*if($_POST){
+  // Store.
+  $sql = "INSERT INTO platGallery (picture, name) VALUES ('{$picture}', '{$name}')";
 
-// include database connection
-require("connectbdd.php");
-
-try{
-
-// insert query
-//$query = "INSERT INTO products SET p_name=:name, p_description=:description, p_price=:price";
-$req = "INSERT INTO platGallery SET picture=:picture, name=:name, category_id=:category_id";
-// prepare query for execution
-$stmt = $conn->prepare($req);
-// posted values
-$picture = $_POST['picture'];
-$name = $_POST['name'];
-$category_id = $_POST['category_id'];
-// bind the parameters
-$stmt->bindParam(':name', $picture);
-$stmt->bindParam(':description', $name );
-$stmt->bindParam(':price', $category_id);
-// Execute the query
-if($stmt->execute()){
-echo json_encode(array('result'=>'success'));
-}else{
-echo json_encode(array('result'=>'fail'));
+  if($mysqli->query($sql) === TRUE) {
+    
+    http_response_code(201);
+    $platGallery = [
+      'platGallery_id' => mysqli_insert_id($mysqli),
+      'picture' => $picture,
+      'name' => $name,
+    ];
+    echo json_encode($platGallery);
+  }
+  else
+  {
+    http_response_code(422);
+  }
 }
-}
-// show error
-catch(PDOException $exception){
-die('ERROR: ' . $exception->getMessage());
-}
-}*/ 
-?>
 
-
+  ?>

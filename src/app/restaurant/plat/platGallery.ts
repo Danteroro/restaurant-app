@@ -1,18 +1,17 @@
 export class PlatGallery {
-    platGallery_id: number | undefined;
+    platGallery_id: number | any;
     picture: string ;
     name: string ;
-    category_id: number | undefined;
+
 
     constructor(
-      name: string = '',
       picture: string = '',
-      category_id: number = 0,
+      name: string = '',
       
     ) {
-      this.name = name;
-      this.picture = picture;
-      this.category_id = category_id;
+    this.picture = picture;
+    this.name = name;
+      
   }
   
 }

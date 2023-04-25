@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute,  Router } from '@angular/router';
-import { DESSERTLIST } from '../carte/dessertlist';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -41,7 +40,7 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class DessertDetailComponent {
 
-dessertlist = DESSERTLIST;
+dessertlist: any;
 
   constructor(
     private restaurantService: RestaurantService,

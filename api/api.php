@@ -1,144 +1,29 @@
 <?php
 include('db.config.php');
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-header('Access-Control-Allow-Headers: Access-Control-Allow-Origin, Content-Type');
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json, charset=utf-8');
+
+
 
 define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https":"http").
 "://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 
 
-function createUser() {
- 
-}
 
 
-function createPlat() {
+
+
+function getPlatGalleryList() {
     $pdo = getConnectBdd();
-    $req = "INSERT INTO platGallery SET picture=:picture, name=:name, category_id=:category_id";
-    $stmt = $pdo->prepare($req);
-  
-    // posted values
-    
-    $picture= $_POST['picture'];
-    $name = $_POST['name'];
-    $category_id = $_POST['category_id'];
-  
-    // bind the parameters
-    $stmt->bindParam(':picture', $picture);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':category_id', $category_id);
-  
-    // Execute the query
-    if($stmt->execute()){
-    echo json_encode(array('result'=>'success'));
-    }else{
-    echo json_encode(array('result'=>'fail'));
-    }
-    
-}
-
-function updatePlat() {
-    
-    try{
-    $pdo = getConnectBdd();
-    $sql = 'UPDATE platGallery 
-                SET picture = :picture, name = :name, category_id = :category_id 
-                 WHERE platGallery_id = :platGallery_id';
-    
-    // prepare query for excecution
-    $stmt = $pdo->prepare($sql);
-
-    
-    // posted values
-    $platGallery_id = $_POST['platGallery_id'];
-    $picture = $_POST['picture'];
-    $name = $_POST['name'];
-    $category_id = $_POST['category_id'];
-    
-    // bind the parameters
-    $stmt->bindParam(':platGallery_id', $platGallery_id);
-    $stmt->bindParam(':picture', $picture);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':category_id', $category_id);
-    
-    
-    // Execute the query
-    if($stmt->execute()){
-    echo json_encode(array('result'=>'success'));
-    }else{
-    echo json_encode(array('result'=>'fail'));
-    }
-    
-    }
-    
-    // show errors
-    catch(PDOException $exception){
-    die('ERROR: ' . $exception->getMessage());
-    }
-
-        
-};
-
-
-function delPlat() {
-    
-    $platGallery_id = $_GET['platGallery.platGallery_id'];
-    var_dump($_GET);
-    //$platGallery_id = 25;
-    echo $platGallery_id;
-    $pdo = getConnectBdd();
-
-    $req = "DELETE FROM platGallery WHERE platGallery.platGallery_id = :platGallery_id";
-    $statement = $pdo->prepare($req);
-    $statement->bindParam(':platGallery_id', $platGallery_id, PDO::PARAM_INT);
-    if ($statement->execute()) {
-	echo 'platGallery id' . $platGallery_id . ' was deleted successfully.';
-    }
-    $statement->closeCursor();
-    sendJSON($platGallery_id);
-
-
-
-
-  /*  try {
-	
-        include('db.config.alter.php');
-        
-        // get record ID
-        // isset() is a PHP function used to verify if a value is there or not
-        $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
-        echo $id;
-        // delete query
-        $req = "DELETE FROM platGallery WHERE platGallery.platGallery_id = :platGallery_id";
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(1, $id);
-        echo $id;
-        
-        if($stmt->execute()){
-        // redirect to read records page and
-        // tell the user record was deleted
-        echo json_encode(array('result'=>'success'));
-        }else{
-        echo json_encode(array('result'=>'fail'));
-        }
-        }
-        
-        // show error
-        catch(PDOException $exception){
-        die('ERROR: ' . $exception->getMessage());
-        }
-        */
-
-}
-
-
-function getPlatGaleryList() {
-    $pdo = getConnectBdd();
-    $req = "SELECT p.platGallery_id, p.picture, p.name, categories.title
-    FROM platGallery p JOIN categories ON category_id = categories.id";
+    $req = "SELECT * FROM platGallery";
+    //$req = "SELECT p.platGallery_id, p.picture, p.name, categories.title
+    //FROM platGallery p JOIN categories ON category_id = categories.id";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $platGallery = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -241,9 +126,10 @@ function getUsersList() {
 
 function getPlatGaleryById($id) {
     $pdo = getConnectBdd();
-    $req = "SELECT p.platGallery_id, p.picture, p.name, categories.title
-    FROM platGallery p JOIN categories ON category_id = categories.id
-    WHERE p.platGallery_id = :id";
+    //$req = "SELECT p.platGallery_id, p.picture, p.name, categories.title
+   // FROM platGallery p JOIN categories ON category_id = categories.id
+    //WHERE p.platGallery_id = :id";
+    $req = "SELECT p.platGallery_id, p.picture, p.name FROM platGallery p WHERE p.platGallery_id = :id";
     $stmt = $pdo->prepare($req);
     $stmt->bindValue(":id",$id, PDO::PARAM_INT);
     $stmt->execute();

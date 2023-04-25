@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { RestaurantService } from '../restaurant/restaurant.service';
+//import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -16,22 +16,22 @@ export class LoginComponent implements OnInit {
   message: string = 'Se connecter';
   email: string | any;
   password: string | any;
-  auth: AuthService | any;
   userList: any;
   user: any;
   isLoggedIn: boolean = false;
+//auth: AuthService | any;
 
 
 
   constructor(
-    private authService: AuthService,
+    //private authService: AuthService,
     private restaurantService: RestaurantService,
     private router: Router
     ) {}
 
 
     ngOnInit() {
-      this.auth = this.authService;
+      //this.auth = this.authService;
       this.restaurantService.getUser().subscribe(userList => this.userList = userList);
       
     }
@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
     }    
 
 
-
 setMessage(): void {
   if(this.isLoggedIn) {
     this.message = 'Vous êtes connecté.';
@@ -67,11 +66,11 @@ setMessage(): void {
   }
 }
 
-
+/*
 logout() {
   this.auth.logout();
   this.message = 'Vous êtes déconnecté !'
-  }
+  }*/
 
 }
 

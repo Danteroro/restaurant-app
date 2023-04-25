@@ -1,104 +1,159 @@
 <?php
-include('db.config.php');
+include('mysqli.php');
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
 
 
-header('Access-Control-Allow-Headers: Access-Control-Allow-Origin, Content-Type');
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json, charset=utf-8');
 
-define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https":"http").
-"://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
+
+if(isset($postdata) && !empty($postdata))
+{
+ 
+  $id= mysqli_real_escape_string($mysqli, (int)$request->platGallery_id);
+  var_dump($id);
+
+
+  
+  $picture = mysqli_real_escape_string($mysqli, trim($request->picture));
+  var_dump($picture);
+  $name = mysqli_real_escape_string($mysqli, trim($request->name));
+  var_dump($name);
+ 
+  $sql = "UPDATE platGallery SET picture='$picture',name='$name' where platGallery_id=$id";
+
+
+if ($mysqli->query($sql) === TRUE) {
+ 
+ 
+    $authdata = [
+      
+      'picture' => $picture,
+      'name' => $name,
+      'platGallery_id'=> ''
+    
+      
+    ];
+    echo json_encode($authdata);
+    var_dump($authdata);
+ 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
-// connect to the bookdb database
-$pdo = getConnectBdd();
 
-$publisher = [
-	'publisher_id' => 1,
-	'name' => 'McGraw-Hill Education'
-];
 
-$sql = 'UPDATE platGallery 
-        SET picture = :picture, name = :name, category_id = :category_id 
-        WHERE platGallery_id = :platGallery_id';
+<?php
+include_once("config.php");
+$postdata = file_get_contents("php://input");
+ 
+$request = json_decode($postdata);
+if(isset($postdata) && !empty($postdata))
+{
+ 
+	$id = mysqli_real_escape_string($mysqli, trim($request->id));
+	// echo $id;
+  $name = mysqli_real_escape_string($mysqli, trim($request->name));
+  $pwd = mysqli_real_escape_string($mysqli, (int)$request->pwd);
+   $email = mysqli_real_escape_string($mysqli, trim($request->email));
+  $mobile = mysqli_real_escape_string($mysqli, (int)$request->mobile);
+ 
+  $sql = "update employee set name='$name',pwd='$pwd',email='$email',mobile='$mobile' where Id=$id";
+ //echo $sql;
+if ($mysqli->query($sql) === TRUE) {
+ 
+ 
+    $authdata = [
+      'name' => $name,
+	  'pwd' => '',
+	  'email' => $email,
+      'mobile' => $mobile,
+      'Id'    => ''
+    ];
+    echo json_encode($authdata);
+ 
+}
+}
+?>*/
 
-// prepare statement
-$statement = $pdo->prepare($sql);
 
-// bind params
-$statement->bindParam(':publisher_id', $publisher['publisher_id'], PDO::PARAM_INT);
-$statement->bindParam(':name', $publisher['name']);
 
-// execute the UPDATE statment
-if ($statement->execute()) {
-	echo 'The publisher has been updated successfully!';
+
+/*
+include('mysqli.php');
+
+
+// Get the posted data.
+$postdata = file_get_contents("php://input");
+
+if(isset($postdata) && !empty($postdata))
+{
+
+  $request = json_decode($postdata);
+	
+  // Validate.
+if ((int)$request->platGallery_id < 1 || trim($request->picture) == '' || trim($request->name) == '') {
+    return http_response_code(400);
+}
+    
+  // Sanitize.
+  $id = mysqli_real_escape_string($mysqli, (int)$request->platGallery_id);
+  $picture = mysqli_real_escape_string($mysqli, trim($request->picture));
+  $name = mysqli_real_escape_string($mysqli, trim($request->name));
+
+  // Update.
+  $sql = "UPDATE `platGallery` SET `picture`='$picture',`name`='$name' WHERE `platGallery_id` = '{$id}' LIMIT 1";
+
+  if($mysqli->query($sql) === TRUE)
+  {
+    http_response_code(204);
+  }
+  else
+  {
+    return http_response_code(422);
+  }  
 }
 
 */
 
 
-
-// CODE ALTER
-
-if($_POST){
-    
-    include('db.config.alter.php');
-    
-
-
-    try{
- 
-    $sql = 'UPDATE platGallery 
-                SET picture = :picture, name = :name, category_id = :category_id 
-                 WHERE platGallery_id = :platGallery_id';
-    
-    // prepare query for excecution
-    $stmt = $pdo->prepare($sql);
-
-    
-    // posted values
-    $platGallery_id = $_POST['platGallery_id'];
-    $picture = $_POST['picture'];
-    $name = $_POST['name'];
-    $category_id = $_POST['category_id'];
-    
-    // bind the parameters
-    $stmt->bindParam(':platGallery_id', $platGallery_id);
-    $stmt->bindParam(':picture', $picture);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':category_id', $category_id);
-    
-    
-    // Execute the query
-    if($stmt->execute()){
-    echo json_encode(array('result'=>'success'));
-    }else{
-    echo json_encode(array('result'=>'fail'));
-    }
-    
-    }
-    
-    // show errors
-    catch(PDOException $exception){
-    die('ERROR: ' . $exception->getMessage());
-    }
-    }
-    ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
-

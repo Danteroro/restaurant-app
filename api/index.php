@@ -1,5 +1,6 @@
 <?php
 
+
 include("api.php");
 
 
@@ -9,7 +10,7 @@ try{
         switch($url[0]){
             case "home" :
                 if(empty($url[1])){
-                    getPlatGaleryList();
+                    getPlatGalleryList();
                 } else {
                     getPlatGaleryById($url[1]);
                 }
@@ -28,30 +29,9 @@ try{
                     getPlatGaleryById($url[1]);
                 }
             break;
-            case "create/user" :
+            case "adduser" :
                 if(empty($url[1])){
                     createUser();
-                } else {
-                    getPlatGaleryById($url[1]);
-                }
-            break;
-            case "create" :
-                if(empty($url[1])){
-                    createPlat();
-                } else {
-                    getPlatGaleryById($url[1]);
-                }
-            break;
-            case "update" :
-                if(empty($url[1])){
-                    updatePlat();
-                } else {
-                    getPlatGaleryById($url[1]);
-                }
-            break;
-            case "delete" :
-                if(empty($url[1])){
-                    delPlat();
                 } else {
                     getPlatGaleryById($url[1]);
                 }
@@ -103,5 +83,3 @@ try{
     ];
     print_r($erreur);
 }
-
-

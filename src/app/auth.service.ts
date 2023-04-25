@@ -1,9 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, delay, of, tap} from 'rxjs';
 import { RestaurantService } from './restaurant/restaurant.service';
-import { User } from './users/user';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+//import { HttpClient } from '@angular/common/http';
+//import { Router } from '@angular/router';
+
+//import { BehaviorSubject, Observable, catchError, delay, of, tap} from 'rxjs';
+//import { User } from './users/user';
 
 
 
@@ -18,10 +19,9 @@ export class AuthService implements OnInit {
   log: any;
   user: any;
 
-  constructor(
-    private restaurantService: RestaurantService,
-    private http: HttpClient,
-    private router: Router
+  constructor(private restaurantService: RestaurantService,
+    //private http: HttpClient,
+    //private router: Router
     ) {}
 
 
@@ -39,40 +39,7 @@ export class AuthService implements OnInit {
 
 
 
-  
 /*
-  login(email: string, password: string): Observable<boolean> {
-    this.restaurantService.getUser().subscribe(userList => this.userList = userList); 
-    const isLoggedIn = this.userList.find((user: { email: string; password: string; }) => user.email == email && user.password == password);
-    localStorage.setItem('token', JSON.stringify(isLoggedIn));
-    return of(isLoggedIn).pipe(
-      delay(1000),
-      tap(isLoggedIn => this.isLoggedIn = isLoggedIn)
-    );
-  }
-
-
-  login(email: any, password: any) {
-    this.message = 'Connexion en cours...';
-    this.restaurantService.getUser()
-    .subscribe((userList: any)=>{
-        const isLoggedIn = this.userList.find((user:any)=>{
-          console.log(isLoggedIn);
-        return user.email === email && user.password === password
-      });
-      localStorage.setItem('token', JSON.stringify(isLoggedIn));
-      this.setMessage();
-      console.log(isLoggedIn);
-      console.log(userList);
-      if(isLoggedIn && userList) {
-        this.router.navigate(['/home']);
-      } else {
-        this.password = '';
-        this.router.navigate(['/login']);
-      }
-    })
-  }    */
-
 
   login() {
     this.message = 'Connexion en cours...';
@@ -104,7 +71,7 @@ setMessage(): void {
     this.message = 'Identifiant ou mot de passe incorrect.'
   }
 }
-
+*/
 
 
 logout() {
@@ -114,14 +81,6 @@ logout() {
 
 
 
-/*
-
-  logout() {
-    localStorage.removeItem('token');
-    this.isLoggedIn = false;
-  }*/
-
-
 
 
 
@@ -143,6 +102,64 @@ logout() {
 
 
 /*
+
+
+
+
+/*
+  login(email: string, password: string): Observable<boolean> {
+    this.restaurantService.getUser().subscribe(userList => this.userList = userList); 
+    const isLoggedIn = this.userList.find((user: { email: string; password: string; }) => user.email == email && user.password == password);
+    localStorage.setItem('token', JSON.stringify(isLoggedIn));
+    return of(isLoggedIn).pipe(
+      delay(1000),
+      tap(isLoggedIn => this.isLoggedIn = isLoggedIn)
+    );
+  }
+
+
+  login(email: any, password: any) {
+    this.message = 'Connexion en cours...';
+    this.restaurantService.getUser()
+    .subscribe((userList: any)=>{
+        const isLoggedIn = this.userList.find((user:any)=>{
+          console.log(isLoggedIn);
+        return user.email === email && user.password === password
+      });
+      localStorage.setItem('token', JSON.stringify(isLoggedIn));
+      this.setMessage();
+      console.log(isLoggedIn);
+      console.log(userList);
+      if(isLoggedIn && userList) {
+        this.router.navigate(['/home']);
+      } else {
+        this.password = '';
+        this.router.navigate(['/login']);
+      }
+    })
+  }    
+
+
+
+
+
+
+
+
+  logout() {
+    localStorage.removeItem('token');
+    this.isLoggedIn = false;
+  }
+
+
+
+
+
+
+
+
+
+
 
 ---code fonctionnelle mais perfectible---
 

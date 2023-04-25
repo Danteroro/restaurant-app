@@ -8,9 +8,9 @@ import { PlatGallery } from '../plat/platGallery';
 <app-header></app-header>
 
   <h2 class="text-center" style="margin-top: 20px;">Ajouter un plat</h2>
-    <app-plat-form [platGallery]="platGallery"></app-plat-form>
+    <app-plat-form [platGallery]="platGallery" ></app-plat-form>
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->
    
   `,
   styles: [
@@ -18,11 +18,7 @@ import { PlatGallery } from '../plat/platGallery';
 })
 export class AddPlatComponent implements OnInit {
 
-  platGallery: PlatGallery | undefined ;
-  platGallery_id: number | undefined;
-  picture: string | undefined ;
-  name: string | undefined ;
-  category_id: number | undefined;
+  platGallery: PlatGallery;
 
 
   ngOnInit() {
@@ -32,3 +28,10 @@ export class AddPlatComponent implements OnInit {
 
   
 }
+
+
+  /*platGallery: PlatGallery | undefined ;
+  platGallery_id: number | undefined;
+  picture: string | undefined ;
+  name: string | undefined ;
+  category_id: number | undefined;*/

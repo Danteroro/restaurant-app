@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlatGallery } from '../plat/platGallery';
 import { RestaurantService } from '../restaurant.service';
+import { PlatGallery } from '../plat/platGallery';
 
 @Component({
   selector: 'app-edit-plat-galery',
@@ -20,12 +20,11 @@ import { RestaurantService } from '../restaurant.service';
         <div *ngIf="!platGallery" class="d-flex justify-content-center" >
           <app-loader></app-loader>
         </div>
-          <app-plat-form *ngIf="platGallery" [platGallery]="platGallery"></app-plat-form>  
+          <app-plat-form *ngIf="platGallery"[platGallery]="platGallery"></app-plat-form>  
   </div>
  </div>
  
-  
-<app-footer></app-footer>
+ <!--<app-footer></app-footer>-->
   `,
 
   styles: [
@@ -39,8 +38,10 @@ import { RestaurantService } from '../restaurant.service';
   ]
 })
 export class EditPlatGaleryComponent implements OnInit {
+  
   id: any;
-  platGallery: any;
+  platGallery: PlatGallery;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -59,6 +60,14 @@ export class EditPlatGaleryComponent implements OnInit {
     }
 
 
+}
+
+
+/*
+
+
+
+
    /* ngOnInit() {
       this.id=this.route.snapshot.params['id'];
       this.getOne();
@@ -71,12 +80,9 @@ export class EditPlatGaleryComponent implements OnInit {
         }
       )
     }
-    */
+    
 
-}
-
-
-/*ngOnInit() {
+ngOnInit() {
  
   this.restaurantService.getPlatGallery().subscribe(
   platGalleryList => this.platGalleryList = platGalleryList )

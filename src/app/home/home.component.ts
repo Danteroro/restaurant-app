@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { PlatGallery } from '../restaurant/plat/platGallery';
-import { User } from '../users/user';
 import { RestaurantService } from '../restaurant/restaurant.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+//import { User } from '../users/user';
 
 
 @Component({
@@ -19,37 +18,32 @@ export class HomeComponent {
 
   platGalleryList: any;
   platGallery: PlatGallery | undefined;
-  horaires: any;
-  userList: any;
-  //currentUser: User = {user_id: undefined, name: '', surname: '', email:'',password: '', role: ''};
-  closeResult = '';
-  email: string | any;
-  password: string | any;
-  role: string | any;
-  user: User | undefined;
-  auth: AuthService | any;
-  isLoggedIn: any;
   userRole = JSON.parse(localStorage.getItem('token')!)
+  auth: AuthService | any;
+  horaires: any;
+  // userList: any;
+  // email: string | any;
+  // password: string | any;
+  //role: string | any;
+  //user: User | undefined;
+  //isLoggedIn: any;
   
   
   
-  constructor(
-    private modalService: NgbModal,
-    private router: Router,
-    private restaurantService: RestaurantService,
-    private authService: AuthService) {} 
+  
+  constructor(private router: Router,
+              private restaurantService: RestaurantService,
+              private authService: AuthService) {} 
 
 
 
-
-
- ngOnInit() {
+ngOnInit() {
      this.auth = this.authService;
      this.userRole;
      this.restaurantService.getPlatGallery().subscribe(
      platGalleryList => this.platGalleryList = platGalleryList );
      this.restaurantService.getHoraire().subscribe(
-      horaires => this.horaires = horaires);
+     horaires => this.horaires = horaires);
  }  
 
  
@@ -59,30 +53,13 @@ export class HomeComponent {
   }
 
  
- open(content: any) {
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        },
-      );
-    }
-  
-  private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
-  }
-
-    
+ 
 
 }
+
+
+
+
 
 /*
 isCurrentUserLog(){

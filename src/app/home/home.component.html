@@ -1,6 +1,5 @@
+
 <app-header></app-header>
-
-
 <main>
 
 <div class="d-flex justify-content-center" ><h2>Le Goût qui compte!</h2></div>
@@ -26,11 +25,8 @@
 
 
 
-<div class="d-flex align-items-center justify-content-center" >
-    <a (click)="open(content)">
-        <button type="button" class=" btn btn-lg text-white resa">Réserver !</button>
-    </a>
-</div>
+<app-reservation></app-reservation>
+
 
 
 <div class="text-center bg-img mt-5"
@@ -91,56 +87,8 @@
 </a>
 
 
-<ng-template #content let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title " id="modal-basic-title">Réservation</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-        </div>
-    <div class="modal-body">
-        <form>
-            <div class="container">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                            <label for="inputname">Nom</label>
-                            <input type="name" class="form-control" id="inputName" placeholder="Votre nom">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="inputname">Prénom</label>
-                            <input type="surname" class="form-control" id="inputSurname" placeholder="Votre prénom">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="inputname">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Adresse Email">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="inputnumber">Nombre de couverts</label>
-                            <input type="number" class="form-control" id="inputNumber" placeholder="Ex : 2 couverts...">
-                    </div>
-                </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Addresse</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Mon adresse">
-                    </div>
-                    <div class="form-group">
-                            <label for="inputAddress">Date</label>
-                            <input type="date" class="form-control" id="inputTime" placeholder="...">
-                    </div>
-                    <div class="form-group col-md-6">
-                            <label for="input-text">Infos notables...</label>
-                            <input type="text" class="form-control" id="inputText" placeholder="Ex : Allergies, régimes...">
-                    </div>
-            </div>  
-        </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Réserver</button>
-            </div>
-    </div>
-</ng-template>
       
 </main>
 
 
 <app-footer><app-footer>
-
-    <!--*ngIf="this.currentUser.role === 'admin'" 
-    *ngIf="this.auth.isLoggedIn.role === 'admin'" -->
