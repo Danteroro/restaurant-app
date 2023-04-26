@@ -1,3 +1,86 @@
+<app-header></app-header>
+
+
+
+<div class="vh-100 bg-image" style="background-image: url('assets/fond-resa.jpg'); height: 100%">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container mb-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Réservation</h2>
+                            <form [formGroup]="resaForm" (ngSubmit)="postdata(resaForm)" autocomplete="off" >
+                                <div class="form-group">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="Nom ou Prénom" required>
+                 
+                                </div>
+                 
+                                <div class="form-group form-outline mb-4">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Adresse email" required>
+                                </div>
+
+                                <div class="form-group form-outline mb-4">
+                                    <label for="covered">Nombres de couverts</label>
+                                    <input type="number" name="covered" formControlName="covered" autocomplete="off" class="form-control input-sm" placeholder="" required>
+                                </div>
+
+                                <div class="form-group form-outline mb-4">
+                                    <label for="date">Date</label>
+                                    <input type="date" name="date" formControlName="date" autocomplete="off" class="form-control input-sm" placeholder="jour/mois/année" required>
+                                </div>
+                                
+                                <div class="form-group form-outline mb-4">
+                                    <label for="name">Infos</label>
+                                    <input type="text" name="infos" formControlName="infos" autocomplete="off" class="form-control input-sm" placeholder="ex: allergies...">
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" 
+                                        class=" ab btn text-white btn-block btn-lg gradient-custom-4" 
+                                        [disabled]="!resaForm.valid">Réserver
+                                    </button>
+                                </div>
+                                <div *ngIf="message"
+                                      class="container d-flex justify-content-between alert alert-success mt-5 text.text-center" 
+                                      role="alert">
+                                      Réservation confirmée!
+                                    <button (click)="removeMessage()" class="btn btn-dark btn-sm text-white">retour</button>
+                                </div> 
+                            </form>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--MODAL
 
 
 <div class="d-flex align-items-center justify-content-center" >
@@ -50,7 +133,19 @@
 
 
 
-<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="form-group col-md-6">
     [disabled]="!resaForm.valid"
     <label for="inputname">Prénom</label>

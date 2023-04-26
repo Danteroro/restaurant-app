@@ -1,5 +1,5 @@
 
-export interface reservation {
+export interface Reservation {
     
     resa_id: number; 
     name: string ;

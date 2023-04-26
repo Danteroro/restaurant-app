@@ -27,6 +27,7 @@ const restauRoutes: Routes = [
   
   { path: 'home', component: HomeComponent },
   { path: 'inscription', component: RegistrationComponent },
+  { path: 'reservation', component: ReservationComponent },
   { path: 'carte', component: CarteComponent},
   { path: 'entrees', component: EntreeDetailComponent },
   { path: 'plats', component: PlatDetailComponent },

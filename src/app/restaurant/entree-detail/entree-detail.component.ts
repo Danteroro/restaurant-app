@@ -42,12 +42,13 @@ export class EntreeDetailComponent implements OnInit {
 
   entreeList: any;
 
-constructor(private restaurantService:RestaurantService){}
+constructor(private restaurantService: RestaurantService){}
 
 
 ngOnInit() {
   this.restaurantService.getEntree().subscribe(
   entreeList => this.entreeList = entreeList)
+
 } 
  
 

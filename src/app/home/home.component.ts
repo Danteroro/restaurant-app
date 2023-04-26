@@ -52,7 +52,14 @@ ngOnInit() {
 
   }
 
- 
+
+
+  goToResa () {
+    this.router.navigate(['/reservation'])
+
+}
+
+
  
 
 }

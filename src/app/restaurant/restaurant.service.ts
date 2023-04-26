@@ -42,8 +42,6 @@ export class RestaurantService {
   
 
 
-
-
   addUser(name: any,email: any,password: any, role: any){
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.post(this.baseUrl + 'createuser.php', { name, email, password, role }, { headers, responseType: 'text'}).pipe(

@@ -26,12 +26,13 @@ import { RestaurantService } from '../restaurant.service';
 export class RegistrationComponent implements OnInit {
 
 
-  angForm: FormGroup | any;
+  regisForm: FormGroup | any;
+  message = false;
 
   
   constructor(private fb: FormBuilder, private restaurantService: RestaurantService, private router:Router) {
  
-    this.angForm = this.fb.group({
+    this.regisForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
       password: ['', Validators.required],
@@ -45,18 +46,23 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  postdata(angForm1: NgForm) {
-    if(this.angForm) {
-      this.restaurantService.addUser(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
-      .subscribe(() => this.router.navigate(['/login']));
-    }
+  removeMessage() {
+    this.message = false;
+    this.router.navigate(['/login']);
+  }
+
+  postdata(regisForm1: NgForm) {
+    if(this.regisForm) {
+      this.restaurantService.addUser(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
+      .subscribe(() => this.message=true);
+    }this.regisForm.reset();
   }
 
 
-  get name() { return this.angForm.get('name'); }
-  get email() { return this.angForm.get('email'); }
-  get password() { return this.angForm.get('password'); }
-  get role() { return this.angForm.get('role'); }
+  get name() { return this.regisForm.get('name'); }
+  get email() { return this.regisForm.get('email'); }
+  get password() { return this.regisForm.get('password'); }
+  get role() { return this.regisForm.get('role'); }
   
 }
  
@@ -64,8 +70,8 @@ export class RegistrationComponent implements OnInit {
 
 
 /*
-  postdata(angForm1: NgForm) {
-    this.restaurantService.userregistration(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
+  postdata(regisForm1: NgForm) {
+    this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
       .pipe(first()).subscribe(
           data => {
               this.router.navigate(['login']);
@@ -75,9 +81,9 @@ export class RegistrationComponent implements OnInit {
   }*/
 
 /*
-  postdata(angForm1: NgForm) {
-    if(this.angForm) {
-      this.restaurantService.userregistration(angForm1.value.name, angForm1.value.email, angForm1.value.password, angForm1.value.role)
+  postdata(regisForm1: NgForm) {
+    if(this.regisForm) {
+      this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
       .subscribe((data) => this.router.navigate(['/login']))
       console.log('data');
     }

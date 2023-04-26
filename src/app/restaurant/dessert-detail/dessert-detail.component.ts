@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute,  Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../restaurant.service';
 
 @Component({
@@ -38,21 +37,29 @@ import { RestaurantService } from '../restaurant.service';
   `
   ]
 })
-export class DessertDetailComponent {
+export class DessertDetailComponent implements OnInit {
 
-dessertlist: any;
+dessertList: any;
 
-  constructor(
-    private restaurantService: RestaurantService,
-    private route: ActivatedRoute,
-    private router: Router) {}
+  constructor(private restaurantService: RestaurantService) {}
+
+
+    ngOnInit() {
+      this.restaurantService.getDessert().subscribe
+      (dessertList => this.dessertList = dessertList)
+  
+    }
+  
+
+
+
+
 
 
 }
 
 
-  /*getEntree () {
-    this.restaurantService.getEntreeList().subscribe(categoryEntree => this.getEntree = this.getEntree)
-  }*/
+ 
+
 
 

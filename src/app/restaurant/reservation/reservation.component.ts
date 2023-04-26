@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestaurantService } from '../restaurant.service';
+import { Reservation } from './reservation';
 
 
 
@@ -12,10 +13,22 @@ import { RestaurantService } from '../restaurant.service';
   templateUrl: 'reservation.component.html',
   styles: [
     
-    `.resa {
+`.resa {
         background-color: rgb(89, 173, 80);
         text-decoration: none;  
       }
+
+  .ab {
+  background: rgb(233, 78, 27);
+  border: rgb(233, 78, 27);
+  }
+
+  .ab:hover {
+    background: rgb(89, 173, 80);
+    border:rgb(89, 173, 80);
+  }
+  
+
     `
   ]
 })
@@ -24,8 +37,17 @@ import { RestaurantService } from '../restaurant.service';
 export class ReservationComponent {
 
   resaForm: FormGroup | any;
-  success = '';
   closeResult = '';
+  /*reservation: Reservation = {
+    name: '',
+    email: '',
+    covered: 0,
+    date: (new Date()),
+    infos: '',
+    
+  }*/
+  message = false;
+
 
 
   constructor(private modalService: NgbModal, private fb: FormBuilder, private restaurantService: RestaurantService, private router:Router) {
@@ -39,15 +61,33 @@ export class ReservationComponent {
     });
   } 
 
-
+ /* newResa(): void {
+    this.submitted = false;
+    this.reservation = {
+      name: '' ,
+      email: '' ,
+      covered : 0, 
+      date: (new Date()),
+      infos: ''
+    };
+    console.warn(this.reservation);
+   // this.router.navigate(['/home']);
+  }
+*/
 
   postdata(resaForm: NgForm) {
     if(this.resaForm) {
       this.restaurantService.addResa(resaForm.value.name, resaForm.value.email, resaForm.value.covered, resaForm.value.date, resaForm.value.infos)
-      .subscribe(() => this.router.navigate(['/login']));
-      this.success = 'Success in retrieving the list';
+      .subscribe(() => this.message = true);
+      this.resaForm.reset();
+      
     }
   }
+
+removeMessage() {
+  this.message = false;
+  this.router.navigate(['/home']);
+}
 
 
   get name() { return this.resaForm.get('name'); }
@@ -59,7 +99,7 @@ export class ReservationComponent {
 
  
 
-
+/*
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
       (result) => {
@@ -80,9 +120,43 @@ export class ReservationComponent {
       } else {
         return `with: ${reason}`;
       }
-  }
+  }*/
+
+
 
 
 
 
 }
+
+
+
+
+
+
+/* ---MODAL CODE----
+
+  closeResult = '';
+
+ open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  
+  private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+  }
+*/

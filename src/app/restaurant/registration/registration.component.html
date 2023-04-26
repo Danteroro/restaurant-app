@@ -16,21 +16,21 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Créer un compte</h2>
-                            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+                            <form [formGroup]="regisForm" (ngSubmit)="postdata(regisForm)" autocomplete="off" >
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="User Name">
+                                    <label for="name">Nom</label>
+                                    <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="Votre nom ou prénom" required>
                  
                                 </div>
                  
                                 <div class="form-group form-outline mb-4">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email Address">
+                                    <input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Adresse email"required>
                  
                                 </div>
                                 <div class="form-group form-outline mb-4">
-                                    <label for="Password">Password</label>
-                                    <input type="password" name="Password" formControlName="password"  autocomplete="off" class="form-control input-sm" placeholder="Password">
+                                    <label for="Password">Mot de passe</label>
+                                    <input type="password" name="Password" formControlName="password"  autocomplete="off" class="form-control input-sm" placeholder="Mot de passe"required>
                  
                                 </div>
                                 <div class="form-group form-outline mb-4">
@@ -44,9 +44,15 @@
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" 
                                         class=" ab btn text-white btn-block btn-lg gradient-custom-4" 
-                                        [disabled]="!angForm.valid">Enregistrer
+                                        [disabled]="!regisForm.valid">Enregistrer
                                     </button>
-                                </div> 
+                                </div>
+                                <div *ngIf="message"
+                                      class="container d-flex justify-content-between alert alert-success mt-5 text.text-center" 
+                                      role="alert">
+                                      Inscription confirmée!
+                                    <button (click)="removeMessage()" class="btn btn-dark btn-sm text-white">Se connecter</button>
+                                </div>  
                             </form>
                         </div>
                     </div>  
@@ -64,7 +70,7 @@
     </div>
     <div class="col-md-6 col-md-offset-3">
         <div class="jumbotron">
-            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+            <form [formGroup]="regisForm" (ngSubmit)="postdata(regisForm)" autocomplete="off" >
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="User Name">
@@ -88,7 +94,7 @@
                 </div>
                
                
-                <button type="submit" class="btn btn-primary" [disabled]="!angForm.valid">Registration</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!regisForm.valid">Registration</button>
             </form>
         </div>
     </div>

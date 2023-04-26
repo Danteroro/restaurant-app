@@ -60,7 +60,7 @@ function getPlatList() {
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $plat = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    for($i=0; $i< count($plat ); $i++){
+    for($i=0; $i< count($plat); $i++){
         $plat [$i]['picture'] = URL."images/".$plat [$i]['picture'];
     }
     $stmt->closeCursor();
@@ -71,8 +71,7 @@ function getPlatList() {
 
 function getDessertList() {
     $pdo = getConnectBdd();
-    $req = "SELECT d.dessert_id, d.picture, d.title, d.description, d.price
-    FROM dessert as d";
+    $req = "SELECT * FROM dessert";
     $stmt = $pdo->prepare($req);
     $stmt->execute();
     $dessert = $stmt->fetchAll(PDO::FETCH_ASSOC);
