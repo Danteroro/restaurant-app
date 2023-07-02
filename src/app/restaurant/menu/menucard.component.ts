@@ -8,9 +8,9 @@ import { MENULIST } from './menulist';
 @Component({
   selector: 'app-menu',
   templateUrl: './menucard.component.html',
-  styles: [
-  ]
+  styleUrls: ['menucard.component.css']
 })
+
 export class MenuComponent implements OnInit{
 
   menuList: any;

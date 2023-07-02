@@ -17,7 +17,8 @@ import { Menu } from './menu/menu';
 export class RestaurantService {
 
 
-  baseUrl:string = "http://localhost/restaurant-app/api/";
+  //baseUrl:string = "http://localhost/restaurant-app/src/api/";
+  baseUrl:string = "https://benati.fr/";
   redirectUrl: string | undefined;
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -86,8 +87,16 @@ export class RestaurantService {
 }  
 
 
+/*getPlatGalleryById (platGallery_id: number) : Observable<PlatGallery> {
+  return this.http.get<PlatGallery>(`http://localhost/restaurant-app/src/api/home/${platGallery_id}`).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, 'id absente'))
+  );
+}*/
+
+
 getPlatGalleryById (platGallery_id: number) : Observable<PlatGallery> {
-  return this.http.get<PlatGallery>(`http://localhost/restaurant-app/api/home/${platGallery_id}`).pipe(
+  return this.http.get<PlatGallery>(`https://benati.fr/home/${platGallery_id}`).pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, 'id absente'))
   );

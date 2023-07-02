@@ -5,8 +5,7 @@ import { RestaurantService } from '../restaurant/restaurant.service';
 @Component({
   selector: 'app-horaire',
   templateUrl: './horaire.component.html',
-  styles: [
-  ]
+  styleUrls: ['horaire.css']
 })
 export class HoraireComponent implements OnInit  {
 

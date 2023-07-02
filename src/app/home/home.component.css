@@ -3,6 +3,17 @@
     margin-top: 25px;
 }
 
+
+@media screen and (max-width: 750px) {
+
+  .horaires {
+    display: flex;
+    margin-top: 25px;
+  }
+}
+
+
+
 .container-xl {
 margin-top: 40px;
 
