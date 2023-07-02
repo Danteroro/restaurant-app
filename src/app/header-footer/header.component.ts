@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   
 <header class="p-3 text-bg-dark">
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img [ngClass]="'logo'" 
                  src="assets/Quai-Antique.png" 
@@ -48,9 +48,12 @@ import { AuthService } from '../auth.service';
   `,
   styles: [ `
 
-.logo {
-    margin-right: 30px;
+@media screen and (min-width: 750px) {
+  .logo {
+    margin-right: 50px;
+  }
 }
+
 
 .btn:hover {
   background: rgb(89, 173, 80);
@@ -67,13 +70,19 @@ import { AuthService } from '../auth.service';
   background: rgb(89, 173, 80);
 }
 
+@media screen and (max-width: 749px) {
+  .btn {
+  margin-left: 23px;
+  }
+
+}
 
 .deco {
   background: rgb(233, 78, 27);
 }
 
 .nav-link {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 
