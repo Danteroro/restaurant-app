@@ -36,6 +36,78 @@ export class RegistrationComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
       password: ['', Validators.required],
+ 
+    });
+   }
+ 
+   
+  ngOnInit() {
+  }
+
+
+  removeMessage() {
+    this.message = false;
+    this.router.navigate(['/login']);
+  }
+
+  postdata(regisForm1: NgForm) {
+    if(this.regisForm) {
+      this.restaurantService.addUser(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password)
+      .subscribe(() => this.message=true);
+    }this.regisForm.reset();
+  }
+
+
+  get name() { return this.regisForm.get('name'); }
+  get email() { return this.regisForm.get('email'); }
+  get password() { return this.regisForm.get('password'); }
+  
+  
+}
+ 
+
+
+
+/*
+  postdata(regisForm1: NgForm) {
+    this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
+      .pipe(first()).subscribe(
+          data => {
+              this.router.navigate(['login']);
+          },
+          error => {
+          });
+  }*/
+
+/*
+  postdata(regisForm1: NgForm) {
+    if(this.regisForm) {
+      this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
+      .subscribe((data) => this.router.navigate(['/login']))
+      console.log('data');
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  MAJ 13/07/23 SUPPRESSION INPUT ROLE
+
+
+
+   regisForm: FormGroup | any;
+  message = false;
+
+  
+  constructor(private fb: FormBuilder, private restaurantService: RestaurantService, private router:Router) {
+ 
+    this.regisForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
+      password: ['', Validators.required],
       role: ['', Validators.required],
  
     });
@@ -65,26 +137,20 @@ export class RegistrationComponent implements OnInit {
   get role() { return this.regisForm.get('role'); }
   
 }
- 
-
-
-
-/*
-  postdata(regisForm1: NgForm) {
-    this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
-      .pipe(first()).subscribe(
-          data => {
-              this.router.navigate(['login']);
-          },
-          error => {
-          });
-  }*/
-
-/*
-  postdata(regisForm1: NgForm) {
-    if(this.regisForm) {
-      this.restaurantService.userregistration(regisForm1.value.name, regisForm1.value.email, regisForm1.value.password, regisForm1.value.role)
-      .subscribe((data) => this.router.navigate(['/login']))
-      console.log('data');
-    }
-  }*/
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  */

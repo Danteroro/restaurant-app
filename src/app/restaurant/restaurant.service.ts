@@ -17,8 +17,8 @@ import { Menu } from './menu/menu';
 export class RestaurantService {
 
 
-  //baseUrl:string = "http://localhost/restaurant-app/src/api/";
   baseUrl:string = "https://benati.fr/";
+  //baseUrl:string = "http://localhost/restaurant-app/src/api/";
   redirectUrl: string | undefined;
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -43,16 +43,27 @@ export class RestaurantService {
   
 
 
-  addUser(name: any,email: any,password: any, role: any){
+  addUser(name: any,email: any,password: any){
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.http.post(this.baseUrl + 'createuser.php', { name, email, password, role }, { headers, responseType: 'text'}).pipe(
+    return this.http.post(this.baseUrl + 'createuser.php', { name, email, password}, { headers, responseType: 'text'}).pipe(
     tap((response)=> this.log(response)),
     catchError((error) => this.handleError(error, null))
     );
   }
   
 
+/*
+MAJ 13/07/23 SUPP ROLE
 
+addUser(name: any,email: any,password: any, role: any){
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    return this.http.post(this.baseUrl + 'createuser.php', { name, email, password, role }, { headers, responseType: 'text'}).pipe(
+    tap((response)=> this.log(response)),
+    catchError((error) => this.handleError(error, null))
+    );
+  }
+
+*/
   
 
   getUser(): Observable<User> {
